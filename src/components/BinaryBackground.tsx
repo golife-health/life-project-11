@@ -19,46 +19,38 @@ const BinaryBackground = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const binaryDigits = ['0', '1'];
-    const columns = Math.floor(canvas.width / 20);
-    const fontSize = 12;
-    
-    ctx.font = `${fontSize}px SF Mono, monospace`;
-    
-    const positions = Array(columns).fill(0);
-
-    const draw = () => {
-      // Use a more subtle fill for elegance
-      ctx.fillStyle = 'rgba(248, 248, 248, 0.02)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Draw grid lines instead of binary digits
+    const drawGrid = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // More elegant text color with slight opacity
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+      // Set line style
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 1;
       
-      for (let i = 0; i < positions.length; i++) {
-        const text = binaryDigits[Math.floor(Math.random() * binaryDigits.length)];
-        const x = i * 20;
-        const y = positions[i] * 20;
-        
-        if (y > 0) {
-          ctx.fillText(text, x, y);
-        }
-        
-        positions[i] += 1;
-        
-        // Adjusted probability for more natural spacing
-        if (positions[i] * 20 > canvas.height && Math.random() > 0.985) {
-          positions[i] = 0;
-        }
+      // Draw vertical lines
+      const gridSize = 80;
+      for (let x = 0; x < canvas.width; x += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+      }
+      
+      // Draw horizontal lines
+      for (let y = 0; y < canvas.height; y += gridSize) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
       }
     };
 
-    // Slower animation for a more subtle effect
-    const interval = setInterval(draw, 150);
+    drawGrid();
+    window.addEventListener('resize', drawGrid);
 
     return () => {
-      clearInterval(interval);
       window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', drawGrid);
     };
   }, []);
 
