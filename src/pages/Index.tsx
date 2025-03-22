@@ -55,8 +55,8 @@ const Index = () => {
               <LogoTree className="w-64 h-64" />
             </div>
             
-            <div className="space-y-16 md:pl-12">
-              <div className="md:-ml-8">
+            <div className="space-y-16 md:-ml-12">
+              <div className="md:-ml-12">
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
                   LIFE TOKEN
                 </h1>
@@ -65,7 +65,7 @@ const Index = () => {
                 </p>
               </div>
               
-              <div className="space-y-6 md:-ml-8">
+              <div className="space-y-6 md:-ml-16">
                 <div className="poem-text">
                   <p className="poem-line">"Cells bloom anew, restoring youth with endless might</p>
                   <p className="poem-line">Genes map secrets, unveiling truths in timeless light</p>
