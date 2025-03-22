@@ -20,22 +20,24 @@ const BinaryBackground = () => {
     window.addEventListener('resize', resizeCanvas);
 
     const binaryDigits = ['0', '1'];
-    const columns = Math.floor(canvas.width / 15);
-    const fontSize = 14;
+    const columns = Math.floor(canvas.width / 20);
+    const fontSize = 12;
     
     ctx.font = `${fontSize}px SF Mono, monospace`;
     
     const positions = Array(columns).fill(0);
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.03)';
+      // Use a more subtle fill for elegance
+      ctx.fillStyle = 'rgba(248, 248, 248, 0.02)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      ctx.fillStyle = '#000';
+      // More elegant text color with slight opacity
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
       
       for (let i = 0; i < positions.length; i++) {
         const text = binaryDigits[Math.floor(Math.random() * binaryDigits.length)];
-        const x = i * 15;
+        const x = i * 20;
         const y = positions[i] * 20;
         
         if (y > 0) {
@@ -44,13 +46,15 @@ const BinaryBackground = () => {
         
         positions[i] += 1;
         
-        if (positions[i] * 20 > canvas.height && Math.random() > 0.98) {
+        // Adjusted probability for more natural spacing
+        if (positions[i] * 20 > canvas.height && Math.random() > 0.985) {
           positions[i] = 0;
         }
       }
     };
 
-    const interval = setInterval(draw, 100);
+    // Slower animation for a more subtle effect
+    const interval = setInterval(draw, 150);
 
     return () => {
       clearInterval(interval);

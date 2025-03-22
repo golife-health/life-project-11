@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import BinaryBackground from '../components/BinaryBackground';
+import AmbassadorForm from '../components/AmbassadorForm';
 
 const Ambassador = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -51,9 +52,6 @@ const Ambassador = () => {
             <p className="text-lg text-gray-600 mb-8">
               Join our visionary community of ambassadors dedicated to advancing human longevity through blockchain-powered research.
             </p>
-            <button className="button-shine inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-900 transition-colors">
-              Apply Now
-            </button>
           </div>
         </div>
       </section>
@@ -71,7 +69,7 @@ const Ambassador = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-all hover:shadow-sm opacity-0">
+            <div className="feature-card opacity-0">
               <div className="h-40 rounded-xl bg-gray-50 flex items-center justify-center mb-5">
                 <span className="text-3xl font-light">🌟</span>
               </div>
@@ -81,7 +79,7 @@ const Ambassador = () => {
               </p>
             </div>
             
-            <div className="p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-all hover:shadow-sm opacity-0" style={{ animationDelay: '0.1s' }}>
+            <div className="feature-card opacity-0" style={{ animationDelay: '0.1s' }}>
               <div className="h-40 rounded-xl bg-gray-50 flex items-center justify-center mb-5">
                 <span className="text-3xl font-light">💰</span>
               </div>
@@ -91,7 +89,7 @@ const Ambassador = () => {
               </p>
             </div>
             
-            <div className="p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-all hover:shadow-sm opacity-0" style={{ animationDelay: '0.2s' }}>
+            <div className="feature-card opacity-0" style={{ animationDelay: '0.2s' }}>
               <div className="h-40 rounded-xl bg-gray-50 flex items-center justify-center mb-5">
                 <span className="text-3xl font-light">🤝</span>
               </div>
@@ -104,91 +102,15 @@ const Ambassador = () => {
         </div>
       </section>
       
-      {/* Application Process */}
+      {/* Application Form Section */}
       <section className="py-16 bg-gray-50" ref={addToRefs}>
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="max-w-3xl mx-auto opacity-0">
             <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">
-              Application Process
+              Apply to Become an Ambassador
             </h2>
             
-            <div className="space-y-10">
-              <div className="flex">
-                <div className="flex-shrink-0 flex items-center">
-                  <div className="h-12 w-12 rounded-full bg-black text-white flex items-center justify-center">
-                    1
-                  </div>
-                  <div className="h-full w-px bg-gray-200 ml-6 -mb-16 hidden md:block"></div>
-                </div>
-                <div className="ml-6">
-                  <h3 className="text-xl font-semibold mb-2">Complete the Application</h3>
-                  <p className="text-gray-600">
-                    Fill out our comprehensive application form detailing your background, skills, and interest in longevity research.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex">
-                <div className="flex-shrink-0 flex items-center">
-                  <div className="h-12 w-12 rounded-full bg-black text-white flex items-center justify-center">
-                    2
-                  </div>
-                  <div className="h-full w-px bg-gray-200 ml-6 -mb-16 hidden md:block"></div>
-                </div>
-                <div className="ml-6">
-                  <h3 className="text-xl font-semibold mb-2">Interview Process</h3>
-                  <p className="text-gray-600">
-                    Selected applicants will be invited for a virtual interview with our community leaders to discuss mutual goals.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex">
-                <div className="flex-shrink-0 flex items-center">
-                  <div className="h-12 w-12 rounded-full bg-black text-white flex items-center justify-center">
-                    3
-                  </div>
-                  <div className="h-full w-px bg-gray-200 ml-6 -mb-16 hidden md:block"></div>
-                </div>
-                <div className="ml-6">
-                  <h3 className="text-xl font-semibold mb-2">Onboarding</h3>
-                  <p className="text-gray-600">
-                    Successful candidates will receive comprehensive training on the protocol, technologies, and ambassador responsibilities.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex">
-                <div className="flex-shrink-0 flex items-center">
-                  <div className="h-12 w-12 rounded-full bg-black text-white flex items-center justify-center">
-                    4
-                  </div>
-                </div>
-                <div className="ml-6">
-                  <h3 className="text-xl font-semibold mb-2">Begin Your Journey</h3>
-                  <p className="text-gray-600">
-                    Start representing $LIFE in your region, contributing to our mission of extending human lifespans.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* CTA Section */}
-      <section className="py-16" ref={addToRefs}>
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="max-w-3xl mx-auto text-center opacity-0">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to make a difference?
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Apply today to become a $LIFE Ambassador and join us in revolutionizing human longevity research.
-            </p>
-            <button className="button-shine inline-flex items-center justify-center px-8 py-4 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-900 transition-colors">
-              Start Your Application
-            </button>
+            <AmbassadorForm />
           </div>
         </div>
       </section>

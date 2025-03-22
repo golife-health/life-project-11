@@ -57,13 +57,13 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <Link 
                   to="/ambassador" 
-                  className="button-shine inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-900 transition-colors"
+                  className="btn-primary button-shine"
                 >
                   Become an Ambassador
                 </Link>
                 <Link 
                   to="/docs" 
-                  className="button-shine inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                  className="btn-secondary button-shine"
                 >
                   Read Docs
                 </Link>
@@ -93,7 +93,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-all hover:shadow-sm opacity-0">
+            <div className="feature-card opacity-0">
               <div className="h-40 rounded-xl bg-gray-50 flex items-center justify-center mb-5">
                 <span className="text-3xl font-light">🧬</span>
               </div>
@@ -103,7 +103,7 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-all hover:shadow-sm opacity-0" style={{ animationDelay: '0.1s' }}>
+            <div className="feature-card opacity-0" style={{ animationDelay: '0.1s' }}>
               <div className="h-40 rounded-xl bg-gray-50 flex items-center justify-center mb-5">
                 <span className="text-3xl font-light">🔬</span>
               </div>
@@ -113,7 +113,7 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="p-6 rounded-2xl border border-gray-100 hover:border-gray-200 transition-all hover:shadow-sm opacity-0" style={{ animationDelay: '0.2s' }}>
+            <div className="feature-card opacity-0" style={{ animationDelay: '0.2s' }}>
               <div className="h-40 rounded-xl bg-gray-50 flex items-center justify-center mb-5">
                 <span className="text-3xl font-light">🔄</span>
               </div>
@@ -131,7 +131,7 @@ const Index = () => {
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="max-w-4xl mx-auto opacity-0">
             <blockquote className="text-center">
-              <p className="text-2xl md:text-3xl font-light italic mb-6 leading-relaxed">
+              <p className="text-2xl md:text-3xl font-light italic mb-6 leading-relaxed text-gray-700">
                 "Cells bloom anew, restoring youth with endless might<br />
                 Genes map secrets, unveiling truths in timeless light<br />
                 Minds stay guarded, preserving wisdom in eternal fight"
@@ -158,7 +158,7 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                 <Link 
                   to="/community" 
-                  className="button-shine inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-900 transition-colors"
+                  className="btn-primary button-shine"
                 >
                   Join The Community
                 </Link>
@@ -166,7 +166,7 @@ const Index = () => {
                   href="https://twitter.com/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="button-shine inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 hover:bg-gray-50 transition-colors"
+                  className="btn-secondary button-shine"
                 >
                   @longevitychain
                 </a>
@@ -174,16 +174,16 @@ const Index = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-4 opacity-0" style={{ animationDelay: '0.2s' }}>
-              <div className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center">
+              <div className="aspect-square bg-gray-50 rounded-2xl flex items-center justify-center shadow-sm">
                 <span className="text-4xl">👥</span>
               </div>
-              <div className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center">
+              <div className="aspect-square bg-gray-50 rounded-2xl flex items-center justify-center shadow-sm">
                 <span className="text-4xl">🧪</span>
               </div>
-              <div className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center">
+              <div className="aspect-square bg-gray-50 rounded-2xl flex items-center justify-center shadow-sm">
                 <span className="text-4xl">🔗</span>
               </div>
-              <div className="aspect-square bg-gray-100 rounded-2xl flex items-center justify-center">
+              <div className="aspect-square bg-gray-50 rounded-2xl flex items-center justify-center shadow-sm">
                 <span className="text-4xl">🚀</span>
               </div>
             </div>
