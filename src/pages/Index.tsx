@@ -281,11 +281,20 @@ const Index = () => {
                     <div className="glass-panel p-6 md:ml-auto">
                       <div className="text-blue-400 font-mono mb-2">PHASE 1 - Q1 2025</div>
                       <h3 className="text-xl font-bold mb-3">Foundation & Community</h3>
-                      <ul className="text-white/70 space-y-2 list-disc list-inside md:list-outside">
-                        <li>Establish research partnerships with leading institutions</li>
-                        <li>Community building and ambassador program launch</li>
-                        <li>Initial funding round for key research initiatives</li>
-                      </ul>
+                      <div className="space-y-2">
+                        <div className="flex items-start md:justify-end text-white/70">
+                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                          <span>Establish research partnerships with leading institutions</span>
+                        </div>
+                        <div className="flex items-start md:justify-end text-white/70">
+                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                          <span>Community building and ambassador program launch</span>
+                        </div>
+                        <div className="flex items-start md:justify-end text-white/70">
+                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                          <span>Initial funding round for key research initiatives</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="md:hidden h-16"></div>
@@ -301,11 +310,20 @@ const Index = () => {
                     <div className="glass-panel p-6">
                       <div className="text-blue-400 font-mono mb-2">PHASE 2 - Q2 2025</div>
                       <h3 className="text-xl font-bold mb-3">Research Expansion</h3>
-                      <ul className="text-white/70 space-y-2 list-disc list-inside">
-                        <li>Launch of multi-center clinical trials</li>
-                        <li>Development of proprietary longevity biomarkers</li>
-                        <li>Creation of decentralized research data platform</li>
-                      </ul>
+                      <div className="space-y-2">
+                        <div className="flex items-start text-white/70">
+                          <span className="inline-block w-5 text-center mr-2">•</span>
+                          <span>Launch of multi-center clinical trials</span>
+                        </div>
+                        <div className="flex items-start text-white/70">
+                          <span className="inline-block w-5 text-center mr-2">•</span>
+                          <span>Development of proprietary longevity biomarkers</span>
+                        </div>
+                        <div className="flex items-start text-white/70">
+                          <span className="inline-block w-5 text-center mr-2">•</span>
+                          <span>Creation of decentralized research data platform</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -319,11 +337,20 @@ const Index = () => {
                     <div className="glass-panel p-6 md:ml-auto">
                       <div className="text-blue-400 font-mono mb-2">PHASE 3 - Q3 2025</div>
                       <h3 className="text-xl font-bold mb-3">Technology Development</h3>
-                      <ul className="text-white/70 space-y-2 list-disc list-inside md:list-outside">
-                        <li>Initial therapeutics development and testing</li>
-                        <li>Expansion of research to include AI-driven discovery</li>
-                        <li>Launch of community access to research findings</li>
-                      </ul>
+                      <div className="space-y-2">
+                        <div className="flex items-start md:justify-end text-white/70">
+                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                          <span>Initial therapeutics development and testing</span>
+                        </div>
+                        <div className="flex items-start md:justify-end text-white/70">
+                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                          <span>Expansion of research to include AI-driven discovery</span>
+                        </div>
+                        <div className="flex items-start md:justify-end text-white/70">
+                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                          <span>Launch of community access to research findings</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="md:hidden h-16"></div>
@@ -339,11 +366,20 @@ const Index = () => {
                     <div className="glass-panel p-6 border-dashed border">
                       <div className="text-blue-400/70 font-mono mb-2">PHASE 4 - Q4 2025</div>
                       <h3 className="text-xl font-bold mb-3">Global Implementation</h3>
-                      <ul className="text-white/70 space-y-2 list-disc list-inside">
-                        <li>First-generation therapeutics available to token holders</li>
-                        <li>Global expansion of research initiatives</li>
-                        <li>Development of personalized longevity protocols</li>
-                      </ul>
+                      <div className="space-y-2">
+                        <div className="flex items-start text-white/70">
+                          <span className="inline-block w-5 text-center mr-2">•</span>
+                          <span>First-generation therapeutics available to token holders</span>
+                        </div>
+                        <div className="flex items-start text-white/70">
+                          <span className="inline-block w-5 text-center mr-2">•</span>
+                          <span>Global expansion of research initiatives</span>
+                        </div>
+                        <div className="flex items-start text-white/70">
+                          <span className="inline-block w-5 text-center mr-2">•</span>
+                          <span>Development of personalized longevity protocols</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
