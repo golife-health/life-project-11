@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import LogoTree from '../components/LogoTree';
@@ -120,14 +119,7 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Footer navigation */}
-        <div className="absolute bottom-6 w-full text-center">
-          <div className="flex justify-center space-x-2">
-            <Link to="/community" className="footer-link">[ Join The Community ]</Link>
-            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="footer-link">[ X @longevitylifetoken ]</a>
-            <Link to="/ambassador" className="footer-link">[ Join as $LIFE Ambassador ]</Link>
-          </div>
-        </div>
+        {/* Footer navigation section REMOVED */}
       </section>
       
       {/* About Section - NEW */}
