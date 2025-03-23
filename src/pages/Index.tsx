@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import LogoTree from '../components/LogoTree';
@@ -78,7 +79,7 @@ const Index = () => {
                 </div>
               </div>
               
-              <div className="space-y-2">
+              <div className="space-y-2 mb-20">
                 <div className="research-pillar">
                   <span>Regenerative Medicine</span>
                   <span className="research-pillar-number">v.0.1 →</span>
