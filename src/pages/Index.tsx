@@ -254,7 +254,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Roadmap Section - UPDATED for current date */}
+      {/* Roadmap Section - UPDATED for current date and formatting */}
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 opacity-0"
@@ -273,7 +273,7 @@ const Index = () => {
             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 transform -translate-x-1/2"></div>
             
             <div className="space-y-24">
-              {/* Phase 1 */}
+              {/* Phase 1 - UPDATED for correct bullet point alignment */}
               <div className="relative">
                 <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -389,7 +389,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Community Section - NEW */}
+      {/* Community Section */}
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0"
