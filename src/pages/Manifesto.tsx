@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -14,8 +15,11 @@ const Manifesto = () => {
       <div className="container mx-auto px-6 max-w-4xl pt-24">
         <div className="min-h-screen flex flex-col justify-center items-center text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Manifesto</h1>
-          <p className="text-lg text-white/80 mb-8">
+          <p className="text-lg text-white/80 mb-3">
             Our vision and philosophy for extending human lifespan.
+          </p>
+          <p className="text-md text-primary/90 italic mb-8">
+            Longevity Innovation For Extending-healthspan
           </p>
           
           <div className="space-y-8 w-full">
