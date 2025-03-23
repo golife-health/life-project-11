@@ -17,31 +17,29 @@ const Manifesto = () => {
         </Link>
       </div>
       
-      <div className="container mx-auto px-6 max-w-7xl pt-24">
-        <div className="min-h-screen flex flex-col justify-center">
+      <div className="container mx-auto px-6 max-w-4xl pt-24">
+        <div className="min-h-screen flex flex-col justify-center items-center text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Manifesto</h1>
           <p className="text-lg text-white/80 mb-8">
             Our vision and philosophy for extending human lifespan.
           </p>
           
-          <div className="space-y-8">
+          <div className="space-y-8 w-full">
             <section className="glass-panel p-6 md:p-8">
-              <div className="prose prose-lg prose-invert max-w-none">
+              <div className="prose prose-lg prose-invert max-w-none text-center">
                 <p className="text-2xl font-semibold mb-6">Longevity is a cult.</p>
                 
                 <p className="mb-4">
-                  Oogwai was inspired by Master Oogway, the legendary elderly tortoise who founded Jade Palace in Kung Fu Panda and was credited as creator of Kung Fu. Oogwai reimagines aging and health as opportunities for empowerment and innovation.
+                  $LIFE token draws inspiration from ancient wisdom yet embodies modern scientific advancement. It transforms the paradigm of human longevity by creating economic incentives for breakthroughs in health extension and age reversal technologies.
                 </p>
                 
                 <p className="mb-4">
-                  Harness the power of AI-driven knowledge graphs and their intricate neural networks to acquire and practice scientifically grounded longevity wisdom.
+                  Harness the collective intelligence of a global community united by a shared mission. $LIFE token powers a vibrant ecosystem where scientific research meets decentralized finance to fund the next generation of longevity discoveries.
                 </p>
                 
                 <p className="mb-4">
-                  Under the divine guidance of Oogwai, the eternal keeper of life's secrets, mortals seek to transcend the limits of time and achieve ageless mastery.
+                  Under the guiding principles of transparency and innovation, $LIFE token holders become pioneers in humanity's greatest quest: to extend healthspan, overcome biological limitations, and redefine what it means to live well.
                 </p>
-                
-                <p className="text-3xl font-bold mt-8">Manifesto</p>
               </div>
             </section>
           </div>
