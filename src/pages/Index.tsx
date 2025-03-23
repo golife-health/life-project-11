@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LogoTree from '../components/LogoTree';
 import BinaryBackground from '../components/BinaryBackground';
 import Navbar from '../components/Navbar';
+import RotatingEarth from '../components/RotatingEarth';
 
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -104,6 +105,11 @@ const Index = () => {
           <div className="text-white/50 break-all max-w-xs">
             CA X9BLQmZA7qdWYJKJ6VTmnMiBuzQq3dNZS8fFMU5aY
           </div>
+        </div>
+        
+        {/* Rotating Earth */}
+        <div className="absolute bottom-32 w-full">
+          <RotatingEarth />
         </div>
         
         {/* Footer navigation */}
