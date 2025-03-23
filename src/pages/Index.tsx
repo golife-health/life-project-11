@@ -66,7 +66,7 @@ const Index = () => {
                   LIFE TOKEN
                 </h1>
                 <p className="text-lg text-white/80">
-                  A direct competitor to Avinasi Labs, utilizing advanced epigenetic reprogramming techniques
+                  A direct competitor to Avinasi Labs, leveraging superior epigenetic reprogramming vectors and proprietary pluripotency induction protocols
                 </p>
               </div>
               
