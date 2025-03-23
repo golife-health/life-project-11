@@ -12,6 +12,12 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full z-50 py-5">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex justify-center space-x-8">
+          <Link 
+            to="/" 
+            className={`nav-link ${isActive('/') ? 'text-primary font-medium' : 'footer-link'}`}
+          >
+            [ Home ]
+          </Link>
           <a 
             href="https://docsend.com/view/j32pziykw4cnmyvr" 
             target="_blank" 
