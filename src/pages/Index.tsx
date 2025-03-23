@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import LogoTree from '../components/LogoTree';
@@ -108,14 +107,11 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Rotating Earth - MOVED to be right after Buy section and before About section */}
+        {/* Rotating Earth - Removed "Global Longevity Initiative" text */}
         <div className="absolute bottom-28 left-0 right-0 mb-36">
           <div className="container mx-auto">
             <div className="flex justify-center">
-              <div className="text-center">
-                <h2 className="text-sm uppercase tracking-wider text-white/60 mb-2 font-mono">Global Longevity Initiative</h2>
-                <RotatingEarth />
-              </div>
+              <RotatingEarth />
             </div>
           </div>
         </div>
@@ -449,3 +445,4 @@ const Index = () => {
 };
 
 export default Index;
+
