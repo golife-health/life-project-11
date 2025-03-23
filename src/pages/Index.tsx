@@ -66,7 +66,7 @@ const Index = () => {
                   LIFE TOKEN
                 </h1>
                 <p className="text-lg text-white/80">
-                  AI Native Layer 2 for Longevity. Pioneering next-generation epigenetic protocols and advanced cellular rejuvenation technologies.
+                  Advanced semantic network of longevity. Pioneering next-generation epigenetic protocols and advanced cellular rejuvenation technologies.
                 </p>
               </div>
               
@@ -445,4 +445,3 @@ const Index = () => {
 };
 
 export default Index;
-
