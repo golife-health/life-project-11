@@ -44,9 +44,11 @@ const Index = () => {
       {/* Navbar */}
       <Navbar />
       
-      {/* Top right logo */}
+      {/* Top right logo - updated to use Link for redirection */}
       <div className="absolute top-4 right-6 text-xl font-bold tracking-wider">
-        $LIFE
+        <Link to="/" className="hover:text-primary transition-colors">
+          $LIFE
+        </Link>
       </div>
       
       {/* Hero Section */}
