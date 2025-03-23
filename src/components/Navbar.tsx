@@ -12,12 +12,14 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full z-50 py-5">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex justify-center space-x-8">
-          <Link 
-            to="/whitepaper" 
+          <a 
+            href="https://docsend.com/view/j32pziykw4cnmyvr" 
+            target="_blank" 
+            rel="noopener noreferrer"
             className={`nav-link ${isActive('/whitepaper') ? 'text-primary font-medium' : 'footer-link'}`}
           >
             [ Whitepaper ]
-          </Link>
+          </a>
           <Link 
             to="/manifesto" 
             className={`nav-link ${isActive('/manifesto') ? 'text-primary font-medium' : 'footer-link'}`}
