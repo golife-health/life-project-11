@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BinaryBackground from "../components/BinaryBackground";
@@ -8,6 +9,13 @@ const Whitepaper = () => {
     <div className="min-h-screen bg-black text-white">
       <BinaryBackground />
       <Navbar />
+      
+      {/* Top right logo - added link to home page */}
+      <div className="absolute top-4 right-6 text-xl font-bold tracking-wider">
+        <Link to="/" className="hover:text-primary transition-colors">
+          $LIFE
+        </Link>
+      </div>
       
       <div className="container mx-auto px-6 max-w-7xl pt-24">
         <div className="min-h-screen flex flex-col justify-center">
