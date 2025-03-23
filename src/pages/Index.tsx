@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import LogoTree from '../components/LogoTree';
@@ -255,7 +254,7 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Roadmap Section - NEW */}
+      {/* Roadmap Section - UPDATED for current date */}
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 opacity-0"
@@ -280,7 +279,7 @@ const Index = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="md:text-right md:pr-12">
                     <div className="glass-panel p-6 md:ml-auto">
-                      <div className="text-blue-400 font-mono mb-2">PHASE 1 - Q1 2024</div>
+                      <div className="text-blue-400 font-mono mb-2">PHASE 1 - Q1 2025</div>
                       <h3 className="text-xl font-bold mb-3">Foundation & Community</h3>
                       <ul className="text-white/70 space-y-2 list-disc list-inside md:list-outside">
                         <li>Establish research partnerships with leading institutions</li>
@@ -300,7 +299,7 @@ const Index = () => {
                   <div className="md:hidden h-16"></div>
                   <div className="md:pl-12">
                     <div className="glass-panel p-6">
-                      <div className="text-blue-400 font-mono mb-2">PHASE 2 - Q3 2024</div>
+                      <div className="text-blue-400 font-mono mb-2">PHASE 2 - Q2 2025</div>
                       <h3 className="text-xl font-bold mb-3">Research Expansion</h3>
                       <ul className="text-white/70 space-y-2 list-disc list-inside">
                         <li>Launch of multi-center clinical trials</li>
@@ -318,7 +317,7 @@ const Index = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="md:text-right md:pr-12">
                     <div className="glass-panel p-6 md:ml-auto">
-                      <div className="text-blue-400 font-mono mb-2">PHASE 3 - Q1 2025</div>
+                      <div className="text-blue-400 font-mono mb-2">PHASE 3 - Q3 2025</div>
                       <h3 className="text-xl font-bold mb-3">Technology Development</h3>
                       <ul className="text-white/70 space-y-2 list-disc list-inside md:list-outside">
                         <li>Initial therapeutics development and testing</li>
@@ -338,7 +337,7 @@ const Index = () => {
                   <div className="md:hidden h-16"></div>
                   <div className="md:pl-12">
                     <div className="glass-panel p-6 border-dashed border">
-                      <div className="text-blue-400/70 font-mono mb-2">PHASE 4 - 2025-2026</div>
+                      <div className="text-blue-400/70 font-mono mb-2">PHASE 4 - Q4 2025</div>
                       <h3 className="text-xl font-bold mb-3">Global Implementation</h3>
                       <ul className="text-white/70 space-y-2 list-disc list-inside">
                         <li>First-generation therapeutics available to token holders</li>
