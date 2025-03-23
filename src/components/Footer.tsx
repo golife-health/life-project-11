@@ -11,7 +11,7 @@ const Footer = () => {
               <span className="text-sm font-mono tracking-tight opacity-60">$LIFE Research Initiative</span>
             </Link>
             <p className="text-sm text-gray-500 max-w-md">
-              A longevity token funding research to extend your lifespan through advanced genetic and cellular technologies.
+              A longevity project funding research to extend your lifespan through advanced genetic and cellular technologies.
             </p>
           </div>
           
