@@ -11,7 +11,7 @@ const Footer = () => {
               <span className="text-sm font-mono tracking-tight opacity-60">$LIFE Research Initiative</span>
             </Link>
             <p className="text-sm text-gray-500 max-w-md">
-              A longevity coin funding research to extend your lifespan through advanced genetic and cellular technologies.
+              A longevity token funding research to extend your lifespan through advanced genetic and cellular technologies.
             </p>
           </div>
           
@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 mt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-xs text-gray-400">© 2023 $LIFE Protocol. All rights reserved.</p>
+          <p className="text-xs text-gray-400">© 2025 $LIFE. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <button className="text-xs font-mono text-gray-400 hover:text-gray-600 transition-colors">
               BUY ON SOLANA
