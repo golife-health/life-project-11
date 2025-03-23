@@ -1,10 +1,9 @@
 
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import LogoTree from '../components/LogoTree';
 import BinaryBackground from '../components/BinaryBackground';
+import Navbar from '../components/Navbar';
 
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -41,6 +40,9 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <BinaryBackground />
+      
+      {/* Navbar */}
+      <Navbar />
       
       {/* Top right logo */}
       <div className="absolute top-4 right-6 text-xl font-bold tracking-wider">
@@ -108,7 +110,6 @@ const Index = () => {
             <Link to="/community" className="footer-link">[ Join The Community ]</Link>
             <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="footer-link">[ X @longevitylifetoken ]</a>
             <Link to="/ambassador" className="footer-link">[ Join as $LIFE Ambassador ]</Link>
-            <Link to="/docs" className="footer-link">[ Docs ]</Link>
           </div>
         </div>
       </section>

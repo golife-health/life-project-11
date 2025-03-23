@@ -9,6 +9,9 @@ import Ambassador from "./pages/Ambassador";
 import Docs from "./pages/Docs";
 import Community from "./pages/Community";
 import NotFound from "./pages/NotFound";
+import Whitepaper from "./pages/Whitepaper";
+import Manifesto from "./pages/Manifesto";
+import ResearchFocus from "./pages/ResearchFocus";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +26,9 @@ const App = () => (
           <Route path="/ambassador" element={<Ambassador />} />
           <Route path="/docs" element={<Docs />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/whitepaper" element={<Whitepaper />} />
+          <Route path="/manifesto" element={<Manifesto />} />
+          <Route path="/research" element={<ResearchFocus />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
