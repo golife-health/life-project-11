@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -10,12 +9,7 @@ const Manifesto = () => {
       <BinaryBackground />
       <Navbar />
       
-      {/* Top right logo - added link to home page */}
-      <div className="absolute top-4 right-6 text-xl font-bold tracking-wider">
-        <Link to="/" className="hover:text-primary transition-colors">
-          $LIFE
-        </Link>
-      </div>
+      {/* Top right logo removed */}
       
       <div className="container mx-auto px-6 max-w-4xl pt-24">
         <div className="min-h-screen flex flex-col justify-center items-center text-center">

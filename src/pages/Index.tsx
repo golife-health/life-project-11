@@ -45,12 +45,7 @@ const Index = () => {
       {/* Navbar */}
       <Navbar />
       
-      {/* Top right logo - updated to use Link for redirection */}
-      <div className="absolute top-4 right-6 text-xl font-bold tracking-wider">
-        <Link to="/" className="hover:text-primary transition-colors">
-          $LIFE
-        </Link>
-      </div>
+      {/* Top right logo removed */}
       
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center relative">
