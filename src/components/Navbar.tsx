@@ -32,12 +32,6 @@ const Navbar = () => {
           >
             [ Research Focus ]
           </Link>
-          <Link 
-            to="/docs" 
-            className={`nav-link ${isActive('/docs') ? 'text-primary font-medium' : 'footer-link'}`}
-          >
-            [ Docs ]
-          </Link>
         </div>
       </div>
     </nav>
