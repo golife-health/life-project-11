@@ -19,7 +19,7 @@ const Manifesto = () => {
             Our vision and philosophy for extending human lifespan.
           </p>
           <p className="text-md text-primary/90 italic mb-8">
-            Longevity Innovation For Extending-healthspan
+            LIFE: Longevity Innovation For Extending-healthspan
           </p>
           
           <div className="space-y-8 w-full">
