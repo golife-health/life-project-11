@@ -27,14 +27,12 @@ const Manifesto = () => {
           <div className="space-y-8 w-full">
             <section className="glass-panel p-6 md:p-8">
               <div className="prose prose-lg prose-invert max-w-none text-center">
-                <p className="text-2xl font-semibold mb-6">Longevity is a cult.</p>
-                
                 <p className="mb-4">
                   $LIFE token draws inspiration from ancient wisdom yet embodies modern scientific advancement. It transforms the paradigm of human longevity by creating economic incentives for breakthroughs in health extension and age reversal technologies.
                 </p>
                 
                 <p className="mb-4">
-                  Harness the collective intelligence of a global community united by a shared mission. $LIFE token powers a vibrant ecosystem where scientific research meets decentralized finance to fund the next generation of longevity discoveries.
+                  Harness the power of advanced AI models and predictive algorithms that analyze biological pathways. $LIFE token leverages machine learning to accelerate discoveries and democratize access to cutting-edge longevity research.
                 </p>
                 
                 <p className="mb-4">
