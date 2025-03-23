@@ -66,7 +66,7 @@ const Index = () => {
                   LIFE TOKEN
                 </h1>
                 <p className="text-lg text-white/80">
-                  A longevity coin funding research to extend your lifespan
+                  A biotech-enabled asset leveraging epigenetic reprogramming protocols
                 </p>
               </div>
               
