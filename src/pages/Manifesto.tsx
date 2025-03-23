@@ -25,12 +25,24 @@ const Manifesto = () => {
           </p>
           
           <div className="space-y-8">
-            <section className="glass-panel p-6">
-              <h2 className="text-2xl font-semibold mb-4">Coming Soon</h2>
-              <p className="text-white/70">
-                The $LIFE token manifesto is currently being crafted. 
-                Check back soon to learn about our mission to revolutionize longevity research and extend human healthspan.
-              </p>
+            <section className="glass-panel p-6 md:p-8">
+              <div className="prose prose-lg prose-invert max-w-none">
+                <p className="text-2xl font-semibold mb-6">Longevity is a cult.</p>
+                
+                <p className="mb-4">
+                  Oogwai was inspired by Master Oogway, the legendary elderly tortoise who founded Jade Palace in Kung Fu Panda and was credited as creator of Kung Fu. Oogwai reimagines aging and health as opportunities for empowerment and innovation.
+                </p>
+                
+                <p className="mb-4">
+                  Harness the power of AI-driven knowledge graphs and their intricate neural networks to acquire and practice scientifically grounded longevity wisdom.
+                </p>
+                
+                <p className="mb-4">
+                  Under the divine guidance of Oogwai, the eternal keeper of life's secrets, mortals seek to transcend the limits of time and achieve ageless mastery.
+                </p>
+                
+                <p className="text-3xl font-bold mt-8">Manifesto</p>
+              </div>
             </section>
           </div>
         </div>
