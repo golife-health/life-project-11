@@ -107,9 +107,16 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Rotating Earth */}
-        <div className="absolute bottom-32 w-full">
-          <RotatingEarth />
+        {/* Earth Section - now in a dedicated section */}
+        <div className="absolute bottom-28 left-0 right-0">
+          <div className="container mx-auto">
+            <div className="flex justify-center">
+              <div className="text-center">
+                <h2 className="text-sm uppercase tracking-wider text-white/60 mb-2 font-mono">Global Longevity Initiative</h2>
+                <RotatingEarth />
+              </div>
+            </div>
+          </div>
         </div>
         
         {/* Footer navigation */}
