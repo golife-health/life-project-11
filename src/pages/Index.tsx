@@ -61,7 +61,7 @@ const Index = () => {
                   L.I.F.E.
                 </h1>
                 <p className="text-lg text-white/80 mb-2">
-                  Longevity. Immunity. Fitness. Energy
+                  Longevity. Immunity. Fitness. Energy.
                 </p>
                 <p className="text-lg text-white/80">
                   Advanced semantic network of longevity. Pioneering next-generation epigenetic protocols and advanced cellular rejuvenation technologies.
@@ -94,7 +94,6 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Buy section */}
         <div className="absolute bottom-20 right-6 text-xs font-mono">
           <div className="flex items-center space-x-2 mb-2">
             <div className="h-2 w-2 bg-blue-400 rounded-full"></div>
@@ -105,7 +104,6 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Rotating Earth - Removed "Global Longevity Initiative" text */}
         <div className="absolute bottom-28 left-0 right-0 mb-36">
           <div className="container mx-auto">
             <div className="flex justify-center">
@@ -113,11 +111,8 @@ const Index = () => {
             </div>
           </div>
         </div>
-        
-        {/* Footer navigation section REMOVED */}
       </section>
       
-      {/* About Section - NEW */}
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 opacity-0"
@@ -159,7 +154,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Tokenomics Section - NEW */}
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 bg-gradient-to-b from-black to-[#080810] opacity-0"
@@ -249,7 +243,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Roadmap Section - UPDATED for current date and formatting */}
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 opacity-0"
@@ -264,11 +257,9 @@ const Index = () => {
           </div>
           
           <div className="relative">
-            {/* Vertical line */}
             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 transform -translate-x-1/2"></div>
             
             <div className="space-y-24">
-              {/* Phase 1 - UPDATED for correct bullet point alignment */}
               <div className="relative">
                 <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -296,7 +287,6 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Phase 2 */}
               <div className="relative">
                 <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -324,7 +314,6 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Phase 3 */}
               <div className="relative">
                 <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -352,7 +341,6 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Phase 4 */}
               <div className="relative">
                 <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400/50 rounded-full transform -translate-x-1/2"></div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -384,7 +372,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Community Section */}
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0"
@@ -436,7 +423,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Footer */}
       <Footer />
     </div>
   );
