@@ -60,6 +60,9 @@ const Index = () => {
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
                   LIFE TOKEN
                 </h1>
+                <p className="text-lg text-white/80 mb-2">
+                  Longevity. Immunity. Fitness. Energy
+                </p>
                 <p className="text-lg text-white/80">
                   Advanced semantic network of longevity. Pioneering next-generation epigenetic protocols and advanced cellular rejuvenation technologies.
                 </p>
