@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -9,7 +8,6 @@ import VitruvianBackground from '../components/VitruvianBackground';
 import ElementsBackground from '../components/ElementsBackground';
 import VitruvianImage from '../components/VitruvianImage';
 import LifeScienceBackground from '../components/LifeScienceBackground';
-import FlowingLifeScienceElements from '../components/FlowingLifeScienceElements';
 
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -144,10 +142,9 @@ const Index = () => {
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 opacity-0 relative"
       >
-        {/* Section 1: DNA elements moving left to right */}
+        {/* Section 1: DNA elements moving bidirectionally */}
         <div className="absolute inset-0">
-          <LifeScienceBackground type="dna" opacity={0.45} speed={0.5} density={0.8} direction="left-right" />
-          {/* Only one element type per section as requested */}
+          <LifeScienceBackground type="dna" opacity={0.4} speed={0.5} density={0.8} direction="left-right" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
@@ -190,10 +187,9 @@ const Index = () => {
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 bg-gradient-to-b from-black to-[#080810] opacity-0 relative"
       >
-        {/* Section 2: Molecules moving top to bottom */}
+        {/* Section 2: Molecules moving bidirectionally */}
         <div className="absolute inset-0">
-          <LifeScienceBackground type="molecules" opacity={0.45} speed={0.7} density={0.6} direction="top-bottom" />
-          {/* Only one element type per section as requested */}
+          <LifeScienceBackground type="molecules" opacity={0.4} speed={0.7} density={0.6} direction="top-bottom" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
@@ -419,10 +415,9 @@ const Index = () => {
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0 relative"
       >
-        {/* Section 3: Cells moving in diagonal direction */}
+        {/* Section 3: Cells moving bidirectionally */}
         <div className="absolute inset-0">
-          <LifeScienceBackground type="cells" opacity={0.45} speed={0.4} density={0.7} direction="diagonal-1" />
-          {/* Only one element type per section as requested */}
+          <LifeScienceBackground type="cells" opacity={0.4} speed={0.4} density={0.7} direction="diagonal-1" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">

@@ -17,7 +17,7 @@ interface LifeScienceBackgroundProps {
 
 const LifeScienceBackground = ({
   type = 'molecules',
-  opacity = 0.2,
+  opacity = 0.4,
   speed = 1,
   density = 1,
   direction = 'random',
@@ -80,33 +80,54 @@ const LifeScienceBackground = ({
       // Get theme-adjusted colors
       const colors = getElementColors(opacity);
       
-      // Reduce the number of elements to 4-5 as requested
-      const elementCount = 4; // Fixed small number as requested
+      // We want 6 elements total - 3 in each direction
+      const elementCount = 3; // Per direction, total 6
+      
+      // First direction
+      const primaryDirection = direction;
+      
+      // Second direction - opposite of the first direction
+      const oppositeDirection = getOppositeDirection(primaryDirection);
       
       switch(type) {
         case 'dna':
-          elements = createDNAElements(dimensions.width, dimensions.height, elementCount, colors, direction);
+          elements = [
+            ...createDNAElements(dimensions.width, dimensions.height, elementCount, colors, primaryDirection),
+            ...createDNAElements(dimensions.width, dimensions.height, elementCount, colors, oppositeDirection)
+          ];
           break;
         case 'molecules':
-          elements = createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, direction);
+          elements = [
+            ...createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, primaryDirection),
+            ...createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, oppositeDirection)
+          ];
           break;
         case 'cells':
-          elements = createCellElements(dimensions.width, dimensions.height, elementCount, colors, direction);
+          elements = [
+            ...createCellElements(dimensions.width, dimensions.height, elementCount, colors, primaryDirection),
+            ...createCellElements(dimensions.width, dimensions.height, elementCount, colors, oppositeDirection)
+          ];
           break;
         case 'neurons':
-          elements = createNeuronElements(dimensions.width, dimensions.height, elementCount, colors, direction);
+          elements = [
+            ...createNeuronElements(dimensions.width, dimensions.height, elementCount, colors, primaryDirection),
+            ...createNeuronElements(dimensions.width, dimensions.height, elementCount, colors, oppositeDirection)
+          ];
           break;
         case 'mixed':
-          // Create a mix of all element types, but with fewer of each
+          // Create a mix of all element types with bidirectional movement
           elements = [
-            ...createDNAElements(dimensions.width, dimensions.height, 1, colors, 'left-right'),
-            ...createMoleculeElements(dimensions.width, dimensions.height, 1, colors, 'right-left'),
-            ...createCellElements(dimensions.width, dimensions.height, 1, colors, 'top-bottom'),
-            ...createNeuronElements(dimensions.width, dimensions.height, 1, colors, 'bottom-top')
+            ...createDNAElements(dimensions.width, dimensions.height, 2, colors, primaryDirection),
+            ...createMoleculeElements(dimensions.width, dimensions.height, 1, colors, oppositeDirection),
+            ...createCellElements(dimensions.width, dimensions.height, 2, colors, primaryDirection),
+            ...createNeuronElements(dimensions.width, dimensions.height, 1, colors, oppositeDirection)
           ];
           break;
         default:
-          elements = createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, direction);
+          elements = [
+            ...createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, primaryDirection),
+            ...createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, oppositeDirection)
+          ];
       }
       
       // Animation loop
@@ -128,6 +149,19 @@ const LifeScienceBackground = ({
       cancelAnimationFrame(animationRef.current);
     };
   }, [type, opacity, speed, density, direction, dimensions.width, dimensions.height]);
+  
+  // Helper function to get the opposite direction
+  const getOppositeDirection = (dir: string): 'left-right' | 'right-left' | 'top-bottom' | 'bottom-top' | 'diagonal-1' | 'diagonal-2' | 'random' => {
+    switch(dir) {
+      case 'left-right': return 'right-left';
+      case 'right-left': return 'left-right';
+      case 'top-bottom': return 'bottom-top';
+      case 'bottom-top': return 'top-bottom';
+      case 'diagonal-1': return 'diagonal-2';
+      case 'diagonal-2': return 'diagonal-1';
+      default: return 'random';
+    }
+  };
   
   return (
     <div 
