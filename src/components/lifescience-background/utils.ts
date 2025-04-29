@@ -27,7 +27,7 @@ export interface ElementProps {
   direction?: 'left-right' | 'right-left' | 'top-bottom' | 'bottom-top' | 'diagonal-1' | 'diagonal-2' | 'random';
 }
 
-export function getElementColors(baseOpacity: number = 0.4): ElementColors {
+export function getElementColors(baseOpacity: number = 0.37): ElementColors {
   // All colors set to grey with the specified opacity
   const greyBase = `rgba(200, 200, 200, ${baseOpacity})`;
   const greyLight = `rgba(220, 220, 220, ${baseOpacity})`;

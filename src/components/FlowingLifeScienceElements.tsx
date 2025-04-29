@@ -23,7 +23,7 @@ interface FlowingLifeScienceElementsProps {
 
 const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
   count = 5, // Reduced count to 5 as requested
-  opacity = 0.45,
+  opacity = 0.37, // Updated to 0.37
   speed = 0.5,
   blur = 3,
   direction = 'random',
@@ -68,22 +68,63 @@ const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
       }
     };
     
-    // Create exactly one element of each type for better distribution
+    // Create elements with bidirectional movement
+    // Half moving in primary direction, half in opposite direction
     const elementTypes = ['dna', 'molecule', 'cell', 'neuron'];
-    const velocityData = getVelocity(direction);
+    const primaryVelocity = getVelocity(direction);
     
-    // Create elements with consistent movement pattern
-    for (let i = 0; i < Math.min(count, 5); i++) { // Maximum of 5 elements
+    // Get opposite direction
+    let oppositeDirection;
+    switch(direction) {
+      case 'left-right': oppositeDirection = 'right-left'; break;
+      case 'right-left': oppositeDirection = 'left-right'; break;
+      case 'top-bottom': oppositeDirection = 'bottom-top'; break;
+      case 'bottom-top': oppositeDirection = 'top-bottom'; break;
+      case 'diagonal-1': oppositeDirection = 'diagonal-2'; break;
+      case 'diagonal-2': oppositeDirection = 'diagonal-1'; break;
+      default: oppositeDirection = 'random';
+    }
+    
+    const oppositeVelocity = getVelocity(oppositeDirection);
+    
+    // Create half of the elements moving in primary direction
+    for (let i = 0; i < Math.ceil(count/2); i++) {
       const elementType = elementTypes[i % elementTypes.length] as FlowingElement['type'];
       const elementSize = getRandomSize(elementType);
       const elementDepth = 0.3 + Math.random() * 0.7; // 0.3 to 1.0
       
       // Calculate angle based on velocity
       let angle;
-      if (velocityData.x === 0) {
-        angle = velocityData.y > 0 ? Math.PI / 2 : -Math.PI / 2;
+      if (primaryVelocity.x === 0) {
+        angle = primaryVelocity.y > 0 ? Math.PI / 2 : -Math.PI / 2;
       } else {
-        angle = Math.atan2(velocityData.y, velocityData.x);
+        angle = Math.atan2(primaryVelocity.y, primaryVelocity.x);
+      }
+      
+      elementsRef.current.push({
+        x: Math.random() * containerWidth,
+        y: Math.random() * containerHeight,
+        size: elementSize,
+        speed: speed,
+        angle: angle,
+        type: elementType,
+        opacity: opacity, 
+        depth: elementDepth
+      });
+    }
+    
+    // Create the other half moving in opposite direction
+    for (let i = 0; i < Math.floor(count/2); i++) {
+      const elementType = elementTypes[(i + 2) % elementTypes.length] as FlowingElement['type'];
+      const elementSize = getRandomSize(elementType);
+      const elementDepth = 0.3 + Math.random() * 0.7; // 0.3 to 1.0
+      
+      // Calculate angle based on opposite velocity
+      let angle;
+      if (oppositeVelocity.x === 0) {
+        angle = oppositeVelocity.y > 0 ? Math.PI / 2 : -Math.PI / 2;
+      } else {
+        angle = Math.atan2(oppositeVelocity.y, oppositeVelocity.x);
       }
       
       elementsRef.current.push({

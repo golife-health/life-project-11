@@ -76,7 +76,7 @@ const Community = () => {
       {/* Community Values */}
       <section className="py-20 relative" ref={addToRefs}>
         <div className="absolute inset-0">
-          <LifeScienceBackground type="neurons" opacity={0.4} speed={0.5} direction="diagonal-2" />
+          <LifeScienceBackground type="neurons" opacity={0.37} speed={0.5} direction="diagonal-2" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="max-w-3xl mx-auto text-center mb-16 opacity-0">
@@ -125,7 +125,7 @@ const Community = () => {
       {/* Get Involved */}
       <section className="py-16 bg-gray-50 relative" ref={addToRefs}>
         <div className="absolute inset-0">
-          <LifeScienceBackground type="dna" opacity={0.4} speed={0.4} direction="left-right" />
+          <LifeScienceBackground type="dna" opacity={0.37} speed={0.4} direction="left-right" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="max-w-3xl mx-auto opacity-0">
@@ -204,7 +204,7 @@ const Community = () => {
       {/* Community Metrics */}
       <section className="py-20 relative" ref={addToRefs}>
         <div className="absolute inset-0">
-          <LifeScienceBackground type="molecules" opacity={0.4} speed={0.6} direction="bottom-top" />
+          <LifeScienceBackground type="molecules" opacity={0.37} speed={0.6} direction="bottom-top" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="max-w-3xl mx-auto text-center mb-16 opacity-0">
@@ -243,7 +243,7 @@ const Community = () => {
       {/* Events Calendar */}
       <section className="py-16 bg-gray-50 relative" ref={addToRefs}>
         <div className="absolute inset-0">
-          <LifeScienceBackground type="cells" opacity={0.4} speed={0.3} direction="right-left" />
+          <LifeScienceBackground type="cells" opacity={0.37} speed={0.3} direction="right-left" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="max-w-3xl mx-auto text-center mb-16 opacity-0">
@@ -328,7 +328,7 @@ const Community = () => {
       {/* CTA Section - Join Our Community */}
       <section className="py-16 relative" ref={addToRefs}>
         <div className="absolute inset-0">
-          <LifeScienceBackground type="mixed" opacity={0.4} speed={0.5} direction="diagonal-1" />
+          <LifeScienceBackground type="mixed" opacity={0.37} speed={0.5} direction="diagonal-1" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="bg-black text-white p-10 md:p-16 rounded-3xl opacity-0">

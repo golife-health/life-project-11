@@ -17,7 +17,7 @@ interface LifeScienceBackgroundProps {
 
 const LifeScienceBackground = ({
   type = 'molecules',
-  opacity = 0.4,
+  opacity = 0.37,  // Updated default opacity to 0.37
   speed = 1,
   density = 1,
   direction = 'random',
@@ -117,10 +117,10 @@ const LifeScienceBackground = ({
         case 'mixed':
           // Create a mix of all element types with bidirectional movement
           elements = [
-            ...createDNAElements(dimensions.width, dimensions.height, 2, colors, primaryDirection),
-            ...createMoleculeElements(dimensions.width, dimensions.height, 1, colors, oppositeDirection),
-            ...createCellElements(dimensions.width, dimensions.height, 2, colors, primaryDirection),
-            ...createNeuronElements(dimensions.width, dimensions.height, 1, colors, oppositeDirection)
+            ...createDNAElements(dimensions.width, dimensions.height, Math.ceil(elementCount/2), colors, primaryDirection),
+            ...createMoleculeElements(dimensions.width, dimensions.height, Math.floor(elementCount/2), colors, oppositeDirection),
+            ...createCellElements(dimensions.width, dimensions.height, Math.ceil(elementCount/2), colors, primaryDirection),
+            ...createNeuronElements(dimensions.width, dimensions.height, Math.floor(elementCount/2), colors, oppositeDirection)
           ];
           break;
         default:

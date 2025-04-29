@@ -144,7 +144,7 @@ const Index = () => {
       >
         {/* Section 1: DNA elements moving bidirectionally */}
         <div className="absolute inset-0">
-          <LifeScienceBackground type="dna" opacity={0.4} speed={0.5} density={0.8} direction="left-right" />
+          <LifeScienceBackground type="dna" opacity={0.37} speed={0.5} density={0.8} direction="left-right" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
@@ -189,7 +189,7 @@ const Index = () => {
       >
         {/* Section 2: Molecules moving bidirectionally */}
         <div className="absolute inset-0">
-          <LifeScienceBackground type="molecules" opacity={0.4} speed={0.7} density={0.6} direction="top-bottom" />
+          <LifeScienceBackground type="molecules" opacity={0.37} speed={0.7} density={0.6} direction="top-bottom" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
@@ -415,9 +415,9 @@ const Index = () => {
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0 relative"
       >
-        {/* Section 3: Cells moving bidirectionally */}
+        {/* Section 3: Neurons moving bidirectionally (changed from cells) */}
         <div className="absolute inset-0">
-          <LifeScienceBackground type="cells" opacity={0.4} speed={0.4} density={0.7} direction="diagonal-1" />
+          <LifeScienceBackground type="neurons" opacity={0.37} speed={0.4} density={0.7} direction="diagonal-1" />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
