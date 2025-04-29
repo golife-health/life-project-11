@@ -74,9 +74,9 @@ const Index = () => {
       <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <ElementsBackground opacity={0.2} />
-          <VitruvianImage opacity={0.2} />
-          {/* Add fluid mixed elements to hero */}
-          <LifeScienceBackground type="mixed" opacity={0.12} speed={0.3} density={0.7} />
+          <VitruvianImage opacity={0.3} />
+          {/* Increase opacity for better visibility */}
+          <LifeScienceBackground type="mixed" opacity={0.25} speed={0.3} density={0.7} />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div 
@@ -144,8 +144,8 @@ const Index = () => {
         className="py-24 opacity-0 relative"
       >
         <div className="absolute inset-0">
-          {/* DNA elements moving in various directions */}
-          <LifeScienceBackground type="dna" opacity={0.15} speed={0.5} density={1.2} />
+          {/* Increase opacity for DNA elements */}
+          <LifeScienceBackground type="dna" opacity={0.3} speed={0.5} density={1.2} />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
@@ -189,8 +189,8 @@ const Index = () => {
         className="py-24 bg-gradient-to-b from-black to-[#080810] opacity-0 relative"
       >
         <div className="absolute inset-0">
-          {/* Molecules moving fluidly in multiple directions */}
-          <LifeScienceBackground type="molecules" opacity={0.15} speed={0.7} />
+          {/* Increase opacity for molecule elements */}
+          <LifeScienceBackground type="molecules" opacity={0.3} speed={0.7} />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
@@ -282,8 +282,8 @@ const Index = () => {
         className="py-24 opacity-0 roadmap-phases relative"
       >
         <div className="absolute inset-0">
-          {/* Cells moving organically across the screen */}
-          <LifeScienceBackground type="cells" opacity={0.1} speed={0.6} density={1.1} />
+          {/* Increase opacity for cell elements */}
+          <LifeScienceBackground type="cells" opacity={0.25} speed={0.6} density={1.1} />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
@@ -417,8 +417,8 @@ const Index = () => {
         className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0 relative"
       >
         <div className="absolute inset-0">
-          {/* Neurons with elegant movements */}
-          <LifeScienceBackground type="neurons" opacity={0.13} speed={0.4} density={0.9} />
+          {/* Increase opacity for neuron elements */}
+          <LifeScienceBackground type="neurons" opacity={0.3} speed={0.4} density={0.9} />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">

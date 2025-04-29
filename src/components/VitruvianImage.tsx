@@ -7,7 +7,7 @@ interface VitruvianImageProps {
 }
 
 const VitruvianImage: React.FC<VitruvianImageProps> = ({ 
-  opacity = 0.2, // Reduced default opacity from 0.25 to 0.2 for better balance
+  opacity = 0.3, // Increased default opacity from 0.2 to 0.3 for better visibility
   className = ""
 }) => {
   return (
@@ -18,7 +18,7 @@ const VitruvianImage: React.FC<VitruvianImageProps> = ({
       <img 
         src="/lovable-uploads/8f2b941e-e9a7-4410-944b-aaa84e8be2bd.png" 
         alt="Vitruvian Man" 
-        className="max-w-full max-h-full object-contain opacity-50 mix-blend-screen"
+        className="max-w-full max-h-full object-contain opacity-60 mix-blend-screen" // Increased opacity from 0.5 to 0.6
       />
     </div>
   );
