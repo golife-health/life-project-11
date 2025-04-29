@@ -27,14 +27,21 @@ export interface ElementProps {
   direction?: 'left-right' | 'right-left' | 'top-bottom' | 'bottom-top' | 'diagonal-1' | 'diagonal-2' | 'random';
 }
 
+// Memoized color values to avoid recalculating
+const colorCache = new Map<number, ElementColors>();
+
 export function getElementColors(baseOpacity: number = 0.37): ElementColors {
+  // Check if we already calculated colors for this opacity
+  const cachedColors = colorCache.get(baseOpacity);
+  if (cachedColors) return cachedColors;
+  
   // All colors set to grey with the specified opacity
   const greyBase = `rgba(200, 200, 200, ${baseOpacity})`;
   const greyLight = `rgba(220, 220, 220, ${baseOpacity})`;
   const greyMedium = `rgba(180, 180, 180, ${baseOpacity})`;
   const greyDark = `rgba(160, 160, 160, ${baseOpacity})`;
   
-  return {
+  const colors = {
     // DNA colors - all grey
     dnaBase: [
       greyBase,
@@ -68,6 +75,11 @@ export function getElementColors(baseOpacity: number = 0.37): ElementColors {
     neuronPulse: greyLight,
     neuronTerminal: greyLight,
   };
+  
+  // Cache the result
+  colorCache.set(baseOpacity, colors);
+  
+  return colors;
 }
 
 export interface AnimationElement {
@@ -81,7 +93,7 @@ export function setupCanvas(
 ): boolean {
   if (!canvas || !containerRef.current) return false;
   
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { alpha: true });
   if (!ctx) return false;
   
   const container = containerRef.current;
@@ -89,6 +101,7 @@ export function setupCanvas(
   const width = container.clientWidth;
   const height = container.clientHeight;
   
+  // Set size with device pixel ratio for sharper rendering
   canvas.width = width * devicePixelRatio;
   canvas.height = height * devicePixelRatio;
   canvas.style.width = `${width}px`;
