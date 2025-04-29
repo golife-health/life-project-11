@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -8,6 +7,7 @@ import DNAHelix from '../components/DNAHelix';
 import VitruvianBackground from '../components/VitruvianBackground';
 import ElementsBackground from '../components/ElementsBackground';
 import VitruvianImage from '../components/VitruvianImage';
+import LifeScienceBackground from '../components/LifeScienceBackground';
 
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -74,7 +74,7 @@ const Index = () => {
       <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <ElementsBackground opacity={0.2} />
-          <VitruvianImage />
+          <VitruvianImage opacity={0.25} />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div 
@@ -139,9 +139,12 @@ const Index = () => {
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 opacity-0"
+        className="py-24 opacity-0 relative"
       >
-        <div className="container mx-auto px-6 max-w-7xl">
+        <div className="absolute inset-0">
+          <LifeScienceBackground type="dna" opacity={0.15} speed={0.8} />
+        </div>
+        <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Extending Human Lifespan</h2>
             <div className="h-1 w-20 bg-white/20 mx-auto"></div>
@@ -180,9 +183,12 @@ const Index = () => {
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 bg-gradient-to-b from-black to-[#080810] opacity-0"
+        className="py-24 bg-gradient-to-b from-black to-[#080810] opacity-0 relative"
       >
-        <div className="container mx-auto px-6 max-w-7xl">
+        <div className="absolute inset-0">
+          <LifeScienceBackground type="molecules" opacity={0.15} speed={0.6} />
+        </div>
+        <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Tokenomics</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
@@ -269,9 +275,12 @@ const Index = () => {
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 opacity-0 roadmap-phases"
+        className="py-24 opacity-0 roadmap-phases relative"
       >
-        <div className="container mx-auto px-6 max-w-7xl">
+        <div className="absolute inset-0">
+          <LifeScienceBackground type="cells" opacity={0.1} speed={0.4} />
+        </div>
+        <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Research Roadmap</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
@@ -400,9 +409,12 @@ const Index = () => {
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0"
+        className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0 relative"
       >
-        <div className="container mx-auto px-6 max-w-7xl">
+        <div className="absolute inset-0">
+          <LifeScienceBackground type="neurons" opacity={0.15} speed={0.5} />
+        </div>
+        <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Join Our Community</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
