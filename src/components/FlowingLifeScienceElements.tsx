@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 
 interface FlowingElement {
@@ -10,7 +9,6 @@ interface FlowingElement {
   type: 'dna' | 'molecule' | 'cell' | 'neuron';
   opacity: number;
   depth: number;
-  hue: number;
 }
 
 interface FlowingLifeScienceElementsProps {
@@ -23,7 +21,7 @@ interface FlowingLifeScienceElementsProps {
 
 const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
   count = 15,
-  opacity = 0.25,
+  opacity = 0.45,
   speed = 0.5,
   blur = 3,
   className = ''
@@ -56,9 +54,8 @@ const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
         speed: (0.2 + Math.random() * 0.8) * speed, // Base speed adjusted by prop
         angle: Math.random() * Math.PI * 2,
         type: elementType,
-        opacity: (0.3 + Math.random() * 0.7) * opacity, // Base opacity adjusted by prop
-        depth: elementDepth,
-        hue: Math.random() * 60 - 30 // Slight color variation (-30 to +30)
+        opacity: opacity, // Fixed opacity as requested
+        depth: elementDepth
       });
     }
     
@@ -133,9 +130,9 @@ const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
         // Scale based on depth to create 3D effect
         const scaledSize = element.size * element.depth;
         
-        // Apply slight hue variation for visual interest
-        ctx.fillStyle = `hsla(210, 80%, 70%, ${element.opacity})`;
-        ctx.strokeStyle = `hsla(${210 + element.hue}, 80%, 70%, ${element.opacity * 1.2})`;
+        // All elements in grey as requested
+        ctx.fillStyle = `rgba(200, 200, 200, ${element.opacity})`;
+        ctx.strokeStyle = `rgba(220, 220, 220, ${element.opacity})`;
         
         switch (element.type) {
           case 'dna':
@@ -244,10 +241,10 @@ function drawMolecule(ctx: CanvasRenderingContext2D, x: number, y: number, size:
     ctx.arc(atom.x, atom.y, 4 * depth, 0, Math.PI * 2);
     ctx.fill();
     
-    // Add glow effect
+    // Add glow effect - with grey colors
     const gradient = ctx.createRadialGradient(atom.x, atom.y, 1 * depth, atom.x, atom.y, 8 * depth);
-    gradient.addColorStop(0, `rgba(180, 220, 255, ${0.5 * depth})`);
-    gradient.addColorStop(1, 'rgba(180, 220, 255, 0)');
+    gradient.addColorStop(0, `rgba(200, 200, 200, ${0.5 * depth})`);
+    gradient.addColorStop(1, 'rgba(200, 200, 200, 0)');
     ctx.fillStyle = gradient;
     ctx.beginPath();
     ctx.arc(atom.x, atom.y, 8 * depth, 0, Math.PI * 2);
@@ -263,8 +260,8 @@ function drawCell(ctx: CanvasRenderingContext2D, x: number, y: number, size: num
     x, y, size/4,
     x, y, size/2
   );
-  gradient.addColorStop(0, `rgba(180, 220, 255, ${0.2 * depth})`);
-  gradient.addColorStop(1, `rgba(180, 220, 255, ${0.4 * depth})`);
+  gradient.addColorStop(0, `rgba(220, 220, 220, ${0.2 * depth})`);
+  gradient.addColorStop(1, `rgba(180, 180, 180, ${0.4 * depth})`);
   ctx.fillStyle = gradient;
   ctx.fill();
   ctx.lineWidth = 1 * depth;
@@ -273,7 +270,7 @@ function drawCell(ctx: CanvasRenderingContext2D, x: number, y: number, size: num
   // Nucleus
   ctx.beginPath();
   ctx.arc(x, y, size/5, 0, Math.PI * 2);
-  ctx.fillStyle = `rgba(130, 170, 255, ${0.5 * depth})`;
+  ctx.fillStyle = `rgba(180, 180, 180, ${0.5 * depth})`;
   ctx.fill();
   
   // Organelles
@@ -287,7 +284,7 @@ function drawCell(ctx: CanvasRenderingContext2D, x: number, y: number, size: num
     
     ctx.beginPath();
     ctx.arc(organelleX, organelleY, organelleSize * depth, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(150, 200, 255, ${0.6 * depth})`;
+    ctx.fillStyle = `rgba(200, 200, 200, ${0.6 * depth})`;
     ctx.fill();
   }
 }
@@ -300,8 +297,8 @@ function drawNeuron(ctx: CanvasRenderingContext2D, x: number, y: number, size: n
     x, y, size/12,
     x, y, size/6
   );
-  gradient.addColorStop(0, `rgba(180, 200, 255, ${0.5 * depth})`);
-  gradient.addColorStop(1, `rgba(150, 170, 230, ${0.3 * depth})`);
+  gradient.addColorStop(0, `rgba(220, 220, 220, ${0.5 * depth})`);
+  gradient.addColorStop(1, `rgba(180, 180, 180, ${0.3 * depth})`);
   ctx.fillStyle = gradient;
   ctx.fill();
   

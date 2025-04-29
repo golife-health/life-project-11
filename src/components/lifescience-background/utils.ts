@@ -27,39 +27,45 @@ export interface ElementProps {
 }
 
 export function getElementColors(baseOpacity: number): ElementColors {
+  // All colors set to grey with the specified opacity
+  const greyBase = `rgba(200, 200, 200, ${baseOpacity})`;
+  const greyLight = `rgba(220, 220, 220, ${baseOpacity})`;
+  const greyMedium = `rgba(180, 180, 180, ${baseOpacity})`;
+  const greyDark = `rgba(160, 160, 160, ${baseOpacity})`;
+  
   return {
-    // DNA colors
+    // DNA colors - all grey
     dnaBase: [
-      `rgba(70, 130, 230, ${baseOpacity * 1.2})`,
-      `rgba(50, 190, 130, ${baseOpacity * 1.2})`,
-      `rgba(190, 70, 70, ${baseOpacity * 1.2})`,
-      `rgba(230, 170, 50, ${baseOpacity * 1.2})`,
+      greyBase,
+      greyBase,
+      greyBase,
+      greyBase,
     ],
-    dnaBackbone: `rgba(230, 230, 255, ${baseOpacity * 0.8})`,
+    dnaBackbone: greyLight,
     
-    // Molecule colors
+    // Molecule colors - all grey
     moleculeAtoms: [
-      `rgba(120, 170, 255, ${baseOpacity * 1.2})`,
-      `rgba(100, 240, 150, ${baseOpacity * 1.2})`,
-      `rgba(250, 130, 130, ${baseOpacity * 1.2})`,
-      `rgba(250, 210, 90, ${baseOpacity * 1.2})`,
+      greyMedium,
+      greyMedium,
+      greyMedium,
+      greyMedium,
     ],
-    moleculeBonds: `rgba(255, 255, 255, ${baseOpacity * 0.8})`,
+    moleculeBonds: greyLight,
     
-    // Cell colors
-    cellMembrane: `rgba(180, 200, 255, ${baseOpacity * 0.5})`,
-    cellMembraneOuter: `rgba(180, 200, 255, ${baseOpacity * 0.7})`,
-    cellNucleusInner: `rgba(120, 140, 220, ${baseOpacity * 0.9})`,
-    cellNucleusOuter: `rgba(100, 120, 200, ${baseOpacity * 0.7})`,
-    cellOrganelles: `rgba(180, 240, 200, ${baseOpacity * 0.8})`,
+    // Cell colors - all grey
+    cellMembrane: greyLight,
+    cellMembraneOuter: greyMedium,
+    cellNucleusInner: greyDark,
+    cellNucleusOuter: greyMedium,
+    cellOrganelles: greyBase,
     
-    // Neuron colors
-    neuronSoma: `rgba(170, 170, 250, ${baseOpacity * 0.9})`,
-    neuronSomaOuter: `rgba(150, 150, 230, ${baseOpacity * 0.6})`,
-    neuronAxon: `rgba(220, 220, 255, ${baseOpacity * 0.7})`,
-    neuronDendrite: `rgba(210, 210, 255, ${baseOpacity * 0.6})`,
-    neuronPulse: `rgba(255, 255, 255, ${baseOpacity * 1.0})`,
-    neuronTerminal: `rgba(210, 210, 255, ${baseOpacity * 0.7})`,
+    // Neuron colors - all grey
+    neuronSoma: greyMedium,
+    neuronSomaOuter: greyLight,
+    neuronAxon: greyLight,
+    neuronDendrite: greyLight,
+    neuronPulse: greyLight,
+    neuronTerminal: greyLight,
   };
 }
 
