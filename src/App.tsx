@@ -21,7 +21,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <LifeScienceBackground type="mixed" opacity={0.25} speed={0.4} />
+      {/* Removed global LifeScienceBackground since it's now specific to certain sections */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

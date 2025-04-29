@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 
 interface LifeScienceBackgroundProps {
@@ -20,6 +19,44 @@ const LifeScienceBackground = ({
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const animationRef = useRef<number>(0);
   
+  // Get theme-responsive colors for the elements
+  const getElementColors = (baseOpacity: number) => {
+    return {
+      // DNA colors - now more vibrant with higher opacity
+      dnaBase: [
+        `rgba(70, 130, 230, ${baseOpacity * 1.2})`,  // Brighter blue
+        `rgba(50, 190, 130, ${baseOpacity * 1.2})`,  // Brighter green
+        `rgba(190, 70, 70, ${baseOpacity * 1.2})`,   // Brighter red
+        `rgba(230, 170, 50, ${baseOpacity * 1.2})`,  // Brighter yellow
+      ],
+      dnaBackbone: `rgba(230, 230, 255, ${baseOpacity * 0.8})`,
+      
+      // Molecule colors - enhanced for visibility
+      moleculeAtoms: [
+        `rgba(120, 170, 255, ${baseOpacity * 1.2})`, // Brighter blue
+        `rgba(100, 240, 150, ${baseOpacity * 1.2})`, // Brighter green  
+        `rgba(250, 130, 130, ${baseOpacity * 1.2})`, // Brighter red
+        `rgba(250, 210, 90, ${baseOpacity * 1.2})`,  // Brighter yellow
+      ],
+      moleculeBonds: `rgba(255, 255, 255, ${baseOpacity * 0.8})`,
+      
+      // Cell colors - increased vibrancy
+      cellMembrane: `rgba(180, 200, 255, ${baseOpacity * 0.5})`,
+      cellMembraneOuter: `rgba(180, 200, 255, ${baseOpacity * 0.7})`,
+      cellNucleusInner: `rgba(120, 140, 220, ${baseOpacity * 0.9})`,
+      cellNucleusOuter: `rgba(100, 120, 200, ${baseOpacity * 0.7})`,
+      cellOrganelles: `rgba(180, 240, 200, ${baseOpacity * 0.8})`,
+      
+      // Neuron colors - enhanced brightness
+      neuronSoma: `rgba(170, 170, 250, ${baseOpacity * 0.9})`,
+      neuronSomaOuter: `rgba(150, 150, 230, ${baseOpacity * 0.6})`,
+      neuronAxon: `rgba(220, 220, 255, ${baseOpacity * 0.7})`,
+      neuronDendrite: `rgba(210, 210, 255, ${baseOpacity * 0.6})`,
+      neuronPulse: `rgba(255, 255, 255, ${baseOpacity * 1.0})`,
+      neuronTerminal: `rgba(210, 210, 255, ${baseOpacity * 0.7})`,
+    };
+  };
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -63,30 +100,33 @@ const LifeScienceBackground = ({
     
     // Only create elements if dimensions are valid
     if (dimensions.width > 0 && dimensions.height > 0) {
+      // Get theme-adjusted colors
+      const colors = getElementColors(opacity);
+      
       switch(type) {
         case 'dna':
-          elements = createDNAElements(dimensions.width, dimensions.height, Math.floor(8 * density));
+          elements = createDNAElements(dimensions.width, dimensions.height, Math.floor(8 * density), colors);
           break;
         case 'molecules':
-          elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density));
+          elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density), colors);
           break;
         case 'cells':
-          elements = createCellElements(dimensions.width, dimensions.height, Math.floor(10 * density));
+          elements = createCellElements(dimensions.width, dimensions.height, Math.floor(10 * density), colors);
           break;
         case 'neurons':
-          elements = createNeuronElements(dimensions.width, dimensions.height, Math.floor(6 * density));
+          elements = createNeuronElements(dimensions.width, dimensions.height, Math.floor(6 * density), colors);
           break;
         case 'mixed':
           // Create a mix of all element types
           elements = [
-            ...createDNAElements(dimensions.width, dimensions.height, Math.floor(3 * density)),
-            ...createMoleculeElements(dimensions.width, dimensions.height, Math.floor(5 * density)),
-            ...createCellElements(dimensions.width, dimensions.height, Math.floor(3 * density)),
-            ...createNeuronElements(dimensions.width, dimensions.height, Math.floor(2 * density))
+            ...createDNAElements(dimensions.width, dimensions.height, Math.floor(3 * density), colors),
+            ...createMoleculeElements(dimensions.width, dimensions.height, Math.floor(5 * density), colors),
+            ...createCellElements(dimensions.width, dimensions.height, Math.floor(3 * density), colors),
+            ...createNeuronElements(dimensions.width, dimensions.height, Math.floor(2 * density), colors)
           ];
           break;
         default:
-          elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density));
+          elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density), colors);
       }
       
       // Animation loop
@@ -95,7 +135,7 @@ const LifeScienceBackground = ({
         
         elements.forEach(element => {
           element.update(speed);
-          element.draw(ctx, opacity);
+          element.draw(ctx);
         });
         
         animationRef.current = requestAnimationFrame(animate);
@@ -111,7 +151,7 @@ const LifeScienceBackground = ({
   }, [type, opacity, speed, density, dimensions.width, dimensions.height]);
   
   // DNA strand elements with multi-directional movement
-  function createDNAElements(width: number, height: number, count: number) {
+  function createDNAElements(width: number, height: number, count: number, colors: any) {
     const elements = [];
     
     for (let i = 0; i < count; i++) {
@@ -146,16 +186,11 @@ const LifeScienceBackground = ({
           }
         },
         
-        draw(ctx: CanvasRenderingContext2D, opacity: number) {
-          const baseColors = [
-            `rgba(60, 120, 220, ${opacity * 0.9})`,  // Blue (adenine)
-            `rgba(40, 180, 120, ${opacity * 0.9})`,  // Green (thymine)
-            `rgba(180, 60, 60, ${opacity * 0.9})`,   // Red (guanine)
-            `rgba(220, 160, 40, ${opacity * 0.9})`,  // Yellow (cytosine)
-          ];
+        draw(ctx: CanvasRenderingContext2D) {
+          const baseColors = colors.dnaBase;
           
           // Draw the two backbone strands
-          const backboneColor = `rgba(220, 220, 255, ${opacity * 0.6})`;
+          const backboneColor = colors.dnaBackbone;
           const centerX = this.x;
           const bases = Math.floor(this.height / this.baseSpacing);
           
@@ -195,7 +230,7 @@ const LifeScienceBackground = ({
   }
   
   // Molecule elements with multi-directional movement
-  function createMoleculeElements(width: number, height: number, count: number) {
+  function createMoleculeElements(width: number, height: number, count: number, colors: any) {
     const elements = [];
     
     for (let i = 0; i < count; i++) {
@@ -229,7 +264,7 @@ const LifeScienceBackground = ({
           }
         },
         
-        draw(ctx: CanvasRenderingContext2D, opacity: number) {
+        draw(ctx: CanvasRenderingContext2D) {
           ctx.save();
           ctx.translate(this.x, this.y);
           ctx.rotate(this.rotation);
@@ -245,7 +280,7 @@ const LifeScienceBackground = ({
           }
           
           // Draw bonds between atoms
-          ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.6})`;
+          ctx.strokeStyle = colors.moleculeBonds;
           ctx.lineWidth = 1;
           
           for (let i = 0; i < atomPositions.length; i++) {
@@ -258,24 +293,19 @@ const LifeScienceBackground = ({
           }
           
           // Draw atoms
-          const colors = [
-            `rgba(100, 150, 255, ${opacity * 0.9})`, // Blue
-            `rgba(80, 220, 130, ${opacity * 0.9})`,  // Green
-            `rgba(230, 120, 120, ${opacity * 0.9})`, // Red
-            `rgba(240, 200, 80, ${opacity * 0.9})`,  // Yellow
-          ];
+          const atomColors = colors.moleculeAtoms;
           
           atomPositions.forEach((pos, idx) => {
             ctx.beginPath();
             ctx.arc(pos.x, pos.y, 5, 0, Math.PI * 2);
-            ctx.fillStyle = colors[idx % colors.length];
+            ctx.fillStyle = atomColors[idx % atomColors.length];
             ctx.fill();
             
             // Add glow effect
             ctx.beginPath();
             ctx.arc(pos.x, pos.y, 8, 0, Math.PI * 2);
             const gradient = ctx.createRadialGradient(pos.x, pos.y, 3, pos.x, pos.y, 8);
-            gradient.addColorStop(0, colors[idx % colors.length]);
+            gradient.addColorStop(0, atomColors[idx % atomColors.length]);
             gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
             ctx.fillStyle = gradient;
             ctx.fill();
@@ -292,7 +322,7 @@ const LifeScienceBackground = ({
   }
   
   // Cell elements with multi-directional movement
-  function createCellElements(width: number, height: number, count: number) {
+  function createCellElements(width: number, height: number, count: number, colors: any) {
     const elements = [];
     
     for (let i = 0; i < count; i++) {
@@ -327,7 +357,7 @@ const LifeScienceBackground = ({
           }
         },
         
-        draw(ctx: CanvasRenderingContext2D, opacity: number) {
+        draw(ctx: CanvasRenderingContext2D) {
           // Draw cell membrane with pulsating effect
           const pulseAmount = Math.sin(this.pulsate) * 2;
           const currentRadius = this.radius + pulseAmount;
@@ -337,8 +367,8 @@ const LifeScienceBackground = ({
             this.x, this.y, 0, 
             this.x, this.y, currentRadius
           );
-          membraneGradient.addColorStop(0.8, `rgba(180, 200, 255, ${opacity * 0.1})`);
-          membraneGradient.addColorStop(1, `rgba(180, 200, 255, ${opacity * 0.3})`);
+          membraneGradient.addColorStop(0.8, colors.cellMembrane);
+          membraneGradient.addColorStop(1, colors.cellMembraneOuter);
           
           ctx.beginPath();
           ctx.arc(this.x, this.y, currentRadius, 0, Math.PI * 2);
@@ -347,7 +377,7 @@ const LifeScienceBackground = ({
           
           ctx.beginPath();
           ctx.arc(this.x, this.y, currentRadius, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.4})`;
+          ctx.strokeStyle = `rgba(255, 255, 255, 0.5)`;
           ctx.lineWidth = 1;
           ctx.stroke();
           
@@ -356,8 +386,8 @@ const LifeScienceBackground = ({
             this.x, this.y, 0, 
             this.x, this.y, this.nucleusRadius
           );
-          nucleusGradient.addColorStop(0, `rgba(100, 120, 200, ${opacity * 0.7})`);
-          nucleusGradient.addColorStop(1, `rgba(80, 100, 180, ${opacity * 0.5})`);
+          nucleusGradient.addColorStop(0, colors.cellNucleusInner);
+          nucleusGradient.addColorStop(1, colors.cellNucleusOuter);
           
           ctx.beginPath();
           ctx.arc(this.x, this.y, this.nucleusRadius, 0, Math.PI * 2);
@@ -374,7 +404,7 @@ const LifeScienceBackground = ({
             
             ctx.beginPath();
             ctx.arc(x, y, organelleSize, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(160, 220, 180, ${opacity * 0.6})`;
+            ctx.fillStyle = colors.cellOrganelles;
             ctx.fill();
           }
         },
@@ -387,7 +417,7 @@ const LifeScienceBackground = ({
   }
   
   // Neuron elements with multi-directional movement
-  function createNeuronElements(width: number, height: number, count: number) {
+  function createNeuronElements(width: number, height: number, count: number, colors: any) {
     const elements = [];
     
     for (let i = 0; i < count; i++) {
@@ -444,7 +474,7 @@ const LifeScienceBackground = ({
           }
         },
         
-        draw(ctx: CanvasRenderingContext2D, opacity: number) {
+        draw(ctx: CanvasRenderingContext2D) {
           ctx.save();
           ctx.translate(this.x, this.y);
           ctx.rotate(this.rotation);
