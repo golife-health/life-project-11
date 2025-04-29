@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -5,6 +6,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DNAHelix from '../components/DNAHelix';
 import VitruvianBackground from '../components/VitruvianBackground';
+import ElementsBackground from '../components/ElementsBackground';
 
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -47,7 +49,8 @@ const Index = () => {
       
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center relative">
-        <div className="container mx-auto px-6 max-w-7xl">
+        <ElementsBackground opacity={0.3} />
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="mx-auto md:mx-0">
               {/* Logo Tree component removed */}
@@ -93,7 +96,7 @@ const Index = () => {
           </div>
         </div>
         
-        <div className="absolute bottom-20 right-6 text-xs font-mono">
+        <div className="absolute bottom-20 right-6 text-xs font-mono z-10">
           <div className="flex items-center space-x-2 mb-2">
             <div className="h-2 w-2 bg-blue-400 rounded-full"></div>
             <span className="text-white/70">BUY ON SOLANA</span>

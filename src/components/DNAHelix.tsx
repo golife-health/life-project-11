@@ -107,13 +107,7 @@ const DNAHelix = ({
       // Calculate visible height based on progress
       const visibleHeight = canvas.height * Math.min(1, progress * 2); // Double the progress rate
       
-      // Add subtle depth with background glow
-      const gradient = ctx.createRadialGradient(centerX, visibleHeight/2, 10, centerX, visibleHeight/2, width/1.5);
-      gradient.addColorStop(0, 'rgba(10, 10, 15, 0)');
-      gradient.addColorStop(1, 'rgba(0, 0, 10, 0.12)');
-      
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, width, visibleHeight);
+      // Note: Removed the background gradient that was here
       
       // Enhanced 3D effect with shadows
       ctx.shadowBlur = 15;
