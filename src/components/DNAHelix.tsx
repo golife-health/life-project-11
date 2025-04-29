@@ -193,7 +193,7 @@ const DNAHelix = ({ className = '' }: { className?: string }) => {
   }, []);
   
   return (
-    <div className={`${className} rounded-2xl overflow-hidden bg-black/30 backdrop-blur-sm`}>
+    <div className={`${className}`}>
       <canvas 
         ref={canvasRef}
         className="w-full h-full"
