@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 interface LifeScienceBackgroundProps {
-  type?: 'dna' | 'molecules' | 'cells' | 'neurons';
+  type?: 'dna' | 'molecules' | 'cells' | 'neurons' | 'mixed';
   opacity?: number;
   speed?: number;
   density?: number;
@@ -64,13 +64,22 @@ const LifeScienceBackground = ({
       case 'neurons':
         elements = createNeuronElements(dimensions.width, dimensions.height, Math.floor(6 * density));
         break;
+      case 'mixed':
+        // Create a mix of all element types
+        elements = [
+          ...createDNAElements(dimensions.width, dimensions.height, Math.floor(3 * density)),
+          ...createMoleculeElements(dimensions.width, dimensions.height, Math.floor(5 * density)),
+          ...createCellElements(dimensions.width, dimensions.height, Math.floor(3 * density)),
+          ...createNeuronElements(dimensions.width, dimensions.height, Math.floor(2 * density))
+        ];
+        break;
       default:
         elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density));
     }
     
     // Animation loop
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width / (window.devicePixelRatio || 1), canvas.height / (window.devicePixelRatio || 1));
+      ctx.clearRect(0, 0, dimensions.width, dimensions.height);
       
       elements.forEach(element => {
         element.update(speed);
@@ -90,7 +99,7 @@ const LifeScienceBackground = ({
     };
   }, [type, opacity, speed, density, dimensions]);
   
-  // DNA strand elements
+  // DNA strand elements with multi-directional movement
   function createDNAElements(width: number, height: number, count: number) {
     const elements = [];
     
@@ -103,16 +112,26 @@ const LifeScienceBackground = ({
         baseSpacing: 15,
         twistSpeed: 0.01 + Math.random() * 0.02,
         twistOffset: Math.random() * Math.PI * 2,
-        velocity: 0.2 + Math.random() * 0.3,
+        // Multi-directional velocity
+        velocityX: (Math.random() - 0.5) * 0.6,
+        velocityY: (Math.random() - 0.5) * 0.3,
         
         update(speed: number) {
-          this.x += this.velocity * speed;
+          this.x += this.velocityX * speed;
+          this.y += this.velocityY * speed;
           this.twistOffset += this.twistSpeed * speed;
           
-          // Loop back to the left when it goes off-screen
+          // Wrap around screen edges
           if (this.x > width + this.width) {
             this.x = -this.width;
-            this.y = Math.random() * height;
+          } else if (this.x < -this.width) {
+            this.x = width + this.width;
+          }
+          
+          if (this.y > height + this.height) {
+            this.y = -this.height;
+          } else if (this.y < -this.height) {
+            this.y = height + this.height;
           }
         },
         
@@ -164,7 +183,7 @@ const LifeScienceBackground = ({
     return elements;
   }
   
-  // Molecule elements
+  // Molecule elements with multi-directional movement
   function createMoleculeElements(width: number, height: number, count: number) {
     const elements = [];
     
@@ -176,16 +195,26 @@ const LifeScienceBackground = ({
         atoms: 3 + Math.floor(Math.random() * 4),
         rotation: Math.random() * Math.PI * 2,
         rotationSpeed: (Math.random() - 0.5) * 0.02,
-        velocity: 0.3 + Math.random() * 0.4,
+        // Multi-directional velocity
+        velocityX: (Math.random() - 0.5) * 0.7,
+        velocityY: (Math.random() - 0.5) * 0.7,
         
         update(speed: number) {
-          this.x += this.velocity * speed;
+          this.x += this.velocityX * speed;
+          this.y += this.velocityY * speed;
           this.rotation += this.rotationSpeed * speed;
           
-          // Loop back to the left when it goes off-screen
+          // Wrap around screen edges
           if (this.x > width + this.size) {
             this.x = -this.size;
-            this.y = Math.random() * height;
+          } else if (this.x < -this.size) {
+            this.x = width + this.size;
+          }
+          
+          if (this.y > height + this.size) {
+            this.y = -this.size;
+          } else if (this.y < -this.size) {
+            this.y = height + this.size;
           }
         },
         
@@ -251,7 +280,7 @@ const LifeScienceBackground = ({
     return elements;
   }
   
-  // Cell elements
+  // Cell elements with multi-directional movement
   function createCellElements(width: number, height: number, count: number) {
     const elements = [];
     
@@ -261,19 +290,29 @@ const LifeScienceBackground = ({
         y: Math.random() * height,
         radius: 25 + Math.random() * 40,
         nucleusRadius: 10 + Math.random() * 8,
-        velocity: 0.2 + Math.random() * 0.3,
+        // Multi-directional velocity
+        velocityX: (Math.random() - 0.5) * 0.5,
+        velocityY: (Math.random() - 0.5) * 0.5,
         organelles: Math.floor(3 + Math.random() * 6),
         pulsate: Math.random() * Math.PI * 2,
         pulsateSpeed: 0.02 + Math.random() * 0.02,
         
         update(speed: number) {
-          this.x += this.velocity * speed;
+          this.x += this.velocityX * speed;
+          this.y += this.velocityY * speed;
           this.pulsate += this.pulsateSpeed * speed;
           
-          // Loop back to the left when it goes off-screen
+          // Wrap around screen edges
           if (this.x > width + this.radius * 2) {
             this.x = -this.radius * 2;
-            this.y = Math.random() * height;
+          } else if (this.x < -this.radius * 2) {
+            this.x = width + this.radius * 2;
+          }
+          
+          if (this.y > height + this.radius * 2) {
+            this.y = -this.radius * 2;
+          } else if (this.y < -this.radius * 2) {
+            this.y = height + this.radius * 2;
           }
         },
         
@@ -336,7 +375,7 @@ const LifeScienceBackground = ({
     return elements;
   }
   
-  // Neuron elements
+  // Neuron elements with multi-directional movement
   function createNeuronElements(width: number, height: number, count: number) {
     const elements = [];
     
@@ -347,18 +386,31 @@ const LifeScienceBackground = ({
         soma: 15 + Math.random() * 20, // Cell body size
         dendrites: 4 + Math.floor(Math.random() * 4),
         axonLength: 80 + Math.random() * 120,
-        velocity: 0.15 + Math.random() * 0.25,
+        // Multi-directional velocity
+        velocityX: (Math.random() - 0.5) * 0.4,
+        velocityY: (Math.random() - 0.5) * 0.4,
+        rotation: Math.random() * Math.PI * 2,
+        rotationSpeed: (Math.random() - 0.5) * 0.01,
         pulses: [],
         pulseInterval: 50 + Math.random() * 100,
         counter: 0,
         
         update(speed: number) {
-          this.x += this.velocity * speed;
+          this.x += this.velocityX * speed;
+          this.y += this.velocityY * speed;
+          this.rotation += this.rotationSpeed * speed;
           
-          // Loop back to the left when it goes off-screen
+          // Wrap around screen edges
           if (this.x > width + this.axonLength) {
             this.x = -this.axonLength;
-            this.y = Math.random() * height;
+          } else if (this.x < -this.axonLength) {
+            this.x = width + this.axonLength;
+          }
+          
+          if (this.y > height + this.axonLength) {
+            this.y = -this.axonLength;
+          } else if (this.y < -this.axonLength) {
+            this.y = height + this.axonLength;
           }
           
           // Generate new pulse
@@ -382,15 +434,19 @@ const LifeScienceBackground = ({
         },
         
         draw(ctx: CanvasRenderingContext2D, opacity: number) {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.rotation);
+          
           // Draw dendrites
           for (let i = 0; i < this.dendrites; i++) {
             const angle = Math.PI + (i / this.dendrites) * Math.PI - Math.PI / 2;
             const length = this.soma * (1 + Math.random() * 1.5);
-            const endX = this.x + Math.cos(angle) * length;
-            const endY = this.y + Math.sin(angle) * length;
+            const endX = Math.cos(angle) * length;
+            const endY = Math.sin(angle) * length;
             
             ctx.beginPath();
-            ctx.moveTo(this.x, this.y);
+            ctx.moveTo(0, 0);
             ctx.lineTo(endX, endY);
             ctx.strokeStyle = `rgba(200, 200, 255, ${opacity * 0.4})`;
             ctx.lineWidth = 1.5;
@@ -405,8 +461,8 @@ const LifeScienceBackground = ({
           
           // Draw axon
           ctx.beginPath();
-          ctx.moveTo(this.x, this.y);
-          ctx.lineTo(this.x + this.axonLength, this.y);
+          ctx.moveTo(0, 0);
+          ctx.lineTo(this.axonLength, 0);
           ctx.strokeStyle = `rgba(200, 200, 255, ${opacity * 0.5})`;
           ctx.lineWidth = 2;
           ctx.stroke();
@@ -416,12 +472,12 @@ const LifeScienceBackground = ({
           for (let i = 0; i < terminals; i++) {
             const angle = (i / terminals) * Math.PI - Math.PI / 2;
             const length = this.soma * (0.8 + Math.random() * 1);
-            const startX = this.x + this.axonLength;
+            const startX = this.axonLength;
             const endX = startX + Math.cos(angle) * length;
-            const endY = this.y + Math.sin(angle) * length;
+            const endY = Math.sin(angle) * length;
             
             ctx.beginPath();
-            ctx.moveTo(startX, this.y);
+            ctx.moveTo(startX, 0);
             ctx.lineTo(endX, endY);
             ctx.strokeStyle = `rgba(200, 200, 255, ${opacity * 0.4})`;
             ctx.lineWidth = 1;
@@ -436,35 +492,37 @@ const LifeScienceBackground = ({
           
           // Draw soma (cell body)
           const gradient = ctx.createRadialGradient(
-            this.x, this.y, 0,
-            this.x, this.y, this.soma
+            0, 0, 0,
+            0, 0, this.soma
           );
           gradient.addColorStop(0, `rgba(150, 150, 240, ${opacity * 0.7})`);
           gradient.addColorStop(1, `rgba(130, 130, 220, ${opacity * 0.3})`);
           
           ctx.beginPath();
-          ctx.arc(this.x, this.y, this.soma, 0, Math.PI * 2);
+          ctx.arc(0, 0, this.soma, 0, Math.PI * 2);
           ctx.fillStyle = gradient;
           ctx.fill();
           
           // Draw pulses traveling along axon
           this.pulses.forEach(pulse => {
-            const pulseX = this.x + pulse.position * this.axonLength;
+            const pulseX = pulse.position * this.axonLength;
             
             ctx.beginPath();
-            ctx.arc(pulseX, this.y, 4, 0, Math.PI * 2);
+            ctx.arc(pulseX, 0, 4, 0, Math.PI * 2);
             ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.8})`;
             ctx.fill();
             
             // Pulse glow
             ctx.beginPath();
-            ctx.arc(pulseX, this.y, 7, 0, Math.PI * 2);
-            const pulseGradient = ctx.createRadialGradient(pulseX, this.y, 2, pulseX, this.y, 7);
+            ctx.arc(pulseX, 0, 7, 0, Math.PI * 2);
+            const pulseGradient = ctx.createRadialGradient(pulseX, 0, 2, pulseX, 0, 7);
             pulseGradient.addColorStop(0, `rgba(255, 255, 255, ${opacity * 0.6})`);
             pulseGradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
             ctx.fillStyle = pulseGradient;
             ctx.fill();
           });
+          
+          ctx.restore();
         },
       };
       
