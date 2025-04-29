@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -48,8 +47,10 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center relative">
-        <ElementsBackground opacity={0.3} />
+      <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
+        <div className="absolute inset-0 w-full h-full">
+          <ElementsBackground opacity={0.2} />
+        </div>
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="mx-auto md:mx-0">
