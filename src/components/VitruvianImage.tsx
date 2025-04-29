@@ -16,9 +16,9 @@ const VitruvianImage: React.FC<VitruvianImageProps> = ({
       style={{ opacity }}
     >
       <img 
-        src="/lovable-uploads/fe291135-b74a-4263-9afa-932a129ceae7.png" 
+        src="/lovable-uploads/8f2b941e-e9a7-4410-944b-aaa84e8be2bd.png" 
         alt="Vitruvian Man" 
-        className="max-w-full max-h-full object-contain opacity-25 mix-blend-screen"
+        className="max-w-full max-h-full object-contain opacity-60 mix-blend-screen"
       />
     </div>
   );
