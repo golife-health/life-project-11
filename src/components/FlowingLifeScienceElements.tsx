@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 
 interface FlowingElement {
@@ -16,14 +17,16 @@ interface FlowingLifeScienceElementsProps {
   opacity?: number;
   speed?: number;
   blur?: number;
+  direction?: 'left-right' | 'right-left' | 'top-bottom' | 'bottom-top' | 'diagonal-1' | 'diagonal-2' | 'random';
   className?: string;
 }
 
 const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
-  count = 15,
+  count = 5, // Reduced count to 5 as requested
   opacity = 0.45,
   speed = 0.5,
   blur = 3,
+  direction = 'random',
   className = ''
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -41,20 +44,56 @@ const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
     const containerWidth = containerRef.current.clientWidth;
     const containerHeight = containerRef.current.clientHeight;
     
-    // Create random elements
-    for (let i = 0; i < count; i++) {
-      const elementType = ['dna', 'molecule', 'cell', 'neuron'][Math.floor(Math.random() * 4)] as FlowingElement['type'];
+    // Fixed directional velocity based on the direction prop
+    const getVelocity = (dir: string) => {
+      const baseSpeed = speed;
+      switch(dir) {
+        case 'left-right':
+          return { x: baseSpeed, y: 0 };
+        case 'right-left':
+          return { x: -baseSpeed, y: 0 };
+        case 'top-bottom':
+          return { x: 0, y: baseSpeed };
+        case 'bottom-top':
+          return { x: 0, y: -baseSpeed };
+        case 'diagonal-1':
+          return { x: baseSpeed * 0.7, y: baseSpeed * 0.7 };
+        case 'diagonal-2':
+          return { x: baseSpeed * 0.7, y: -baseSpeed * 0.7 };
+        default:
+          return { 
+            x: (Math.random() - 0.5) * baseSpeed, 
+            y: (Math.random() - 0.5) * baseSpeed 
+          };
+      }
+    };
+    
+    // Create exactly one element of each type for better distribution
+    const elementTypes = ['dna', 'molecule', 'cell', 'neuron'];
+    const velocityData = getVelocity(direction);
+    
+    // Create elements with consistent movement pattern
+    for (let i = 0; i < Math.min(count, 5); i++) { // Maximum of 5 elements
+      const elementType = elementTypes[i % elementTypes.length] as FlowingElement['type'];
       const elementSize = getRandomSize(elementType);
       const elementDepth = 0.3 + Math.random() * 0.7; // 0.3 to 1.0
+      
+      // Calculate angle based on velocity
+      let angle;
+      if (velocityData.x === 0) {
+        angle = velocityData.y > 0 ? Math.PI / 2 : -Math.PI / 2;
+      } else {
+        angle = Math.atan2(velocityData.y, velocityData.x);
+      }
       
       elementsRef.current.push({
         x: Math.random() * containerWidth,
         y: Math.random() * containerHeight,
         size: elementSize,
-        speed: (0.2 + Math.random() * 0.8) * speed, // Base speed adjusted by prop
-        angle: Math.random() * Math.PI * 2,
+        speed: speed,
+        angle: angle,
         type: elementType,
-        opacity: opacity, // Fixed opacity as requested
+        opacity: opacity, 
         depth: elementDepth
       });
     }
@@ -65,7 +104,7 @@ const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
     return () => {
       cancelAnimationFrame(animationRef.current);
     };
-  }, [count, opacity, speed]);
+  }, [count, opacity, speed, direction]);
   
   // Handle canvas resize
   useEffect(() => {

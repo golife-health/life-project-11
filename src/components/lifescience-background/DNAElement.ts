@@ -1,13 +1,15 @@
 
-import { AnimationElement, ElementProps } from './utils';
+import { AnimationElement, ElementProps, getDirectionalVelocity } from './utils';
 
 export function createDNAElements(
   width: number, 
   height: number, 
   count: number, 
-  colors: any
+  colors: any,
+  direction: string = 'random'
 ): AnimationElement[] {
   const elements: AnimationElement[] = [];
+  const velocity = getDirectionalVelocity(direction);
   
   for (let i = 0; i < count; i++) {
     const dnaStrand = {
@@ -18,9 +20,9 @@ export function createDNAElements(
       baseSpacing: 15,
       twistSpeed: 0.01 + Math.random() * 0.02,
       twistOffset: Math.random() * Math.PI * 2,
-      // Multi-directional velocity
-      velocityX: (Math.random() - 0.5) * 0.6,
-      velocityY: (Math.random() - 0.5) * 0.3,
+      // Use directional velocity
+      velocityX: velocity.vx,
+      velocityY: velocity.vy,
       
       update(speed: number) {
         this.x += this.velocityX * speed;

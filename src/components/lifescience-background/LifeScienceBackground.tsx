@@ -11,6 +11,7 @@ interface LifeScienceBackgroundProps {
   opacity?: number;
   speed?: number;
   density?: number;
+  direction?: 'left-right' | 'right-left' | 'top-bottom' | 'bottom-top' | 'diagonal-1' | 'diagonal-2' | 'random';
   className?: string;
 }
 
@@ -19,6 +20,7 @@ const LifeScienceBackground = ({
   opacity = 0.2,
   speed = 1,
   density = 1,
+  direction = 'random',
   className = ''
 }: LifeScienceBackgroundProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -78,30 +80,33 @@ const LifeScienceBackground = ({
       // Get theme-adjusted colors
       const colors = getElementColors(opacity);
       
+      // Reduce the number of elements to 4-5 as requested
+      const elementCount = 4; // Fixed small number as requested
+      
       switch(type) {
         case 'dna':
-          elements = createDNAElements(dimensions.width, dimensions.height, Math.floor(8 * density), colors);
+          elements = createDNAElements(dimensions.width, dimensions.height, elementCount, colors, direction);
           break;
         case 'molecules':
-          elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density), colors);
+          elements = createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, direction);
           break;
         case 'cells':
-          elements = createCellElements(dimensions.width, dimensions.height, Math.floor(10 * density), colors);
+          elements = createCellElements(dimensions.width, dimensions.height, elementCount, colors, direction);
           break;
         case 'neurons':
-          elements = createNeuronElements(dimensions.width, dimensions.height, Math.floor(6 * density), colors);
+          elements = createNeuronElements(dimensions.width, dimensions.height, elementCount, colors, direction);
           break;
         case 'mixed':
-          // Create a mix of all element types
+          // Create a mix of all element types, but with fewer of each
           elements = [
-            ...createDNAElements(dimensions.width, dimensions.height, Math.floor(3 * density), colors),
-            ...createMoleculeElements(dimensions.width, dimensions.height, Math.floor(5 * density), colors),
-            ...createCellElements(dimensions.width, dimensions.height, Math.floor(3 * density), colors),
-            ...createNeuronElements(dimensions.width, dimensions.height, Math.floor(2 * density), colors)
+            ...createDNAElements(dimensions.width, dimensions.height, 1, colors, 'left-right'),
+            ...createMoleculeElements(dimensions.width, dimensions.height, 1, colors, 'right-left'),
+            ...createCellElements(dimensions.width, dimensions.height, 1, colors, 'top-bottom'),
+            ...createNeuronElements(dimensions.width, dimensions.height, 1, colors, 'bottom-top')
           ];
           break;
         default:
-          elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density), colors);
+          elements = createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, direction);
       }
       
       // Animation loop
@@ -122,7 +127,7 @@ const LifeScienceBackground = ({
     return () => {
       cancelAnimationFrame(animationRef.current);
     };
-  }, [type, opacity, speed, density, dimensions.width, dimensions.height]);
+  }, [type, opacity, speed, density, direction, dimensions.width, dimensions.height]);
   
   return (
     <div 

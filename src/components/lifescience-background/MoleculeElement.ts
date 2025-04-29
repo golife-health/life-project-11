@@ -1,13 +1,15 @@
 
-import { AnimationElement, ElementProps } from './utils';
+import { AnimationElement, ElementProps, getDirectionalVelocity } from './utils';
 
 export function createMoleculeElements(
   width: number, 
   height: number, 
   count: number, 
-  colors: any
+  colors: any,
+  direction: string = 'random'
 ): AnimationElement[] {
   const elements: AnimationElement[] = [];
+  const velocity = getDirectionalVelocity(direction);
   
   for (let i = 0; i < count; i++) {
     const molecule = {
@@ -17,9 +19,9 @@ export function createMoleculeElements(
       atoms: 3 + Math.floor(Math.random() * 4),
       rotation: Math.random() * Math.PI * 2,
       rotationSpeed: (Math.random() - 0.5) * 0.02,
-      // Multi-directional velocity
-      velocityX: (Math.random() - 0.5) * 0.7,
-      velocityY: (Math.random() - 0.5) * 0.7,
+      // Use directional velocity
+      velocityX: velocity.vx,
+      velocityY: velocity.vy,
       
       update(speed: number) {
         this.x += this.velocityX * speed;

@@ -24,6 +24,7 @@ export interface ElementProps {
   height: number;
   count: number;
   colors: ElementColors;
+  direction?: 'left-right' | 'right-left' | 'top-bottom' | 'bottom-top' | 'diagonal-1' | 'diagonal-2' | 'random';
 }
 
 export function getElementColors(baseOpacity: number): ElementColors {
@@ -95,4 +96,30 @@ export function setupCanvas(
   ctx.scale(devicePixelRatio, devicePixelRatio);
   
   return true;
+}
+
+// Helper function to get velocity based on direction
+export function getDirectionalVelocity(direction: string): { vx: number, vy: number } {
+  const baseSpeed = 0.5;
+  
+  switch(direction) {
+    case 'left-right':
+      return { vx: baseSpeed, vy: 0 };
+    case 'right-left':
+      return { vx: -baseSpeed, vy: 0 };
+    case 'top-bottom':
+      return { vx: 0, vy: baseSpeed };
+    case 'bottom-top':
+      return { vx: 0, vy: -baseSpeed };
+    case 'diagonal-1':
+      return { vx: baseSpeed * 0.7, vy: baseSpeed * 0.7 };
+    case 'diagonal-2':
+      return { vx: baseSpeed * 0.7, vy: -baseSpeed * 0.7 };
+    case 'random':
+    default:
+      return {
+        vx: (Math.random() - 0.5) * baseSpeed,
+        vy: (Math.random() - 0.5) * baseSpeed
+      };
+  }
 }

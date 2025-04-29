@@ -1,13 +1,15 @@
 
-import { AnimationElement, ElementProps } from './utils';
+import { AnimationElement, ElementProps, getDirectionalVelocity } from './utils';
 
 export function createCellElements(
   width: number, 
   height: number, 
   count: number, 
-  colors: any
+  colors: any,
+  direction: string = 'random'
 ): AnimationElement[] {
   const elements: AnimationElement[] = [];
+  const velocity = getDirectionalVelocity(direction);
   
   for (let i = 0; i < count; i++) {
     const cell = {
@@ -15,9 +17,9 @@ export function createCellElements(
       y: Math.random() * height,
       radius: 25 + Math.random() * 40,
       nucleusRadius: 10 + Math.random() * 8,
-      // Multi-directional velocity
-      velocityX: (Math.random() - 0.5) * 0.5,
-      velocityY: (Math.random() - 0.5) * 0.5,
+      // Use directional velocity
+      velocityX: velocity.vx,
+      velocityY: velocity.vy,
       organelles: Math.floor(3 + Math.random() * 6),
       pulsate: Math.random() * Math.PI * 2,
       pulsateSpeed: 0.02 + Math.random() * 0.02,

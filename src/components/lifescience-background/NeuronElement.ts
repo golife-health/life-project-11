@@ -1,13 +1,15 @@
 
-import { AnimationElement, ElementProps } from './utils';
+import { AnimationElement, ElementProps, getDirectionalVelocity } from './utils';
 
 export function createNeuronElements(
   width: number, 
   height: number, 
   count: number, 
-  colors: any
+  colors: any,
+  direction: string = 'random'
 ): AnimationElement[] {
   const elements: AnimationElement[] = [];
+  const velocity = getDirectionalVelocity(direction);
   
   for (let i = 0; i < count; i++) {
     const neuron = {
@@ -16,9 +18,9 @@ export function createNeuronElements(
       soma: 15 + Math.random() * 20, // Cell body size
       dendrites: 4 + Math.floor(Math.random() * 4),
       axonLength: 80 + Math.random() * 120,
-      // Multi-directional velocity
-      velocityX: (Math.random() - 0.5) * 0.4,
-      velocityY: (Math.random() - 0.5) * 0.4,
+      // Use directional velocity
+      velocityX: velocity.vx,
+      velocityY: velocity.vy,
       rotation: Math.random() * Math.PI * 2,
       rotationSpeed: (Math.random() - 0.5) * 0.01,
       pulses: [] as { position: number, speed: number }[],
