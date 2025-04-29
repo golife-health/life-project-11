@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import DNAHelix from '../components/DNAHelix';
 import VitruvianBackground from '../components/VitruvianBackground';
 import ElementsBackground from '../components/ElementsBackground';
+import VitruvianImage from '../components/VitruvianImage';
 
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -50,6 +51,7 @@ const Index = () => {
       <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <ElementsBackground opacity={0.2} />
+          <VitruvianImage />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
