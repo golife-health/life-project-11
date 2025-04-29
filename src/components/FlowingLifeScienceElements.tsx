@@ -23,7 +23,7 @@ interface FlowingLifeScienceElementsProps {
 
 const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
   count = 15,
-  opacity = 0.25,
+  opacity = 0.7, // Increased opacity from 0.25 to 0.7 for much more visibility
   speed = 0.5,
   blur = 3,
   className = ''
@@ -56,7 +56,7 @@ const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
         speed: (0.2 + Math.random() * 0.8) * speed, // Base speed adjusted by prop
         angle: Math.random() * Math.PI * 2,
         type: elementType,
-        opacity: (0.3 + Math.random() * 0.7) * opacity, // Base opacity adjusted by prop
+        opacity: (0.6 + Math.random() * 0.4) * opacity, // Increased base opacity range from (0.3-1.0) to (0.6-1.0)
         depth: elementDepth,
         hue: Math.random() * 60 - 30 // Slight color variation (-30 to +30)
       });
@@ -133,9 +133,9 @@ const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
         // Scale based on depth to create 3D effect
         const scaledSize = element.size * element.depth;
         
-        // Apply grey/ash color palette instead of blue
-        // Use a monochromatic grey palette with varying brightness based on depth
-        const greyValue = 130 + Math.floor(element.depth * 70); // 130-200 range for light to mid grey
+        // Apply higher contrast grey color palette
+        // Brightened the greyValue range for better visibility
+        const greyValue = 160 + Math.floor(element.depth * 80); // Increased from 130-200 to 160-240 range for lighter, more visible grey
         ctx.fillStyle = `rgba(${greyValue}, ${greyValue}, ${greyValue}, ${element.opacity})`;
         ctx.strokeStyle = `rgba(${greyValue + 20}, ${greyValue + 20}, ${greyValue + 20}, ${element.opacity * 1.2})`;
         
@@ -259,39 +259,42 @@ function drawMolecule(ctx: CanvasRenderingContext2D, x: number, y: number, size:
 }
 
 function drawCell(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, depth: number) {
+  const size1 = size;
+  const size2 = size / 2;
+  const greyValue = 180 + Math.floor(depth * 60); // Brightened from 150-210 to 180-240
+  
   // Cell membrane
   ctx.beginPath();
-  ctx.arc(x, y, size/2, 0, Math.PI * 2);
-  const greyValue = 150 + Math.floor(depth * 60);
+  ctx.arc(x, y, size1/2, 0, Math.PI * 2);
   const gradient = ctx.createRadialGradient(
-    x, y, size/4,
-    x, y, size/2
+    x, y, size1/4,
+    x, y, size1/2
   );
-  gradient.addColorStop(0, `rgba(${greyValue}, ${greyValue}, ${greyValue}, ${0.2 * depth})`);
-  gradient.addColorStop(1, `rgba(${greyValue - 20}, ${greyValue - 20}, ${greyValue - 20}, ${0.4 * depth})`);
+  gradient.addColorStop(0, `rgba(${greyValue}, ${greyValue}, ${greyValue}, ${0.5 * depth})`); // Increased opacity from 0.2 to 0.5
+  gradient.addColorStop(1, `rgba(${greyValue - 20}, ${greyValue - 20}, ${greyValue - 20}, ${0.6 * depth})`); // Increased opacity from 0.4 to 0.6
   ctx.fillStyle = gradient;
   ctx.fill();
-  ctx.lineWidth = 1 * depth;
+  ctx.lineWidth = 1.5 * depth; // Increased lineWidth from 1 to 1.5
   ctx.stroke();
   
   // Nucleus
   ctx.beginPath();
-  ctx.arc(x, y, size/5, 0, Math.PI * 2);
-  ctx.fillStyle = `rgba(${greyValue - 30}, ${greyValue - 30}, ${greyValue - 30}, ${0.5 * depth})`;
+  ctx.arc(x, y, size1/5, 0, Math.PI * 2);
+  ctx.fillStyle = `rgba(${greyValue - 30}, ${greyValue - 30}, ${greyValue - 30}, ${0.7 * depth})`; // Increased opacity from 0.5 to 0.7
   ctx.fill();
   
   // Organelles
   const organelleCount = 3 + Math.floor(Math.random() * 5);
   for (let i = 0; i < organelleCount; i++) {
     const angle = Math.random() * Math.PI * 2;
-    const distance = (size/4) * Math.random();
+    const distance = (size1/4) * Math.random();
     const organelleX = x + Math.cos(angle) * distance;
     const organelleY = y + Math.sin(angle) * distance;
     const organelleSize = 2 + Math.random() * 4;
     
     ctx.beginPath();
     ctx.arc(organelleX, organelleY, organelleSize * depth, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${greyValue + 10}, ${greyValue + 10}, ${greyValue + 10}, ${0.6 * depth})`;
+    ctx.fillStyle = `rgba(${greyValue + 10}, ${greyValue + 10}, ${greyValue + 10}, ${0.8 * depth})`; // Increased opacity from 0.6 to 0.8
     ctx.fill();
   }
 }
@@ -300,13 +303,13 @@ function drawNeuron(ctx: CanvasRenderingContext2D, x: number, y: number, size: n
   // Cell body (soma)
   ctx.beginPath();
   ctx.arc(x, y, size/6, 0, Math.PI * 2);
-  const greyValue = 160 + Math.floor(depth * 50);
+  const greyValue = 190 + Math.floor(depth * 50); // Increased from 160-210 to 190-240
   const gradient = ctx.createRadialGradient(
     x, y, size/12,
     x, y, size/6
   );
-  gradient.addColorStop(0, `rgba(${greyValue}, ${greyValue}, ${greyValue}, ${0.5 * depth})`);
-  gradient.addColorStop(1, `rgba(${greyValue - 30}, ${greyValue - 30}, ${greyValue - 30}, ${0.3 * depth})`);
+  gradient.addColorStop(0, `rgba(${greyValue}, ${greyValue}, ${greyValue}, ${0.7 * depth})`); // Increased opacity from 0.5 to 0.7
+  gradient.addColorStop(1, `rgba(${greyValue - 30}, ${greyValue - 30}, ${greyValue - 30}, ${0.5 * depth})`); // Increased opacity from 0.3 to 0.5
   ctx.fillStyle = gradient;
   ctx.fill();
   
@@ -319,7 +322,7 @@ function drawNeuron(ctx: CanvasRenderingContext2D, x: number, y: number, size: n
   ctx.beginPath();
   ctx.moveTo(x, y);
   ctx.lineTo(axonEndX, axonEndY);
-  ctx.lineWidth = 1.5 * depth;
+  ctx.lineWidth = 2 * depth; // Increased lineWidth from 1.5 to 2
   ctx.stroke();
   
   // Dendrites
@@ -333,7 +336,7 @@ function drawNeuron(ctx: CanvasRenderingContext2D, x: number, y: number, size: n
     ctx.beginPath();
     ctx.moveTo(x, y);
     ctx.lineTo(endX, endY);
-    ctx.lineWidth = 1 * depth;
+    ctx.lineWidth = 1.5 * depth; // Increased lineWidth from 1 to 1.5
     ctx.stroke();
     
     // Dendrite branches
@@ -347,7 +350,7 @@ function drawNeuron(ctx: CanvasRenderingContext2D, x: number, y: number, size: n
       ctx.beginPath();
       ctx.moveTo(endX, endY);
       ctx.lineTo(branchEndX, branchEndY);
-      ctx.lineWidth = 0.5 * depth;
+      ctx.lineWidth = 0.8 * depth; // Increased lineWidth from 0.5 to 0.8
       ctx.stroke();
     }
   }
@@ -363,11 +366,11 @@ function drawNeuron(ctx: CanvasRenderingContext2D, x: number, y: number, size: n
     ctx.beginPath();
     ctx.moveTo(axonEndX, axonEndY);
     ctx.lineTo(terminalX, terminalY);
-    ctx.lineWidth = 0.8 * depth;
+    ctx.lineWidth = 1.2 * depth; // Increased lineWidth from 0.8 to 1.2
     ctx.stroke();
     
     ctx.beginPath();
-    ctx.arc(terminalX, terminalY, 2 * depth, 0, Math.PI * 2);
+    ctx.arc(terminalX, terminalY, 2.5 * depth, 0, Math.PI * 2); // Increased size from 2 to 2.5
     ctx.fill();
   }
 }
