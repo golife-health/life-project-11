@@ -15,42 +15,26 @@ const DNAHelix = ({ className = '' }: { className?: string }) => {
     // Set canvas size with higher resolution for sharper edges
     const setCanvasDimensions = () => {
       const devicePixelRatio = window.devicePixelRatio || 1;
-      const parentElement = canvas.parentElement;
-      
-      if (parentElement) {
-        const width = parentElement.clientWidth;
-        const height = parentElement.clientHeight;
-        
-        canvas.width = width * devicePixelRatio;
-        canvas.height = height * devicePixelRatio;
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
-        ctx.scale(devicePixelRatio, devicePixelRatio);
-      } else {
-        // Fallback to default dimensions
-        canvas.width = 300 * devicePixelRatio;
-        canvas.height = 500 * devicePixelRatio;
-        canvas.style.width = '300px';
-        canvas.style.height = '500px';
-        ctx.scale(devicePixelRatio, devicePixelRatio);
-      }
+      canvas.width = 300 * devicePixelRatio;
+      canvas.height = 500 * devicePixelRatio;
+      canvas.style.width = '300px';
+      canvas.style.height = '500px';
+      ctx.scale(devicePixelRatio, devicePixelRatio);
     };
     
     setCanvasDimensions();
     window.addEventListener('resize', setCanvasDimensions);
     
     // DNA helix parameters
-    const getWidth = () => canvas.width / devicePixelRatio;
-    const getHeight = () => canvas.height / devicePixelRatio;
-    const devicePixelRatio = window.devicePixelRatio || 1;
-    
-    const centerX = getWidth() / 2;
-    const amplitude = getWidth() / 4;
+    const width = 300;
+    const height = 500;
+    const centerX = width / 2;
+    const amplitude = width / 4;
     const frequency = 0.02;
     const spaceY = 18; // Increased spacing between base pairs for better visibility
     
     let offset = 0;
-    const speed = 0.003; // Reduced speed for smoother animation
+    const speed = 0.005; // Reduced speed for smoother animation
     
     // Add scroll-based interaction
     const handleScroll = () => {
@@ -60,17 +44,20 @@ const DNAHelix = ({ className = '' }: { className?: string }) => {
     window.addEventListener('scroll', handleScroll);
     
     const drawHelix = () => {
-      const width = getWidth();
-      const height = getHeight();
-
-      ctx.clearRect(0, 0, width * devicePixelRatio, height * devicePixelRatio);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // Apply scroll-based transformation
       const scrollOffset = scrollRef.current;
       const dynamicAmplitude = amplitude * (1 + scrollOffset * 0.1); // Expand amplitude slightly on scroll
       const dynamicFrequency = frequency * (1 - scrollOffset * 0.05); // Adjust frequency slightly on scroll
       
-      // No background fill - removed as requested
+      // Add subtle depth with background glow
+      const gradient = ctx.createRadialGradient(centerX, height/2, 10, centerX, height/2, width/1.5);
+      gradient.addColorStop(0, 'rgba(10, 10, 15, 0)');
+      gradient.addColorStop(1, 'rgba(0, 0, 10, 0.2)');
+      
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
       
       // Enhanced 3D effect with shadows
       ctx.shadowBlur = 15;
@@ -210,7 +197,6 @@ const DNAHelix = ({ className = '' }: { className?: string }) => {
       <canvas 
         ref={canvasRef}
         className="w-full h-full"
-        style={{ display: 'block' }}
       />
     </div>
   );
