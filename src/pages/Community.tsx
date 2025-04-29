@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import BinaryBackground from '../components/BinaryBackground';
+import NeuronBackground from '../components/NeuronBackground';
 
 const Community = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -38,7 +38,7 @@ const Community = () => {
 
   return (
     <div className="min-h-screen">
-      <BinaryBackground />
+      <NeuronBackground />
       <Header />
       
       {/* Hero Section */}

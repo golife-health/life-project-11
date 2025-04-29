@@ -1,10 +1,11 @@
+
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import LogoTree from '../components/LogoTree';
 import BinaryBackground from '../components/BinaryBackground';
 import Navbar from '../components/Navbar';
-import RotatingEarth from '../components/RotatingEarth';
 import Footer from '../components/Footer';
+import DNAHelix from '../components/DNAHelix';
+import VitruvianBackground from '../components/VitruvianBackground';
 
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -40,19 +41,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <BinaryBackground />
+      <VitruvianBackground />
       
       {/* Navbar */}
       <Navbar />
-      
-      {/* Top right logo removed */}
       
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center relative">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="mx-auto md:mx-0">
-              <LogoTree className="w-64 h-64" />
+              {/* Logo Tree component removed */}
+              <div className="w-64 h-64"></div>
             </div>
             
             <div className="space-y-16 md:-ml-12">
@@ -101,14 +101,6 @@ const Index = () => {
           </div>
           <div className="text-white/50 break-all max-w-xs">
             CA X9BLQmZA7qdWYJKJ6VTmnMiBuzQq3dNZS8fFMU5aY
-          </div>
-        </div>
-        
-        <div className="absolute bottom-28 left-0 right-0 mb-36">
-          <div className="container mx-auto">
-            <div className="flex justify-center">
-              <RotatingEarth />
-            </div>
           </div>
         </div>
       </section>
@@ -256,117 +248,119 @@ const Index = () => {
             <div className="h-1 w-20 bg-white/20 mx-auto mt-6"></div>
           </div>
           
-          <div className="relative">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 transform -translate-x-1/2"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="relative">
+              <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 transform -translate-x-1/2"></div>
+              
+              <div className="space-y-24">
+                <div className="relative">
+                  <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
+                  <div className="grid grid-cols-1 gap-8">
+                    <div className="md:text-right md:pr-12">
+                      <div className="glass-panel p-6 md:ml-auto">
+                        <div className="text-blue-400 font-mono mb-2">PHASE 1 - Q1 2025</div>
+                        <h3 className="text-xl font-bold mb-3">Foundation & Community</h3>
+                        <div className="space-y-2">
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Establish research partnerships with leading institutions</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Community building and ambassador program launch</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Initial funding round for key research initiatives</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="relative">
+                  <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
+                  <div className="grid grid-cols-1 gap-8">
+                    <div className="md:text-right md:pr-12">
+                      <div className="glass-panel p-6 md:ml-auto">
+                        <div className="text-blue-400 font-mono mb-2">PHASE 2 - Q2 2025</div>
+                        <h3 className="text-xl font-bold mb-3">Research Expansion</h3>
+                        <div className="space-y-2">
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Launch of multi-center clinical trials</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Development of proprietary longevity biomarkers</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Creation of decentralized research data platform</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="relative">
+                  <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
+                  <div className="grid grid-cols-1 gap-8">
+                    <div className="md:text-right md:pr-12">
+                      <div className="glass-panel p-6 md:ml-auto">
+                        <div className="text-blue-400 font-mono mb-2">PHASE 3 - Q3 2025</div>
+                        <h3 className="text-xl font-bold mb-3">Technology Development</h3>
+                        <div className="space-y-2">
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Initial therapeutics development and testing</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Expansion of research to include AI-driven discovery</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Launch of community access to research findings</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="relative">
+                  <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400/50 rounded-full transform -translate-x-1/2"></div>
+                  <div className="grid grid-cols-1 gap-8">
+                    <div className="md:text-right md:pr-12">
+                      <div className="glass-panel p-6 border-dashed border md:ml-auto">
+                        <div className="text-blue-400/70 font-mono mb-2">PHASE 4 - Q4 2025</div>
+                        <h3 className="text-xl font-bold mb-3">Global Implementation</h3>
+                        <div className="space-y-2">
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>First-generation therapeutics available to token holders</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Global expansion of research initiatives</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Development of personalized longevity protocols</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             
-            <div className="space-y-24">
-              <div className="relative">
-                <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="md:text-right md:pr-12">
-                    <div className="glass-panel p-6 md:ml-auto">
-                      <div className="text-blue-400 font-mono mb-2">PHASE 1 - Q1 2025</div>
-                      <h3 className="text-xl font-bold mb-3">Foundation & Community</h3>
-                      <div className="space-y-2">
-                        <div className="flex items-start md:justify-end text-white/70">
-                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                          <span>Establish research partnerships with leading institutions</span>
-                        </div>
-                        <div className="flex items-start md:justify-end text-white/70">
-                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                          <span>Community building and ambassador program launch</span>
-                        </div>
-                        <div className="flex items-start md:justify-end text-white/70">
-                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                          <span>Initial funding round for key research initiatives</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="md:hidden h-16"></div>
-                </div>
-              </div>
-              
-              <div className="relative">
-                <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="md:hidden h-16"></div>
-                  <div className="md:pl-12">
-                    <div className="glass-panel p-6">
-                      <div className="text-blue-400 font-mono mb-2">PHASE 2 - Q2 2025</div>
-                      <h3 className="text-xl font-bold mb-3">Research Expansion</h3>
-                      <div className="space-y-2">
-                        <div className="flex items-start text-white/70">
-                          <span className="inline-block w-5 text-center mr-2">•</span>
-                          <span>Launch of multi-center clinical trials</span>
-                        </div>
-                        <div className="flex items-start text-white/70">
-                          <span className="inline-block w-5 text-center mr-2">•</span>
-                          <span>Development of proprietary longevity biomarkers</span>
-                        </div>
-                        <div className="flex items-start text-white/70">
-                          <span className="inline-block w-5 text-center mr-2">•</span>
-                          <span>Creation of decentralized research data platform</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="relative">
-                <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="md:text-right md:pr-12">
-                    <div className="glass-panel p-6 md:ml-auto">
-                      <div className="text-blue-400 font-mono mb-2">PHASE 3 - Q3 2025</div>
-                      <h3 className="text-xl font-bold mb-3">Technology Development</h3>
-                      <div className="space-y-2">
-                        <div className="flex items-start md:justify-end text-white/70">
-                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                          <span>Initial therapeutics development and testing</span>
-                        </div>
-                        <div className="flex items-start md:justify-end text-white/70">
-                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                          <span>Expansion of research to include AI-driven discovery</span>
-                        </div>
-                        <div className="flex items-start md:justify-end text-white/70">
-                          <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                          <span>Launch of community access to research findings</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="md:hidden h-16"></div>
-                </div>
-              </div>
-              
-              <div className="relative">
-                <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400/50 rounded-full transform -translate-x-1/2"></div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="md:hidden h-16"></div>
-                  <div className="md:pl-12">
-                    <div className="glass-panel p-6 border-dashed border">
-                      <div className="text-blue-400/70 font-mono mb-2">PHASE 4 - Q4 2025</div>
-                      <h3 className="text-xl font-bold mb-3">Global Implementation</h3>
-                      <div className="space-y-2">
-                        <div className="flex items-start text-white/70">
-                          <span className="inline-block w-5 text-center mr-2">•</span>
-                          <span>First-generation therapeutics available to token holders</span>
-                        </div>
-                        <div className="flex items-start text-white/70">
-                          <span className="inline-block w-5 text-center mr-2">•</span>
-                          <span>Global expansion of research initiatives</span>
-                        </div>
-                        <div className="flex items-start text-white/70">
-                          <span className="inline-block w-5 text-center mr-2">•</span>
-                          <span>Development of personalized longevity protocols</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="hidden md:block">
+              <DNAHelix className="h-full" />
             </div>
           </div>
         </div>
@@ -380,45 +374,17 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Join Our Community</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
-              Become part of a movement that's dedicated to extending human health and lifespan through
-              scientific advancement and collective action.
+              Become part of a global community dedicated to extending human lifespans and advancing longevity research.
             </p>
-            <div className="h-1 w-20 bg-white/20 mx-auto mt-6"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <Link to="/community" className="feature-card hover:border-blue-400/30 transition-all duration-300 group">
-              <div className="h-12 w-12 rounded-full bg-blue-400/10 mb-6 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                <div className="h-3 w-3 bg-blue-400 rounded-full"></div>
-              </div>
-              <h3 className="text-xl font-bold mb-3">Community Members</h3>
-              <p className="text-white/70 mb-4">
-                Join discussions, access exclusive content, and help shape the future of longevity research.
-              </p>
-              <div className="text-blue-400 text-sm font-mono group-hover:translate-x-1 transition-transform">Join now →</div>
+          <div className="flex justify-center">
+            <Link 
+              to="/community" 
+              className="button-shine inline-flex items-center justify-center px-8 py-4 border border-white/20 text-lg font-medium rounded-md text-white bg-black hover:bg-black/80 transition-colors duration-300 shadow-md"
+            >
+              Explore Community
             </Link>
-            
-            <Link to="/ambassador" className="feature-card hover:border-blue-400/30 transition-all duration-300 group">
-              <div className="h-12 w-12 rounded-full bg-blue-400/10 mb-6 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                <div className="h-3 w-3 bg-blue-400 rounded-full"></div>
-              </div>
-              <h3 className="text-xl font-bold mb-3">Ambassadors</h3>
-              <p className="text-white/70 mb-4">
-                Represent $LIFE in your community, spread awareness, and earn rewards for your contributions.
-              </p>
-              <div className="text-blue-400 text-sm font-mono group-hover:translate-x-1 transition-transform">Apply now →</div>
-            </Link>
-            
-            <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="feature-card hover:border-blue-400/30 transition-all duration-300 group">
-              <div className="h-12 w-12 rounded-full bg-blue-400/10 mb-6 flex items-center justify-center group-hover:bg-blue-400/20 transition-colors">
-                <div className="h-3 w-3 bg-blue-400 rounded-full"></div>
-              </div>
-              <h3 className="text-xl font-bold mb-3">Social Media</h3>
-              <p className="text-white/70 mb-4">
-                Follow our journey on social media for the latest updates, research findings, and community events.
-              </p>
-              <div className="text-blue-400 text-sm font-mono group-hover:translate-x-1 transition-transform">Follow us →</div>
-            </a>
           </div>
         </div>
       </section>

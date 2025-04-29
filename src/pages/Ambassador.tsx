@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import BinaryBackground from '../components/BinaryBackground';
+import NeuronBackground from '../components/NeuronBackground';
 import AmbassadorForm from '../components/AmbassadorForm';
 
 const Ambassador = () => {
@@ -39,7 +39,7 @@ const Ambassador = () => {
 
   return (
     <div className="min-h-screen">
-      <BinaryBackground />
+      <NeuronBackground />
       <Header />
       
       {/* Hero Section */}

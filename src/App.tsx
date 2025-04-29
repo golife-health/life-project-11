@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import Whitepaper from "./pages/Whitepaper";
 import Manifesto from "./pages/Manifesto";
 import ResearchFocus from "./pages/ResearchFocus";
+import ScientificBackground from "./components/ScientificBackground";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <ScientificBackground />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
