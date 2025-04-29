@@ -7,7 +7,7 @@ interface VitruvianImageProps {
 }
 
 const VitruvianImage: React.FC<VitruvianImageProps> = ({ 
-  opacity = 0.25, // Reduced default opacity from 0.3 to 0.25
+  opacity = 0.2, // Reduced default opacity from 0.25 to 0.2 for better balance
   className = ""
 }) => {
   return (

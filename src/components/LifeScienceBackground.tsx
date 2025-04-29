@@ -42,62 +42,73 @@ const LifeScienceBackground = ({
       canvas.style.height = `${height}px`;
       ctx.scale(devicePixelRatio, devicePixelRatio);
       
-      setDimensions({ width, height });
+      // Only update dimensions state if they've actually changed
+      if (width !== dimensions.width || height !== dimensions.height) {
+        setDimensions({ width, height });
+      }
     };
     
+    // Initial setup
     setCanvasDimensions();
-    window.addEventListener('resize', setCanvasDimensions);
+    
+    // Handle resize events
+    const handleResize = () => {
+      setCanvasDimensions();
+    };
+    
+    window.addEventListener('resize', handleResize);
     
     // Create elements based on type
     let elements: any[] = [];
     
-    switch(type) {
-      case 'dna':
-        elements = createDNAElements(dimensions.width, dimensions.height, Math.floor(8 * density));
-        break;
-      case 'molecules':
-        elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density));
-        break;
-      case 'cells':
-        elements = createCellElements(dimensions.width, dimensions.height, Math.floor(10 * density));
-        break;
-      case 'neurons':
-        elements = createNeuronElements(dimensions.width, dimensions.height, Math.floor(6 * density));
-        break;
-      case 'mixed':
-        // Create a mix of all element types
-        elements = [
-          ...createDNAElements(dimensions.width, dimensions.height, Math.floor(3 * density)),
-          ...createMoleculeElements(dimensions.width, dimensions.height, Math.floor(5 * density)),
-          ...createCellElements(dimensions.width, dimensions.height, Math.floor(3 * density)),
-          ...createNeuronElements(dimensions.width, dimensions.height, Math.floor(2 * density))
-        ];
-        break;
-      default:
-        elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density));
-    }
-    
-    // Animation loop
-    const animate = () => {
-      ctx.clearRect(0, 0, dimensions.width, dimensions.height);
-      
-      elements.forEach(element => {
-        element.update(speed);
-        element.draw(ctx, opacity);
-      });
-      
-      animationRef.current = requestAnimationFrame(animate);
-    };
-    
+    // Only create elements if dimensions are valid
     if (dimensions.width > 0 && dimensions.height > 0) {
+      switch(type) {
+        case 'dna':
+          elements = createDNAElements(dimensions.width, dimensions.height, Math.floor(8 * density));
+          break;
+        case 'molecules':
+          elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density));
+          break;
+        case 'cells':
+          elements = createCellElements(dimensions.width, dimensions.height, Math.floor(10 * density));
+          break;
+        case 'neurons':
+          elements = createNeuronElements(dimensions.width, dimensions.height, Math.floor(6 * density));
+          break;
+        case 'mixed':
+          // Create a mix of all element types
+          elements = [
+            ...createDNAElements(dimensions.width, dimensions.height, Math.floor(3 * density)),
+            ...createMoleculeElements(dimensions.width, dimensions.height, Math.floor(5 * density)),
+            ...createCellElements(dimensions.width, dimensions.height, Math.floor(3 * density)),
+            ...createNeuronElements(dimensions.width, dimensions.height, Math.floor(2 * density))
+          ];
+          break;
+        default:
+          elements = createMoleculeElements(dimensions.width, dimensions.height, Math.floor(15 * density));
+      }
+      
+      // Animation loop
+      const animate = () => {
+        ctx.clearRect(0, 0, dimensions.width, dimensions.height);
+        
+        elements.forEach(element => {
+          element.update(speed);
+          element.draw(ctx, opacity);
+        });
+        
+        animationRef.current = requestAnimationFrame(animate);
+      };
+      
       animate();
     }
     
     return () => {
       cancelAnimationFrame(animationRef.current);
-      window.removeEventListener('resize', setCanvasDimensions);
+      window.removeEventListener('resize', handleResize);
     };
-  }, [type, opacity, speed, density, dimensions]);
+  }, [type, opacity, speed, density, dimensions.width, dimensions.height]);
   
   // DNA strand elements with multi-directional movement
   function createDNAElements(width: number, height: number, count: number) {
