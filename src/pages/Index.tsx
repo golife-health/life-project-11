@@ -39,14 +39,17 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <VitruvianBackground />
+    <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Vitruvian Man Background - explicitly added here for visibility */}
+      <div className="absolute inset-0 z-0">
+        <VitruvianBackground />
+      </div>
       
       {/* Navbar */}
       <Navbar />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col justify-center relative">
+      <section className="min-h-screen flex flex-col justify-center relative z-10">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="mx-auto md:mx-0">
@@ -105,7 +108,7 @@ const Index = () => {
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 opacity-0"
+        className="py-24 opacity-0 relative z-10"
       >
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
@@ -146,7 +149,7 @@ const Index = () => {
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 bg-gradient-to-b from-black to-[#080810] opacity-0"
+        className="py-24 bg-gradient-to-b from-black to-[#080810] opacity-0 relative z-10"
       >
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
@@ -235,7 +238,7 @@ const Index = () => {
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 opacity-0"
+        className="py-24 opacity-0 relative z-10"
       >
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
@@ -366,7 +369,7 @@ const Index = () => {
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0"
+        className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0 relative z-10"
       >
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
