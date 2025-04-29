@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -237,7 +236,7 @@ const Index = () => {
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 opacity-0"
+        className="py-24 opacity-0 roadmap-phases"
       >
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
@@ -253,7 +252,7 @@ const Index = () => {
               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/10 transform -translate-x-1/2"></div>
               
               <div className="space-y-24">
-                <div className="relative">
+                <div className="relative" data-phase="1">
                   <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
                   <div className="grid grid-cols-1 gap-8">
                     <div className="md:text-right md:pr-12">
@@ -279,7 +278,7 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="relative">
+                <div className="relative" data-phase="2">
                   <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
                   <div className="grid grid-cols-1 gap-8">
                     <div className="md:text-right md:pr-12">
@@ -305,7 +304,7 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="relative">
+                <div className="relative" data-phase="3">
                   <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
                   <div className="grid grid-cols-1 gap-8">
                     <div className="md:text-right md:pr-12">
@@ -331,7 +330,7 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="relative">
+                <div className="relative" data-phase="4">
                   <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400/50 rounded-full transform -translate-x-1/2"></div>
                   <div className="grid grid-cols-1 gap-8">
                     <div className="md:text-right md:pr-12">
@@ -359,7 +358,7 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="hidden md:block">
+            <div className="hidden md:block h-full">
               <DNAHelix className="h-full" />
             </div>
           </div>

@@ -1,9 +1,21 @@
 
 import { useEffect, useRef } from 'react';
 
-const DNAHelix = ({ className = '' }: { className?: string }) => {
+interface DNAHelixProps {
+  className?: string;
+  startAtPhase?: number;
+  endAtPhase?: number;
+}
+
+const DNAHelix = ({ 
+  className = '', 
+  startAtPhase = 1, 
+  endAtPhase = 4 
+}: DNAHelixProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const scrollRef = useRef(0);
+  const animationRef = useRef<number>(0);
+  const progressRef = useRef(0);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -15,10 +27,12 @@ const DNAHelix = ({ className = '' }: { className?: string }) => {
     // Set canvas size with higher resolution for sharper edges
     const setCanvasDimensions = () => {
       const devicePixelRatio = window.devicePixelRatio || 1;
+      const containerHeight = canvas.parentElement?.clientHeight || 500;
+      
       canvas.width = 300 * devicePixelRatio;
-      canvas.height = 500 * devicePixelRatio;
+      canvas.height = containerHeight * devicePixelRatio;
       canvas.style.width = '300px';
-      canvas.style.height = '500px';
+      canvas.style.height = '100%';
       ctx.scale(devicePixelRatio, devicePixelRatio);
     };
     
@@ -27,53 +41,94 @@ const DNAHelix = ({ className = '' }: { className?: string }) => {
     
     // DNA helix parameters
     const width = 300;
-    const height = 500;
     const centerX = width / 2;
     const amplitude = width / 4;
     const frequency = 0.02;
-    const spaceY = 18; // Increased spacing between base pairs for better visibility
+    const spaceY = 18; // Spacing between base pairs
     
     let offset = 0;
-    const speed = 0.005; // Reduced speed for smoother animation
+    const speed = 0.005; // Animation speed
     
-    // Add scroll-based interaction
+    // Calculate the start and end positions for the helix
+    const calculatePhasePosition = (phase: number): number => {
+      // Phases are positioned at approximately 24%, 48%, 72%, and 96% of the roadmap section
+      const phasePercentage = (phase - 1) / 4;
+      return phasePercentage * canvas.height;
+    };
+    
+    const startPosition = calculatePhasePosition(startAtPhase);
+    const endPosition = calculatePhasePosition(endAtPhase);
+    
+    // Track scroll position and calculate progress through roadmap
     const handleScroll = () => {
-      scrollRef.current = window.scrollY * 0.001; // Scale down the effect
+      // Get the roadmap section
+      const roadmapSection = document.querySelector('section:has(.roadmap-phases)') || 
+                            document.querySelector('section:nth-of-type(3)');
+      
+      if (roadmapSection) {
+        const rect = roadmapSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        
+        // Calculate how far we've scrolled through the roadmap section
+        // From -1 (section is below viewport) to 1 (section is above viewport)
+        let progress = 0;
+        
+        if (rect.top > viewportHeight) {
+          // Section is below viewport
+          progress = -1;
+        } else if (rect.bottom < 0) {
+          // Section is above viewport
+          progress = 1;
+        } else {
+          // Section is partially visible
+          // Map position from [bottom of viewport -> top of viewport] to [-1 -> 1]
+          progress = 1 - (rect.top + rect.height) / (viewportHeight + rect.height);
+        }
+        
+        // Scale to 0-1 range and apply smoothing
+        progressRef.current = Math.max(0, Math.min(1, (progress + 1) / 2));
+        scrollRef.current = window.scrollY * 0.001;
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initialize
     
     const drawHelix = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Apply scroll-based transformation
+      const progress = progressRef.current;
       const scrollOffset = scrollRef.current;
-      const dynamicAmplitude = amplitude * (1 + scrollOffset * 0.1); // Expand amplitude slightly on scroll
-      const dynamicFrequency = frequency * (1 - scrollOffset * 0.05); // Adjust frequency slightly on scroll
+      
+      // Dynamic parameters based on scroll position
+      const dynamicAmplitude = amplitude * (1 + scrollOffset * 0.1);
+      const dynamicFrequency = frequency * (1 - scrollOffset * 0.05);
+      
+      // Calculate visible height based on progress
+      const visibleHeight = canvas.height * Math.min(1, progress * 2); // Double the progress rate
       
       // Add subtle depth with background glow
-      const gradient = ctx.createRadialGradient(centerX, height/2, 10, centerX, height/2, width/1.5);
+      const gradient = ctx.createRadialGradient(centerX, visibleHeight/2, 10, centerX, visibleHeight/2, width/1.5);
       gradient.addColorStop(0, 'rgba(10, 10, 15, 0)');
-      gradient.addColorStop(1, 'rgba(0, 0, 10, 0.2)');
+      gradient.addColorStop(1, 'rgba(0, 0, 10, 0.12)');
       
       ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, width, height);
+      ctx.fillRect(0, 0, width, visibleHeight);
       
       // Enhanced 3D effect with shadows
       ctx.shadowBlur = 15;
       ctx.shadowColor = "rgba(255, 255, 255, 0.5)";
       
-      // Draw two helical backbones with enhanced depth
+      // Draw two helical backbones with enhanced depth, respecting the visible height
       for (let strand = 0; strand < 2; strand++) {
         const strandOffset = strand * Math.PI;
         
-        // Add depth effect with multiple layers
-        // Shadow/glow layer
+        // Draw shadow/glow layer
         ctx.beginPath();
         ctx.lineWidth = 5;
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
         
-        for (let y = 0; y < height; y += 2) {
+        for (let y = 0; y < visibleHeight; y += 2) {
           const x = centerX + dynamicAmplitude * Math.sin(dynamicFrequency * y + offset + strandOffset);
           
           if (y === 0) {
@@ -89,7 +144,7 @@ const DNAHelix = ({ className = '' }: { className?: string }) => {
         ctx.lineWidth = 3;
         ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
         
-        for (let y = 0; y < height; y += 2) {
+        for (let y = 0; y < visibleHeight; y += 2) {
           const x = centerX + dynamicAmplitude * Math.sin(dynamicFrequency * y + offset + strandOffset);
           
           if (y === 0) {
@@ -100,12 +155,12 @@ const DNAHelix = ({ className = '' }: { className?: string }) => {
         }
         ctx.stroke();
         
-        // Highlight layer for 3D effect
+        // Highlight layer for enhanced 3D effect
         ctx.beginPath();
         ctx.lineWidth = 1;
         ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
         
-        for (let y = 0; y < height; y += 2) {
+        for (let y = 0; y < visibleHeight; y += 2) {
           const x = centerX + dynamicAmplitude * Math.sin(dynamicFrequency * y + offset + strandOffset);
           
           if (y === 0) {
@@ -120,8 +175,8 @@ const DNAHelix = ({ className = '' }: { className?: string }) => {
       // Reset shadow for base pairs
       ctx.shadowBlur = 8;
       
-      // Draw base pairs with enhanced visuals
-      for (let y = spaceY; y < height; y += spaceY) {
+      // Draw base pairs with enhanced visuals, respecting the visible height
+      for (let y = spaceY; y < visibleHeight; y += spaceY) {
         const x1 = centerX + dynamicAmplitude * Math.sin(dynamicFrequency * y + offset);
         const x2 = centerX + dynamicAmplitude * Math.sin(dynamicFrequency * y + offset + Math.PI);
         
@@ -152,48 +207,56 @@ const DNAHelix = ({ className = '' }: { className?: string }) => {
           ctx.fill();
         };
         
-        // Alternate between blue and green for bases with smoother color transitions
-        const basePosition = Math.floor(y / spaceY);
-        const isBlue = basePosition % 2 === 0;
+        // Use the base pair position to determine its phase
+        const phasePosition = y / canvas.height;
+        const phaseIntensity = Math.min(1, phasePosition * 4); // Scale up intensity for early phases
         
         // Create randomized but consistent lengths for each base pair
-        const seed = basePosition * 137.5 + 0.1; // Use a simple hash function for consistency
+        const basePosition = Math.floor(y / spaceY);
+        const seed = basePosition * 137.5 + 0.1; // Use a simple hash for consistency
         const pseudoRandom = seed - Math.floor(seed);
         const baseLength = 10 + pseudoRandom * 25;
         
+        // Alternate between blue and green colors with phase-dependent intensity
+        const isBlue = basePosition % 2 === 0;
+        
+        // Phase-dependent colors - start soft and become more vibrant through phases
+        const blueIntensity = 150 + phaseIntensity * 50;
+        const greenIntensity = 50 + phaseIntensity * 150;
+        
         if (isBlue) {
           ctx.shadowColor = "rgba(0, 100, 255, 0.7)";
-          drawNucleotide(x1 + (x2-x1)/4, y, baseLength, "rgba(0, 150, 255, 0.9)", "rgba(0, 100, 255, 0.7)");
+          drawNucleotide(x1 + (x2-x1)/4, y, baseLength, `rgba(0, ${blueIntensity}, 255, 0.9)`, "rgba(0, 100, 255, 0.7)");
         } else {
           ctx.shadowColor = "rgba(0, 255, 100, 0.7)";
-          drawNucleotide(x1 + (x2-x1)/4, y, baseLength, "rgba(50, 255, 50, 0.9)", "rgba(0, 255, 100, 0.7)");
+          drawNucleotide(x1 + (x2-x1)/4, y, baseLength, `rgba(50, 255, ${greenIntensity}, 0.9)`, "rgba(0, 255, 100, 0.7)");
         }
         
         if (!isBlue) {
           ctx.shadowColor = "rgba(0, 100, 255, 0.7)";
-          drawNucleotide(x2 - (x2-x1)/4, y, baseLength, "rgba(0, 150, 255, 0.9)", "rgba(0, 100, 255, 0.7)");
+          drawNucleotide(x2 - (x2-x1)/4, y, baseLength, `rgba(0, ${blueIntensity}, 255, 0.9)`, "rgba(0, 100, 255, 0.7)");
         } else {
           ctx.shadowColor = "rgba(0, 255, 100, 0.7)";
-          drawNucleotide(x2 - (x2-x1)/4, y, baseLength, "rgba(50, 255, 50, 0.9)", "rgba(0, 255, 100, 0.7)");
+          drawNucleotide(x2 - (x2-x1)/4, y, baseLength, `rgba(50, 255, ${greenIntensity}, 0.9)`, "rgba(0, 255, 100, 0.7)");
         }
       }
       
       // Slowly rotate the helix
       offset += speed;
-      requestAnimationFrame(drawHelix);
+      animationRef.current = requestAnimationFrame(drawHelix);
     };
     
-    const animationId = requestAnimationFrame(drawHelix);
+    animationRef.current = requestAnimationFrame(drawHelix);
     
     return () => {
-      cancelAnimationFrame(animationId);
+      cancelAnimationFrame(animationRef.current);
       window.removeEventListener('resize', setCanvasDimensions);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [startAtPhase, endAtPhase]);
   
   return (
-    <div className={`${className}`}>
+    <div className={`${className} relative h-full`}>
       <canvas 
         ref={canvasRef}
         className="w-full h-full"
