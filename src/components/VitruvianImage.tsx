@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface VitruvianImageProps {
   opacity?: number;
@@ -12,10 +12,36 @@ const VitruvianImage: React.FC<VitruvianImageProps> = ({
 }) => {
   const [currentOpacity, setCurrentOpacity] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-
-  // Smooth animation effect after the image loads
+  const [isVisible, setIsVisible] = useState(false);
+  const imageRef = useRef<HTMLDivElement>(null);
+  
+  // Detect when the component enters the viewport
   useEffect(() => {
-    if (!isLoaded) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.1 } // Trigger when 10% of the element is visible
+    );
+    
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+    
+    return () => {
+      if (imageRef.current) {
+        observer.unobserve(imageRef.current);
+      }
+    };
+  }, []);
+  
+  // Animate opacity when visible and loaded
+  useEffect(() => {
+    if (!isLoaded || !isVisible) {
+      setCurrentOpacity(0);
+      return;
+    }
     
     // Start from low opacity
     setCurrentOpacity(0.1);
@@ -45,10 +71,18 @@ const VitruvianImage: React.FC<VitruvianImageProps> = ({
     };
     
     requestAnimationFrame(animateOpacity);
-  }, [isLoaded, opacity]);
+    
+    // Reset opacity when element leaves viewport
+    return () => {
+      if (!isVisible) {
+        setCurrentOpacity(0);
+      }
+    };
+  }, [isLoaded, isVisible, opacity]);
 
   return (
     <div 
+      ref={imageRef}
       className={`absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none z-0 ${className}`}
       style={{ opacity: currentOpacity }}
     >
