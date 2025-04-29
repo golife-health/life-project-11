@@ -133,9 +133,11 @@ const FlowingLifeScienceElements: React.FC<FlowingLifeScienceElementsProps> = ({
         // Scale based on depth to create 3D effect
         const scaledSize = element.size * element.depth;
         
-        // Apply slight hue variation for visual interest
-        ctx.fillStyle = `hsla(210, 80%, 70%, ${element.opacity})`;
-        ctx.strokeStyle = `hsla(${210 + element.hue}, 80%, 70%, ${element.opacity * 1.2})`;
+        // Apply grey/ash color palette instead of blue
+        // Use a monochromatic grey palette with varying brightness based on depth
+        const greyValue = 130 + Math.floor(element.depth * 70); // 130-200 range for light to mid grey
+        ctx.fillStyle = `rgba(${greyValue}, ${greyValue}, ${greyValue}, ${element.opacity})`;
+        ctx.strokeStyle = `rgba(${greyValue + 20}, ${greyValue + 20}, ${greyValue + 20}, ${element.opacity * 1.2})`;
         
         switch (element.type) {
           case 'dna':
@@ -244,10 +246,11 @@ function drawMolecule(ctx: CanvasRenderingContext2D, x: number, y: number, size:
     ctx.arc(atom.x, atom.y, 4 * depth, 0, Math.PI * 2);
     ctx.fill();
     
-    // Add glow effect
+    // Add grey glow effect
+    const greyValue = 150 + Math.floor(depth * 60);
     const gradient = ctx.createRadialGradient(atom.x, atom.y, 1 * depth, atom.x, atom.y, 8 * depth);
-    gradient.addColorStop(0, `rgba(180, 220, 255, ${0.5 * depth})`);
-    gradient.addColorStop(1, 'rgba(180, 220, 255, 0)');
+    gradient.addColorStop(0, `rgba(${greyValue}, ${greyValue}, ${greyValue}, ${0.5 * depth})`);
+    gradient.addColorStop(1, 'rgba(180, 180, 180, 0)');
     ctx.fillStyle = gradient;
     ctx.beginPath();
     ctx.arc(atom.x, atom.y, 8 * depth, 0, Math.PI * 2);
@@ -259,12 +262,13 @@ function drawCell(ctx: CanvasRenderingContext2D, x: number, y: number, size: num
   // Cell membrane
   ctx.beginPath();
   ctx.arc(x, y, size/2, 0, Math.PI * 2);
+  const greyValue = 150 + Math.floor(depth * 60);
   const gradient = ctx.createRadialGradient(
     x, y, size/4,
     x, y, size/2
   );
-  gradient.addColorStop(0, `rgba(180, 220, 255, ${0.2 * depth})`);
-  gradient.addColorStop(1, `rgba(180, 220, 255, ${0.4 * depth})`);
+  gradient.addColorStop(0, `rgba(${greyValue}, ${greyValue}, ${greyValue}, ${0.2 * depth})`);
+  gradient.addColorStop(1, `rgba(${greyValue - 20}, ${greyValue - 20}, ${greyValue - 20}, ${0.4 * depth})`);
   ctx.fillStyle = gradient;
   ctx.fill();
   ctx.lineWidth = 1 * depth;
@@ -273,7 +277,7 @@ function drawCell(ctx: CanvasRenderingContext2D, x: number, y: number, size: num
   // Nucleus
   ctx.beginPath();
   ctx.arc(x, y, size/5, 0, Math.PI * 2);
-  ctx.fillStyle = `rgba(130, 170, 255, ${0.5 * depth})`;
+  ctx.fillStyle = `rgba(${greyValue - 30}, ${greyValue - 30}, ${greyValue - 30}, ${0.5 * depth})`;
   ctx.fill();
   
   // Organelles
@@ -287,7 +291,7 @@ function drawCell(ctx: CanvasRenderingContext2D, x: number, y: number, size: num
     
     ctx.beginPath();
     ctx.arc(organelleX, organelleY, organelleSize * depth, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(150, 200, 255, ${0.6 * depth})`;
+    ctx.fillStyle = `rgba(${greyValue + 10}, ${greyValue + 10}, ${greyValue + 10}, ${0.6 * depth})`;
     ctx.fill();
   }
 }
@@ -296,12 +300,13 @@ function drawNeuron(ctx: CanvasRenderingContext2D, x: number, y: number, size: n
   // Cell body (soma)
   ctx.beginPath();
   ctx.arc(x, y, size/6, 0, Math.PI * 2);
+  const greyValue = 160 + Math.floor(depth * 50);
   const gradient = ctx.createRadialGradient(
     x, y, size/12,
     x, y, size/6
   );
-  gradient.addColorStop(0, `rgba(180, 200, 255, ${0.5 * depth})`);
-  gradient.addColorStop(1, `rgba(150, 170, 230, ${0.3 * depth})`);
+  gradient.addColorStop(0, `rgba(${greyValue}, ${greyValue}, ${greyValue}, ${0.5 * depth})`);
+  gradient.addColorStop(1, `rgba(${greyValue - 30}, ${greyValue - 30}, ${greyValue - 30}, ${0.3 * depth})`);
   ctx.fillStyle = gradient;
   ctx.fill();
   

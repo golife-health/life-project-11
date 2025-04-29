@@ -143,10 +143,10 @@ const Index = () => {
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 opacity-0 relative"
       >
-        {/* Add FlowingLifeScienceElements to this section */}
+        {/* Add FlowingLifeScienceElements to this section with increased opacity and reduced count */}
         <div className="absolute inset-0">
-          <LifeScienceBackground type="dna" opacity={0.4} speed={0.5} density={1.2} />
-          <FlowingLifeScienceElements count={20} opacity={0.4} speed={0.6} blur={2.5} />
+          <LifeScienceBackground type="dna" opacity={0.5} speed={0.5} density={0.8} />
+          <FlowingLifeScienceElements count={10} opacity={0.6} speed={0.6} blur={2.5} />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
@@ -189,10 +189,10 @@ const Index = () => {
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 bg-gradient-to-b from-black to-[#080810] opacity-0 relative"
       >
-        {/* Add FlowingLifeScienceElements to this section */}
+        {/* Add FlowingLifeScienceElements to this section with increased opacity and reduced count */}
         <div className="absolute inset-0">
-          <LifeScienceBackground type="molecules" opacity={0.4} speed={0.7} />
-          <FlowingLifeScienceElements count={15} opacity={0.35} speed={0.4} blur={3} />
+          <LifeScienceBackground type="molecules" opacity={0.5} speed={0.7} />
+          <FlowingLifeScienceElements count={8} opacity={0.65} speed={0.4} blur={3} />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
@@ -285,7 +285,7 @@ const Index = () => {
       >
         {/* No FlowingLifeScienceElements in the roadmap section as requested */}
         <div className="absolute inset-0">
-          <LifeScienceBackground type="cells" opacity={0.35} speed={0.6} density={1.1} />
+          <LifeScienceBackground type="cells" opacity={0.5} speed={0.6} density={0.7} />
           {/* No FlowingLifeScienceElements here as requested */}
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
@@ -419,10 +419,10 @@ const Index = () => {
         ref={addToRefs as React.RefCallback<HTMLElement>} 
         className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0 relative"
       >
-        {/* Add FlowingLifeScienceElements to this section */}
+        {/* Add FlowingLifeScienceElements to this section with increased opacity and reduced count */}
         <div className="absolute inset-0">
-          <LifeScienceBackground type="neurons" opacity={0.4} speed={0.4} density={0.9} />
-          <FlowingLifeScienceElements count={25} opacity={0.45} speed={0.3} blur={2} />
+          <LifeScienceBackground type="neurons" opacity={0.55} speed={0.4} density={0.6} />
+          <FlowingLifeScienceElements count={12} opacity={0.7} speed={0.3} blur={2} />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
