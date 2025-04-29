@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -51,7 +50,6 @@ const Index = () => {
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="mx-auto md:mx-0">
-              {/* Logo Tree component removed */}
               <div className="w-64 h-64"></div>
             </div>
             
