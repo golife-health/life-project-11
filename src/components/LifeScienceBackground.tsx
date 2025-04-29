@@ -45,29 +45,8 @@ const LifeScienceBackground = ({
       setDimensions({ width, height });
     };
     
-    // Initial setup
     setCanvasDimensions();
-    
-    // Add resize listener
-    const handleResize = () => {
-      setCanvasDimensions();
-    };
-    
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      cancelAnimationFrame(animationRef.current);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []); // Only run this effect once on mount
-  
-  // Create elements and animation in a separate effect that depends on dimensions
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || dimensions.width === 0 || dimensions.height === 0) return;
-    
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    window.addEventListener('resize', setCanvasDimensions);
     
     // Create elements based on type
     let elements: any[] = [];
@@ -91,7 +70,7 @@ const LifeScienceBackground = ({
     
     // Animation loop
     const animate = () => {
-      ctx.clearRect(0, 0, dimensions.width, dimensions.height);
+      ctx.clearRect(0, 0, canvas.width / (window.devicePixelRatio || 1), canvas.height / (window.devicePixelRatio || 1));
       
       elements.forEach(element => {
         element.update(speed);
@@ -101,13 +80,15 @@ const LifeScienceBackground = ({
       animationRef.current = requestAnimationFrame(animate);
     };
     
-    // Start animation
-    animate();
+    if (dimensions.width > 0 && dimensions.height > 0) {
+      animate();
+    }
     
     return () => {
       cancelAnimationFrame(animationRef.current);
+      window.removeEventListener('resize', setCanvasDimensions);
     };
-  }, [dimensions, type, opacity, speed, density]); // Depend on dimensions and props
+  }, [type, opacity, speed, density, dimensions]);
   
   // DNA strand elements
   function createDNAElements(width: number, height: number, count: number) {
