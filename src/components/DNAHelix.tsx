@@ -1,5 +1,4 @@
-
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface DNAHelixProps {
   className?: string;
@@ -16,6 +15,7 @@ const DNAHelix = ({
   const scrollRef = useRef(0);
   const animationRef = useRef<number>(0);
   const progressRef = useRef(0);
+  const [isHovered, setIsHovered] = useState(false);
   
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -109,9 +109,9 @@ const DNAHelix = ({
       
       // Note: Removed the background gradient that was here
       
-      // Enhanced 3D effect with shadows
+      // Enhanced 3D effect with shadows - darker colors
       ctx.shadowBlur = 15;
-      ctx.shadowColor = "rgba(255, 255, 255, 0.5)";
+      ctx.shadowColor = "rgba(200, 200, 255, 0.4)"; // Darker shadow
       
       // Draw two helical backbones with enhanced depth, respecting the visible height
       for (let strand = 0; strand < 2; strand++) {
@@ -120,7 +120,7 @@ const DNAHelix = ({
         // Draw shadow/glow layer
         ctx.beginPath();
         ctx.lineWidth = 5;
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx.strokeStyle = 'rgba(200, 200, 255, 0.15)'; // Darker glow
         
         for (let y = 0; y < visibleHeight; y += 2) {
           const x = centerX + dynamicAmplitude * Math.sin(dynamicFrequency * y + offset + strandOffset);
@@ -136,7 +136,7 @@ const DNAHelix = ({
         // Main strand layer
         ctx.beginPath();
         ctx.lineWidth = 3;
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+        ctx.strokeStyle = 'rgba(220, 220, 255, 0.8)'; // Darker strand
         
         for (let y = 0; y < visibleHeight; y += 2) {
           const x = centerX + dynamicAmplitude * Math.sin(dynamicFrequency * y + offset + strandOffset);
@@ -152,7 +152,7 @@ const DNAHelix = ({
         // Highlight layer for enhanced 3D effect
         ctx.beginPath();
         ctx.lineWidth = 1;
-        ctx.strokeStyle = 'rgba(255, 255, 255, 1)';
+        ctx.strokeStyle = 'rgba(220, 220, 255, 0.9)'; // Darker highlight
         
         for (let y = 0; y < visibleHeight; y += 2) {
           const x = centerX + dynamicAmplitude * Math.sin(dynamicFrequency * y + offset + strandOffset);
@@ -179,7 +179,7 @@ const DNAHelix = ({
         ctx.moveTo(x1, y);
         ctx.lineTo(x2, y);
         ctx.lineWidth = 1.5;
-        ctx.strokeStyle = 'rgba(180, 180, 180, 0.3)';
+        ctx.strokeStyle = 'rgba(160, 160, 180, 0.3)'; // Darker connection
         ctx.stroke();
         
         // Base pair nucleotides with enhanced 3D effect
@@ -197,7 +197,7 @@ const DNAHelix = ({
           // Highlight for 3D effect
           ctx.beginPath();
           ctx.rect(x - width/2, y - 4, width, 2);
-          ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+          ctx.fillStyle = 'rgba(220, 220, 255, 0.3)'; // Darker highlight
           ctx.fill();
         };
         
@@ -215,23 +215,24 @@ const DNAHelix = ({
         const isBlue = basePosition % 2 === 0;
         
         // Phase-dependent colors - start soft and become more vibrant through phases
-        const blueIntensity = 150 + phaseIntensity * 50;
-        const greenIntensity = 50 + phaseIntensity * 150;
+        // Darker colors for both blue and green
+        const blueIntensity = 120 + phaseIntensity * 50;
+        const greenIntensity = 40 + phaseIntensity * 130;
         
         if (isBlue) {
-          ctx.shadowColor = "rgba(0, 100, 255, 0.7)";
-          drawNucleotide(x1 + (x2-x1)/4, y, baseLength, `rgba(0, ${blueIntensity}, 255, 0.9)`, "rgba(0, 100, 255, 0.7)");
+          ctx.shadowColor = "rgba(0, 80, 200, 0.6)"; // Darker shadow
+          drawNucleotide(x1 + (x2-x1)/4, y, baseLength, `rgba(0, ${blueIntensity}, 220, 0.9)`, "rgba(0, 80, 200, 0.6)");
         } else {
-          ctx.shadowColor = "rgba(0, 255, 100, 0.7)";
-          drawNucleotide(x1 + (x2-x1)/4, y, baseLength, `rgba(50, 255, ${greenIntensity}, 0.9)`, "rgba(0, 255, 100, 0.7)");
+          ctx.shadowColor = "rgba(0, 200, 80, 0.6)"; // Darker shadow
+          drawNucleotide(x1 + (x2-x1)/4, y, baseLength, `rgba(40, 220, ${greenIntensity}, 0.9)`, "rgba(0, 200, 80, 0.6)");
         }
         
         if (!isBlue) {
-          ctx.shadowColor = "rgba(0, 100, 255, 0.7)";
-          drawNucleotide(x2 - (x2-x1)/4, y, baseLength, `rgba(0, ${blueIntensity}, 255, 0.9)`, "rgba(0, 100, 255, 0.7)");
+          ctx.shadowColor = "rgba(0, 80, 200, 0.6)"; // Darker shadow
+          drawNucleotide(x2 - (x2-x1)/4, y, baseLength, `rgba(0, ${blueIntensity}, 220, 0.9)`, "rgba(0, 80, 200, 0.6)");
         } else {
-          ctx.shadowColor = "rgba(0, 255, 100, 0.7)";
-          drawNucleotide(x2 - (x2-x1)/4, y, baseLength, `rgba(50, 255, ${greenIntensity}, 0.9)`, "rgba(0, 255, 100, 0.7)");
+          ctx.shadowColor = "rgba(0, 200, 80, 0.6)"; // Darker shadow
+          drawNucleotide(x2 - (x2-x1)/4, y, baseLength, `rgba(40, 220, ${greenIntensity}, 0.9)`, "rgba(0, 200, 80, 0.6)");
         }
       }
       
@@ -250,10 +251,14 @@ const DNAHelix = ({
   }, [startAtPhase, endAtPhase]);
   
   return (
-    <div className={`${className} relative h-full`}>
+    <div 
+      className={`${className} relative h-full`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <canvas 
         ref={canvasRef}
-        className="w-full h-full"
+        className={`w-full h-full transition-transform duration-300 ${isHovered ? 'scale-110' : ''}`}
       />
     </div>
   );

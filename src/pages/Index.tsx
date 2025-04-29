@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
 import Navbar from '../components/Navbar';
@@ -10,6 +11,17 @@ import VitruvianImage from '../components/VitruvianImage';
 
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const heroContentRef = useRef<HTMLDivElement>(null);
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,6 +52,17 @@ const Index = () => {
     }
   };
 
+  // Calculate parallax style for hero content
+  const getHeroParallaxStyle = () => {
+    const translateY = scrollY * 0.3; // Adjust this value to control parallax speed
+    const opacity = Math.max(0, 1 - scrollY * 0.002); // Fade out as user scrolls
+    
+    return {
+      transform: `translateY(-${translateY}px)`,
+      opacity
+    };
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       <VitruvianBackground />
@@ -54,7 +77,11 @@ const Index = () => {
           <VitruvianImage />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center transition-all duration-300"
+            style={getHeroParallaxStyle()}
+            ref={heroContentRef}
+          >
             <div className="mx-auto md:mx-0">
               {/* Logo Tree component removed */}
               <div className="w-64 h-64"></div>
