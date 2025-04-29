@@ -83,7 +83,7 @@
     height: 100%;
     overflow: hidden;
     pointer-events: none;
-    z-index: 0;
+    z-index: 1; /* Increased z-index to make sure it appears */
   }
   
   .text-gradient {

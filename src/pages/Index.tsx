@@ -48,8 +48,8 @@ const Index = () => {
       
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
-        <div className="absolute inset-0 w-full h-full">
-          <ElementsBackground opacity={0.2} />
+        <div className="absolute inset-0 w-full h-full z-0">
+          <ElementsBackground opacity={0.4} />
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
