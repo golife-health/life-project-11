@@ -62,7 +62,7 @@ const VitruvianBackground = () => {
         ctx.beginPath();
         ctx.moveTo(this.x1, this.y1);
         ctx.lineTo(currentX2, currentY2);
-        ctx.strokeStyle = `rgba(210, 200, 170, ${this.opacity})`; // Parchment color
+        ctx.strokeStyle = `rgba(230, 230, 230, ${this.opacity})`; // Changed to lighter color for better visibility
         ctx.lineWidth = this.lineWidth;
         ctx.stroke();
       }
@@ -93,7 +93,7 @@ const VitruvianBackground = () => {
       draw(ctx: CanvasRenderingContext2D) {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(210, 200, 170, ${this.opacity})`;
+        ctx.strokeStyle = `rgba(230, 230, 230, ${this.opacity})`; // Changed to lighter color
         ctx.lineWidth = this.lineWidth;
         ctx.stroke();
       }
@@ -218,7 +218,7 @@ const VitruvianBackground = () => {
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Add a subtle parchment texture effect
+      // Add a subtle background
       ctx.fillStyle = 'rgba(20, 20, 22, 0.01)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
@@ -265,7 +265,7 @@ const VitruvianBackground = () => {
         height: '100%',
         pointerEvents: 'none',
         zIndex: -1,
-        opacity: 0.7
+        opacity: 0.95  // Increased opacity for better visibility
       }}
     />
   );
