@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Metadata } from '../components/Metadata';
 import EpigeneticAgeCalculator from '../components/EpigeneticAgeCalculator';
 import VitruvianImage from '../components/VitruvianImage';
 

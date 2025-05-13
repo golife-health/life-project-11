@@ -7,10 +7,20 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { toast } from '@/hooks/use-toast';
 import { createClient } from '@supabase/supabase-js';
 
-const supabase = createClient(
-  import.meta.env.VITE_SUPABASE_URL,
-  import.meta.env.VITE_SUPABASE_ANON_KEY
-);
+// Initialize Supabase client with error handling
+let supabase;
+try {
+  const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+  const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  
+  if (!supabaseUrl || !supabaseKey) {
+    console.error('Missing Supabase environment variables');
+  } else {
+    supabase = createClient(supabaseUrl, supabaseKey);
+  }
+} catch (error) {
+  console.error('Failed to initialize Supabase client:', error);
+}
 
 const EpigeneticAgeCalculator = () => {
   const [betaValues, setBetaValues] = useState('');
@@ -21,6 +31,12 @@ const EpigeneticAgeCalculator = () => {
   const handleCalculate = async () => {
     setError(null);
     setEpiAge(null);
+
+    // Check if Supabase is initialized
+    if (!supabase) {
+      setError('Supabase client is not initialized. Please check environment variables.');
+      return;
+    }
 
     // Basic validation - check if input is provided
     if (!betaValues.trim()) {
@@ -57,11 +73,11 @@ const EpigeneticAgeCalculator = () => {
 
     try {
       // Call the edge function
-      const { data, error } = await supabase.functions.invoke('epi-clock-service', {
+      const { data, error: fnError } = await supabase.functions.invoke('epi-clock-service', {
         body: { betaValues: values }
       });
 
-      if (error) throw new Error(error.message);
+      if (fnError) throw new Error(fnError.message);
 
       // Set the result
       setEpiAge(data.epiAge);
@@ -104,7 +120,7 @@ const EpigeneticAgeCalculator = () => {
       </div>
       
       <div className="flex flex-col sm:flex-row gap-3">
-        <Button onClick={handleCalculate} disabled={isLoading}>
+        <Button onClick={handleCalculate} disabled={isLoading || !supabase}>
           {isLoading ? 'Calculating...' : 'Calculate Epigenetic Age'}
         </Button>
         <Button variant="outline" onClick={handleExampleData} type="button">
@@ -131,6 +147,13 @@ const EpigeneticAgeCalculator = () => {
       <div className="text-sm text-muted-foreground mt-6">
         <p>The epigenetic clock is based on the Horvath 2013 algorithm.</p>
         <p>This calculation requires data from an Illumina methylation array (e.g., 450k or EPIC).</p>
+        {!supabase && (
+          <Alert className="mt-2">
+            <AlertDescription>
+              Environment variables for Supabase are missing. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your environment.
+            </AlertDescription>
+          </Alert>
+        )}
       </div>
     </div>
   );
