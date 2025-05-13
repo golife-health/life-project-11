@@ -1,6 +1,5 @@
 
 import numpy as np
-import pandas as pd
 from typing import List
 
 # The coefficients for the Horvath 2013 epigenetic clock model
@@ -15,13 +14,6 @@ HORVATH_COEFFICIENTS = {
     # The intercept term for the model
     "intercept": 0.56
 }
-
-# In a real implementation, you would load the coefficients from a CSV file
-# def load_coefficients(file_path: str) -> dict:
-#     df = pd.read_csv(file_path)
-#     coefs = {row['CpG']: row['coefficient'] for _, row in df.iterrows()}
-#     coefs['intercept'] = df[df['CpG'] == 'intercept']['coefficient'].values[0]
-#     return coefs
 
 def calculate_epigenetic_age(beta_values: List[float]) -> float:
     """
@@ -54,6 +46,7 @@ def calculate_epigenetic_age(beta_values: List[float]) -> float:
     simulated_age = 20 + (avg_beta * 80)  # Map average beta to age range of ~20-100
     
     # Add some random variation to make it more realistic
+    np.random.seed(int(sum(beta_values) * 1000))  # Create a deterministic seed based on input
     age_variation = np.random.normal(0, 5)  # Random variation with stddev of 5 years
     final_age = simulated_age + age_variation
     

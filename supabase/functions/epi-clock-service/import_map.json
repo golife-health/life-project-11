@@ -1,7 +1,6 @@
 
 {
   "imports": {
-    "numpy": "https://cdn.jsdelivr.net/gh/TobeTek/Python-Packages-for-Deno/numpy.py@0.0.0/dist/index.ts",
-    "pandas": "https://cdn.jsdelivr.net/gh/TobeTek/Python-Packages-for-Deno/pandas.py@0.0.0/dist/index.ts"
+    "numpy": "https://cdn.jsdelivr.net/gh/TobeTek/Python-Packages-for-Deno/numpy.py@0.0.0/dist/index.ts"
   }
 }
