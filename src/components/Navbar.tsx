@@ -38,6 +38,12 @@ const Navbar = () => {
           >
             [ Research Focus ]
           </Link>
+          <Link 
+            to="/epigenetic-clock" 
+            className={`nav-link ${isActive('/epigenetic-clock') ? 'text-primary font-medium' : 'footer-link'}`}
+          >
+            [ Epigenetic Clock ]
+          </Link>
         </div>
       </div>
     </nav>

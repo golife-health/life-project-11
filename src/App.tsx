@@ -12,7 +12,7 @@ import NotFound from "./pages/NotFound";
 import Whitepaper from "./pages/Whitepaper";
 import Manifesto from "./pages/Manifesto";
 import ResearchFocus from "./pages/ResearchFocus";
-import LifeScienceBackground from "./components/LifeScienceBackground";
+import EpigeneticClock from "./pages/EpigeneticClock";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +31,7 @@ const App = () => (
           <Route path="/whitepaper" element={<Whitepaper />} />
           <Route path="/manifesto" element={<Manifesto />} />
           <Route path="/research" element={<ResearchFocus />} />
+          <Route path="/epigenetic-clock" element={<EpigeneticClock />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
