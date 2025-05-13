@@ -12,10 +12,12 @@ const EpigeneticAgeCalculator = () => {
   const [epiAge, setEpiAge] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [debugInfo, setDebugInfo] = useState<string | null>(null);
 
   const handleCalculate = async () => {
     setError(null);
     setEpiAge(null);
+    setDebugInfo(null);
 
     // Basic validation - check if input is provided
     if (!betaValues.trim()) {
@@ -51,22 +53,34 @@ const EpigeneticAgeCalculator = () => {
     setIsLoading(true);
 
     try {
+      console.log("Calling Supabase edge function...");
+      
       // Call the edge function
       const { data, error: fnError } = await supabase.functions.invoke('epi-clock-service', {
         body: { betaValues: values }
       });
 
-      if (fnError) throw new Error(fnError.message);
+      console.log("Edge function response:", data, fnError);
+
+      if (fnError) {
+        throw new Error(fnError.message || "Error calling edge function");
+      }
+
+      if (!data || data.error) {
+        throw new Error(data?.error || "No data returned from function");
+      }
 
       // Set the result
       setEpiAge(data.epiAge);
+      
       toast({
         title: "Calculation Complete",
         description: "Your epigenetic age has been calculated successfully.",
       });
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error calculating epigenetic age:', err);
       setError('Failed to calculate epigenetic age. Please try again.');
+      setDebugInfo(err.message || "Unknown error");
     } finally {
       setIsLoading(false);
     }
@@ -110,6 +124,11 @@ const EpigeneticAgeCalculator = () => {
       {error && (
         <Alert variant="destructive">
           <AlertDescription>{error}</AlertDescription>
+          {debugInfo && (
+            <div className="mt-2 p-2 bg-muted rounded text-xs font-mono overflow-auto">
+              Error details: {debugInfo}
+            </div>
+          )}
         </Alert>
       )}
 

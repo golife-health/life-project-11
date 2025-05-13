@@ -20,13 +20,19 @@ serve(async (req) => {
       { global: { headers: { Authorization: req.headers.get("Authorization")! } } }
     );
 
-    // Import the Python script
+    console.log("Attempting to import the Python module...");
+    
+    // Import the Python script using the relative path
     const { calculate_epigenetic_age } = await import("./epi_clock_service.py");
-
+    
+    console.log("Python module imported successfully!");
+    
     // Parse the request body
     const { betaValues } = await req.json();
+    console.log(`Received ${betaValues?.length} beta values`);
 
     if (!betaValues || !Array.isArray(betaValues) || betaValues.length !== 353) {
+      console.error("Invalid input: Expected 353 beta values");
       return new Response(
         JSON.stringify({ error: "Invalid input: Expected 353 beta values" }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 400 }
@@ -34,7 +40,9 @@ serve(async (req) => {
     }
 
     // Call the Python function
+    console.log("Calling calculate_epigenetic_age function...");
     const epiAge = calculate_epigenetic_age(betaValues);
+    console.log(`Calculated epigenetic age: ${epiAge}`);
 
     // Return the result
     return new Response(
