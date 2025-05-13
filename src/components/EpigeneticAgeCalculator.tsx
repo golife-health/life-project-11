@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { toast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import { Loader2, CheckCircle, Info } from 'lucide-react';
+import { Loader2, CheckCircle, Info, AlertCircle } from 'lucide-react';
 import {
   Card,
   CardContent,
@@ -35,11 +35,21 @@ const EpigeneticAgeCalculator = () => {
     }
 
     // Parse the beta values
-    const values = betaValues
-      .split(',')
-      .map(val => val.trim())
-      .filter(val => val !== '')
-      .map(val => parseFloat(val));
+    let values: number[];
+    try {
+      values = betaValues
+        .split(',')
+        .map(val => val.trim())
+        .filter(val => val !== '')
+        .map(val => {
+          const num = parseFloat(val);
+          if (isNaN(num)) throw new Error(`Invalid value: "${val}" is not a number`);
+          return num;
+        });
+    } catch (err: any) {
+      setError('Failed to parse beta values: ' + (err.message || 'Invalid format'));
+      return;
+    }
 
     // Validate the number of beta values
     if (values.length !== 353) {
@@ -47,22 +57,17 @@ const EpigeneticAgeCalculator = () => {
       return;
     }
 
-    // Check if all values are valid numbers
-    if (values.some(isNaN)) {
-      setError('All values must be valid numbers');
-      return;
-    }
-
     // Check if values are in the valid range [0, 1]
-    if (values.some(v => v < 0 || v > 1)) {
-      setError('Beta values should be between 0 and 1');
+    const invalidValues = values.filter(v => v < 0 || v > 1);
+    if (invalidValues.length > 0) {
+      setError(`Beta values should be between 0 and 1. Found ${invalidValues.length} invalid values.`);
       return;
     }
 
     setIsLoading(true);
 
     try {
-      console.log("Calling Supabase edge function...");
+      console.log("Calling Supabase edge function with", values.length, "beta values");
       
       // Call the edge function
       const { data, error: fnError } = await supabase.functions.invoke('epi-clock-service', {
@@ -75,8 +80,16 @@ const EpigeneticAgeCalculator = () => {
         throw new Error(fnError.message || "Error calling edge function");
       }
 
-      if (!data || data.error) {
-        throw new Error(data?.error || "No data returned from function");
+      if (!data) {
+        throw new Error("No data returned from function");
+      }
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      if (data.epiAge === undefined || data.epiAge === null) {
+        throw new Error("No epigenetic age returned in response");
       }
 
       // Set the result
@@ -90,6 +103,12 @@ const EpigeneticAgeCalculator = () => {
       console.error('Error calculating epigenetic age:', err);
       setError('Failed to calculate epigenetic age. Please try again.');
       setDebugInfo(err.message || "Unknown error");
+      
+      toast({
+        variant: "destructive",
+        title: "Calculation failed",
+        description: "There was an error calculating your epigenetic age.",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -100,7 +119,7 @@ const EpigeneticAgeCalculator = () => {
     // with a slight skew to produce more realistic ages
     const mockData = Array(353)
       .fill(0)
-      .map((_, i) => {
+      .map(() => {
         // Create some correlation between indices to simulate real methylation patterns
         const baseValue = 0.3 + (Math.random() * 0.4); // Values mainly between 0.3 and 0.7
         return baseValue.toFixed(6);
@@ -157,6 +176,7 @@ const EpigeneticAgeCalculator = () => {
 
         {error && (
           <Alert variant="destructive">
+            <AlertCircle className="h-5 w-5" />
             <AlertTitle>Error</AlertTitle>
             <AlertDescription>{error}</AlertDescription>
             {debugInfo && (

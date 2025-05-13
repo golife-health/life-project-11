@@ -8,17 +8,13 @@ const corsHeaders = {
 };
 
 // This simulates the Horvath 2013 clock model calculation
-// In production, you would integrate with actual R package results
 function calculateHorvathAge(betaValues: number[]): number {
   if (betaValues.length !== 353) {
     throw new Error("Expected 353 beta values");
   }
   
   // Simplified implementation of Horvath's clock
-  // This mimics key characteristics of the model:
-  // - Age range typically between 0-100
-  // - Higher methylation at specific sites correlates with aging
-  // - Clock has specific weighting patterns
+  // This mimics key characteristics of the model
   
   // Some key CpG sites that are most predictive in Horvath's model
   const keySites = [
@@ -44,7 +40,6 @@ function calculateHorvathAge(betaValues: number[]): number {
   const meanBeta = betaValues.reduce((sum, beta) => sum + beta, 0) / betaValues.length;
   
   // Apply the Horvath formula approximation
-  // Base age + weighted contribution + normalized variation
   const baseAge = 20;
   const meanFactor = 60; // How much the mean affects the age
   const weightFactor = 25; // How much the weighted sites affect the age
@@ -55,7 +50,6 @@ function calculateHorvathAge(betaValues: number[]): number {
   age = Math.max(0, Math.min(100, age));
   
   // Add a small random factor to simulate biological variation
-  // Uses a deterministic seed based on the input data
   const seed = betaValues.reduce((sum, beta) => sum + beta, 0);
   const variation = pseudoRandom(seed) * 3; // Up to 3 years variation
   
@@ -75,6 +69,7 @@ serve(async (req) => {
   }
 
   try {
+    // Create supabase client
     const supabaseClient = createClient(
       Deno.env.get("SUPABASE_URL") ?? "",
       Deno.env.get("SUPABASE_ANON_KEY") ?? "",
@@ -84,19 +79,29 @@ serve(async (req) => {
     console.log("Processing epigenetic age calculation request");
     
     // Parse the request body
-    const { betaValues } = await req.json();
+    const requestData = await req.json();
+    const betaValues = requestData.betaValues;
     console.log(`Received ${betaValues?.length} beta values`);
 
-    if (!betaValues || !Array.isArray(betaValues) || betaValues.length !== 353) {
-      console.error("Invalid input: Expected 353 beta values");
+    // Validate input
+    if (!betaValues || !Array.isArray(betaValues)) {
+      console.error("Invalid input: Expected beta values array");
       return new Response(
-        JSON.stringify({ error: "Invalid input: Expected 353 beta values" }),
+        JSON.stringify({ error: "Invalid input: Expected beta values array" }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 400 }
+      );
+    }
+
+    if (betaValues.length !== 353) {
+      console.error(`Invalid input: Expected 353 beta values, got ${betaValues.length}`);
+      return new Response(
+        JSON.stringify({ error: `Invalid input: Expected 353 beta values, got ${betaValues.length}` }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 400 }
       );
     }
 
     // Validate all values are in range [0,1]
-    if (betaValues.some(v => typeof v !== 'number' || v < 0 || v > 1)) {
+    if (betaValues.some(v => typeof v !== 'number' || v < 0 || v > 1 || isNaN(v))) {
       console.error("Invalid input: Beta values must be numbers between 0 and 1");
       return new Response(
         JSON.stringify({ error: "Invalid input: Beta values must be numbers between 0 and 1" }),
@@ -112,13 +117,28 @@ serve(async (req) => {
     // Return the result
     return new Response(
       JSON.stringify({ epiAge }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 200 }
+      { 
+        headers: { 
+          ...corsHeaders, 
+          "Content-Type": "application/json" 
+        }, 
+        status: 200 
+      }
     );
   } catch (error) {
-    console.error("Error processing request:", error.message);
+    console.error("Error processing request:", error.message || error);
     return new Response(
-      JSON.stringify({ error: "Internal server error", details: error.message }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" }, status: 500 }
+      JSON.stringify({ 
+        error: "Internal server error", 
+        details: error.message || "Unknown error" 
+      }),
+      { 
+        headers: { 
+          ...corsHeaders, 
+          "Content-Type": "application/json" 
+        }, 
+        status: 500 
+      }
     );
   }
 });

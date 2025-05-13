@@ -1,14 +1,27 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import EpigeneticAgeCalculator from '../components/EpigeneticAgeCalculator';
 import VitruvianImage from '../components/VitruvianImage';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Home, ArrowLeft } from 'lucide-react';
 
 const EpigeneticClock = () => {
   return (
     <div className="min-h-screen relative flex flex-col">
       <VitruvianImage opacity={0.1} />
-      <div className="container mx-auto px-4 py-16 mt-10 relative z-10">
+      
+      <div className="container mx-auto px-4 py-8 mt-4 relative z-10">
+        <div className="mb-6">
+          <Link to="/">
+            <Button variant="outline" size="sm" className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              <span>Back to Home</span>
+            </Button>
+          </Link>
+        </div>
+        
         <h1 className="text-4xl font-bold mb-2 text-center">Epigenetic Age Calculator</h1>
         <p className="text-lg mb-8 text-center text-muted-foreground">
           Calculate your biological age using DNA methylation patterns
