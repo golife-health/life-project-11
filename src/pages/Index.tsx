@@ -8,6 +8,7 @@ import VitruvianBackground from '../components/VitruvianBackground';
 import ElementsBackground from '../components/ElementsBackground';
 import VitruvianImage from '../components/VitruvianImage';
 import LifeScienceBackground from '../components/LifeScienceBackground';
+import CoreConceptsCarousel from '../components/CoreConceptsCarousel';
 
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -183,98 +184,7 @@ const Index = () => {
         </div>
       </section>
       
-      <section 
-        ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 bg-gradient-to-b from-black to-[#080810] opacity-0 relative"
-      >
-        {/* Section 2: Molecules moving bidirectionally */}
-        <div className="absolute inset-0">
-          <LifeScienceBackground type="molecules" opacity={0.37} speed={0.7} density={0.6} direction="top-bottom" />
-        </div>
-        <div className="container mx-auto px-6 max-w-7xl relative">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Tokenomics</h2>
-            <p className="text-white/70 max-w-2xl mx-auto">
-              The $LIFE token is designed to fund research while creating a sustainable economic model
-              for long-term growth and impact.
-            </p>
-            <div className="h-1 w-20 bg-white/20 mx-auto mt-6"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-            <div className="space-y-6">
-              <div className="glass-panel p-6">
-                <h3 className="text-xl font-bold mb-4">Token Distribution</h3>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-white/70">Research Funding</span>
-                    <span className="text-white font-mono">45%</span>
-                  </div>
-                  <div className="w-full bg-white/10 h-2 rounded-full">
-                    <div className="bg-blue-400 h-2 rounded-full" style={{ width: '45%' }}></div>
-                  </div>
-                  
-                  <div className="flex justify-between items-center mt-4">
-                    <span className="text-white/70">Community & Ecosystem</span>
-                    <span className="text-white font-mono">30%</span>
-                  </div>
-                  <div className="w-full bg-white/10 h-2 rounded-full">
-                    <div className="bg-blue-400 h-2 rounded-full" style={{ width: '30%' }}></div>
-                  </div>
-                  
-                  <div className="flex justify-between items-center mt-4">
-                    <span className="text-white/70">Liquidity & Reserves</span>
-                    <span className="text-white font-mono">15%</span>
-                  </div>
-                  <div className="w-full bg-white/10 h-2 rounded-full">
-                    <div className="bg-blue-400 h-2 rounded-full" style={{ width: '15%' }}></div>
-                  </div>
-                  
-                  <div className="flex justify-between items-center mt-4">
-                    <span className="text-white/70">Team & Development</span>
-                    <span className="text-white font-mono">10%</span>
-                  </div>
-                  <div className="w-full bg-white/10 h-2 rounded-full">
-                    <div className="bg-blue-400 h-2 rounded-full" style={{ width: '10%' }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="space-y-6">
-              <div className="glass-panel p-6">
-                <h3 className="text-xl font-bold mb-4">Token Utility</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start space-x-3">
-                    <div className="h-6 w-6 rounded-full bg-blue-400/20 flex items-center justify-center mt-0.5">
-                      <div className="h-2 w-2 bg-blue-400 rounded-full"></div>
-                    </div>
-                    <span className="text-white/70">Governance voting on research funding allocation</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="h-6 w-6 rounded-full bg-blue-400/20 flex items-center justify-center mt-0.5">
-                      <div className="h-2 w-2 bg-blue-400 rounded-full"></div>
-                    </div>
-                    <span className="text-white/70">Access to exclusive longevity research data and studies</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="h-6 w-6 rounded-full bg-blue-400/20 flex items-center justify-center mt-0.5">
-                      <div className="h-2 w-2 bg-blue-400 rounded-full"></div>
-                    </div>
-                    <span className="text-white/70">Participation in community events and expert panels</span>
-                  </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="h-6 w-6 rounded-full bg-blue-400/20 flex items-center justify-center mt-0.5">
-                      <div className="h-2 w-2 bg-blue-400 rounded-full"></div>
-                    </div>
-                    <span className="text-white/70">Early access to longevity technologies and treatments</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CoreConceptsCarousel />
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
