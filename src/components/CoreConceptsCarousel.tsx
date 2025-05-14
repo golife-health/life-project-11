@@ -38,8 +38,8 @@ const coreConceptsData = [
     teaser: "Keep your personal health metrics encrypted end-to-end while unlocking AI-powered insights.",
     quote: "Privacy and progress—together at last.",
     content: "We believe your health journey is confidential. That's why Life Project integrates Fully Homomorphic Encryption (FHE)—a breakthrough that lets you store, compute on, and share encrypted health metrics without ever decrypting them on our servers.",
-    image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800",
-    alt: "Encrypted data visualization"
+    image: "/lovable-uploads/8e20e5db-de2c-424a-b278-ced419dbcb21.png",
+    alt: "Encrypted health data visualization with DNA and lock"
   },
 ];
 
@@ -96,23 +96,13 @@ const CoreConceptsCarousel = () => {
                   </div>
                   
                   <div className="order-first md:order-last">
-                    {item.id === "epigenetic-clock" || item.id === "semantic-network" ? (
-                      <div className="flex justify-center items-center h-full">
-                        <img 
-                          src={item.image} 
-                          alt={item.alt}
-                          className="max-h-[300px] w-auto object-contain transition-opacity duration-300 hover:opacity-90"
-                        />
-                      </div>
-                    ) : (
-                      <div className="rounded-xl overflow-hidden aspect-[4/3] bg-black/30 backdrop-blur-sm border border-white/10 shadow-lg transform transition-transform hover:scale-[1.02] duration-300">
-                        <img 
-                          src={item.image} 
-                          alt={item.alt}
-                          className="w-full h-full object-contain p-4"
-                        />
-                      </div>
-                    )}
+                    <div className="flex justify-center items-center h-full">
+                      <img 
+                        src={item.image} 
+                        alt={item.alt}
+                        className="max-h-[300px] w-auto object-contain transition-opacity duration-300 hover:opacity-90"
+                      />
+                    </div>
                   </div>
                 </div>
               </CarouselItem>
