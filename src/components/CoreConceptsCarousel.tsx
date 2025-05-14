@@ -29,8 +29,8 @@ const coreConceptsData = [
     teaser: "Our AI-driven knowledge graph turns genes, proteins and interventions into a living map of life extension.",
     quote: "From data points to discovery pathways.",
     content: "Lifespan isn't a single pathway but a vast, interwoven network of genes, proteins, metabolites, and lifestyle factors. Our Advanced Semantic Network layers multi-omics data, clinical trials, and real-world health metrics into a living knowledge graph—turning terabytes of longevity research into actionable insights.",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800",
-    alt: "Abstract network graph visualization"
+    image: "/lovable-uploads/42fe981d-ea03-4f5b-8898-8dafe5c17b21.png",
+    alt: "Network graph visualization of connected nodes representing the longevity network"
   },
   {
     id: "fhe-privacy",
@@ -96,7 +96,7 @@ const CoreConceptsCarousel = () => {
                   </div>
                   
                   <div className="order-first md:order-last">
-                    {item.id === "epigenetic-clock" ? (
+                    {item.id === "epigenetic-clock" || item.id === "semantic-network" ? (
                       <div className="flex justify-center items-center h-full">
                         <img 
                           src={item.image} 
