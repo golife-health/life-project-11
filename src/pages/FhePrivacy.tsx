@@ -37,7 +37,7 @@ const FhePrivacy = () => {
               
               <div>
                 <h3 className="text-xl font-semibold text-blue-400 mb-2">Open-Source Foundations</h3>
-                <p>Built on the same FHE SDK that powers the Mind Network's World-AI Health Hub and Mind Lake Python toolkit, you get industrial-strength security plus full transparency.</p>
+                <p>Built on the same FHE SDK that powers the World-AI Health Hub and Mind Lake Python toolkit, you get industrial-strength security plus full transparency.</p>
               </div>
             </div>
           </div>
