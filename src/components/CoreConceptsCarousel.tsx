@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { 
   Carousel, 
@@ -19,7 +20,7 @@ const coreConceptsData = [
     teaser: "As chemical marks map your true biological age, our epigenetic engineering tools help you rewind the clock.",
     quote: "Your epigenome: the next frontier of youth.",
     content: "As we age, chemical marks accumulate on our DNA—telling a story about our lifetime of exposures, stressors, and metabolic shifts. That story is the epigenetic clock, a biomarker that reads out your \"true\" biological age vs. your calendar age.",
-    image: "/lovable-uploads/f1aef627-f24c-410b-ba6c-065555397e86.png",
+    image: "/lovable-uploads/a55c2b0e-9adc-4608-a30c-88444720dac6.png",
     alt: "DNA double helix with clock - Epigenetic Clock Engineering"
   },
   {
@@ -95,13 +96,23 @@ const CoreConceptsCarousel = () => {
                   </div>
                   
                   <div className="order-first md:order-last">
-                    <div className="rounded-xl overflow-hidden aspect-[4/3] bg-black/30 backdrop-blur-sm border border-white/10 shadow-lg transform transition-transform hover:scale-[1.02] duration-300">
-                      <img 
-                        src={item.image} 
-                        alt={item.alt}
-                        className="w-full h-full object-contain p-4"
-                      />
-                    </div>
+                    {item.id === "epigenetic-clock" ? (
+                      <div className="flex justify-center items-center h-full">
+                        <img 
+                          src={item.image} 
+                          alt={item.alt}
+                          className="max-h-[300px] w-auto object-contain transition-opacity duration-300 hover:opacity-90"
+                        />
+                      </div>
+                    ) : (
+                      <div className="rounded-xl overflow-hidden aspect-[4/3] bg-black/30 backdrop-blur-sm border border-white/10 shadow-lg transform transition-transform hover:scale-[1.02] duration-300">
+                        <img 
+                          src={item.image} 
+                          alt={item.alt}
+                          className="w-full h-full object-contain p-4"
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </CarouselItem>
