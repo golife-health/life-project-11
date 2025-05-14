@@ -8,7 +8,6 @@ import VitruvianBackground from '../components/VitruvianBackground';
 import ElementsBackground from '../components/ElementsBackground';
 import VitruvianImage from '../components/VitruvianImage';
 import LifeScienceBackground from '../components/LifeScienceBackground';
-import LottiePlayer from '../components/LottiePlayer';
 
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
@@ -135,61 +134,6 @@ const Index = () => {
           </div>
           <div className="text-white/50 break-all max-w-xs">
             CA X9BLQmZA7qdWYJKJ6VTmnMiBuzQq3dNZS8fFMU5aY
-          </div>
-        </div>
-      </section>
-      
-      {/* Core Innovations Section */}
-      <section 
-        id="innovations"
-        ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-20 bg-gray-50 text-black opacity-0"
-      >
-        <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Innovations</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our cutting-edge engines driving the future of human longevity.
-            </p>
-            <div className="h-1 w-20 bg-black/20 mx-auto mt-6"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Card 1: Epigenetic Clock */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 duration-300">
-              <LottiePlayer 
-                src="/animations/epigenetic-clock.json" 
-                className="h-40 mx-auto mb-4" 
-              />
-              <h3 className="text-2xl font-semibold text-center">Epigenetic Clock & Engineering</h3>
-              <p className="mt-2 text-gray-600 text-center">
-                Read your biological age in real time—and learn how targeted interventions can rewind your epigenome.
-              </p>
-            </div>
-            
-            {/* Card 2: Semantic Network */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 duration-300">
-              <LottiePlayer 
-                src="/animations/semantic-network.json" 
-                className="h-40 mx-auto mb-4" 
-              />
-              <h3 className="text-2xl font-semibold text-center">Advanced Semantic Network</h3>
-              <p className="mt-2 text-gray-600 text-center">
-                Navigate our AI-powered knowledge graph that maps genes, proteins, metabolites—and the interventions linking them.
-              </p>
-            </div>
-            
-            {/* Card 3: FHE Privacy */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 duration-300">
-              <LottiePlayer 
-                src="/animations/fhe-privacy.json" 
-                className="h-40 mx-auto mb-4" 
-              />
-              <h3 className="text-2xl font-semibold text-center">Privacy-Preserving FHE</h3>
-              <p className="mt-2 text-gray-600 text-center">
-                Securely store and compute on your health data with state-of-the-art homomorphic encryption.
-              </p>
-            </div>
           </div>
         </div>
       </section>
