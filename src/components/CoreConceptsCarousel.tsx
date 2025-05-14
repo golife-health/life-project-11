@@ -16,7 +16,7 @@ import LifeScienceBackground from "./LifeScienceBackground";
 const coreConceptsData = [
   {
     id: "epigenetic-clock",
-    title: "Decoding Biological Time",
+    title: "Epigenetic Clock and Engineering",
     teaser: "As chemical marks map your true biological age, our epigenetic engineering tools help you rewind the clock.",
     quote: "Your epigenome: the next frontier of youth.",
     content: "As we age, chemical marks accumulate on our DNA—telling a story about our lifetime of exposures, stressors, and metabolic shifts. That story is the epigenetic clock, a biomarker that reads out your \"true\" biological age vs. your calendar age.",
@@ -25,7 +25,7 @@ const coreConceptsData = [
   },
   {
     id: "semantic-network",
-    title: "Mapping the Longevity Network",
+    title: "Advanced Semantic Network of Longevity",
     teaser: "Our AI-driven knowledge graph turns genes, proteins and interventions into a living map of life extension.",
     quote: "From data points to discovery pathways.",
     content: "Lifespan isn't a single pathway but a vast, interwoven network of genes, proteins, metabolites, and lifestyle factors. Our Advanced Semantic Network layers multi-omics data, clinical trials, and real-world health metrics into a living knowledge graph—turning terabytes of longevity research into actionable insights.",
@@ -34,7 +34,7 @@ const coreConceptsData = [
   },
   {
     id: "fhe-privacy",
-    title: "Secure Health Data with FHE",
+    title: "Privacy Preserving through FHE",
     teaser: "Keep your personal health metrics encrypted end-to-end while unlocking AI-powered insights.",
     quote: "Privacy and progress—together at last.",
     content: "We believe your health journey is confidential. That's why Life Project integrates Fully Homomorphic Encryption (FHE)—a breakthrough that lets you store, compute on, and share encrypted health metrics without ever decrypting them on our servers.",
