@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -185,6 +186,142 @@ const Index = () => {
       </section>
       
       <CoreConceptsCarousel />
+      
+      {/* New Tokenomics Section */}
+      <section 
+        ref={addToRefs as React.RefCallback<HTMLElement>} 
+        className="py-24 opacity-0 relative"
+      >
+        <div className="absolute inset-0">
+          <LifeScienceBackground type="molecules" opacity={0.2} speed={0.3} density={0.6} direction="right-left" />
+        </div>
+        <div className="container mx-auto px-6 max-w-7xl relative">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Tokenomics</h2>
+            <p className="text-white/70 max-w-2xl mx-auto">
+              The $LIFE token powers our ecosystem, aligning incentives for researchers, community members, and investors.
+            </p>
+            <div className="h-1 w-20 bg-white/20 mx-auto mt-6"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="space-y-6">
+                <h3 className="text-xl font-bold">Token Distribution</h3>
+                
+                <div className="space-y-5">
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-white/80">Research Fund</span>
+                      <span className="font-medium">40%</span>
+                    </div>
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <div className="bg-blue-400 h-2 rounded-full" style={{ width: '40%' }}></div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-white/80">Community & Ecosystem</span>
+                      <span className="font-medium">25%</span>
+                    </div>
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <div className="bg-blue-400 h-2 rounded-full" style={{ width: '25%' }}></div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-white/80">Team & Advisors</span>
+                      <span className="font-medium">15%</span>
+                    </div>
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <div className="bg-blue-400 h-2 rounded-full" style={{ width: '15%' }}></div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-white/80">Public Sale</span>
+                      <span className="font-medium">10%</span>
+                    </div>
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <div className="bg-blue-400 h-2 rounded-full" style={{ width: '10%' }}></div>
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-white/80">Liquidity</span>
+                      <span className="font-medium">10%</span>
+                    </div>
+                    <div className="w-full bg-white/10 rounded-full h-2">
+                      <div className="bg-blue-400 h-2 rounded-full" style={{ width: '10%' }}></div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="pt-6">
+                  <Link 
+                    to="/docs" 
+                    className="text-blue-400 hover:text-blue-300 transition flex items-center text-sm"
+                  >
+                    Learn more about tokenomics
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            </div>
+            
+            <div className="glass-panel p-6 md:p-8">
+              <h3 className="text-xl font-bold mb-5">Token Utility</h3>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-400 flex items-center justify-center mt-1">
+                    <span className="text-xs text-white font-bold">1</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Governance</h4>
+                    <p className="text-white/70 text-sm mt-1">Vote on research priorities, funding allocations, and protocol upgrades.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-400 flex items-center justify-center mt-1">
+                    <span className="text-xs text-white font-bold">2</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Research Access</h4>
+                    <p className="text-white/70 text-sm mt-1">Token holders gain priority access to research findings and potential therapies.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-400 flex items-center justify-center mt-1">
+                    <span className="text-xs text-white font-bold">3</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Protocol Fee Sharing</h4>
+                    <p className="text-white/70 text-sm mt-1">A percentage of protocol fees are distributed to staked token holders.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-400 flex items-center justify-center mt-1">
+                    <span className="text-xs text-white font-bold">4</span>
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-semibold">Ambassador Status</h4>
+                    <p className="text-white/70 text-sm mt-1">Holding a minimum threshold of tokens qualifies you for ambassador program consideration.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       
       <section 
         ref={addToRefs as React.RefCallback<HTMLElement>} 
