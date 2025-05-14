@@ -1,8 +1,13 @@
-import { useState, useEffect } from 'react';
-import { DNAElement, MoleculeElement, NeuronElement, CellElement } from './utils';
+
+import { useState, useEffect, useRef } from 'react';
+import { createDNAElements } from './DNAElement';
+import { createMoleculeElements } from './MoleculeElement';
+import { createNeuronElements } from './NeuronElement';
+import { createCellElements } from './CellElement';
+import { getElementColors } from './utils';
 
 interface LifeScienceBackgroundProps {
-  type?: 'dna' | 'molecules' | 'neurons' | 'cells';
+  type?: 'dna' | 'molecules' | 'neurons' | 'cells' | 'mixed';
   opacity?: number;
   speed?: number;
   density?: number;
@@ -17,51 +22,98 @@ const LifeScienceBackground = ({
   direction = 'left-right',
 }: LifeScienceBackgroundProps) => {
   const [elements, setElements] = useState<JSX.Element[]>([]);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const animationFrameId = useRef<number | null>(null);
 
   useEffect(() => {
-    const createElement = () => {
-      const randomX = Math.random() * 100;
-      const randomY = Math.random() * 100;
-      const randomSize = Math.random() * 3 + 1; // Size between 1 and 4
-      const animationDuration = (Math.random() * 5 + 5) / speed; // Duration between 5 and 10 seconds
-
-      let element;
-
+    // Setup canvas and animation
+    const canvas = document.createElement('canvas');
+    canvasRef.current = canvas;
+    if (!containerRef.current) return;
+    
+    containerRef.current.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    // Set canvas size
+    const resizeCanvas = () => {
+      if (!containerRef.current || !canvas) return;
+      canvas.width = containerRef.current.offsetWidth;
+      canvas.height = containerRef.current.offsetHeight;
+    };
+    
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    // Create elements based on type
+    const colors = getElementColors(opacity);
+    const width = canvas.width;
+    const height = canvas.height;
+    const count = Math.floor(density * 10);
+    
+    let animationElements: any[] = [];
+    
+    // Mixed type will use a variety of elements
+    if (type === 'mixed') {
+      // Add a mix of different element types
+      animationElements = [
+        ...createDNAElements(width, height, Math.floor(count/4), colors, direction),
+        ...createMoleculeElements(width, height, Math.floor(count/4), colors, direction),
+        ...createNeuronElements(width, height, Math.floor(count/4), colors, direction),
+        ...createCellElements(width, height, Math.floor(count/4), colors, direction)
+      ];
+    } else {
+      // Create specified element type
       switch (type) {
         case 'dna':
-          element = <DNAElement key={Math.random()} x={randomX} y={randomY} size={randomSize} duration={animationDuration} direction={direction} />;
+          animationElements = createDNAElements(width, height, count, colors, direction);
           break;
         case 'molecules':
-          element = <MoleculeElement key={Math.random()} x={randomX} y={randomY} size={randomSize} duration={animationDuration} direction={direction} />;
+          animationElements = createMoleculeElements(width, height, count, colors, direction);
           break;
         case 'neurons':
-          element = <NeuronElement key={Math.random()} x={randomX} y={randomY} size={randomSize} duration={animationDuration} direction={direction} />;
+          animationElements = createNeuronElements(width, height, count, colors, direction);
           break;
         case 'cells':
-          element = <CellElement key={Math.random()} x={randomX} y={randomY} size={randomSize} duration={animationDuration} direction={direction} />;
+          animationElements = createCellElements(width, height, count, colors, direction);
           break;
-        default:
-          element = <DNAElement key={Math.random()} x={randomX} y={randomY} size={randomSize} duration={animationDuration} direction={direction} />;
       }
-
-      return element;
+    }
+    
+    // Animation loop
+    const animate = () => {
+      if (!ctx) return;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      animationElements.forEach(element => {
+        element.update(speed);
+        element.draw(ctx);
+      });
+      
+      animationFrameId.current = requestAnimationFrame(animate);
     };
-
-    const newElements = Array.from({ length: Math.floor(density * 25) }, () => createElement());
-    setElements(newElements);
-
+    
+    animate();
+    
     return () => {
-      // Cleanup if needed
+      window.removeEventListener('resize', resizeCanvas);
+      if (animationFrameId.current !== null) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+      if (containerRef.current && canvas) {
+        containerRef.current.removeChild(canvas);
+      }
     };
-  }, [type, speed, density, direction]);
-
+  }, [type, opacity, speed, density, direction]);
+  
   return (
     <div 
+      ref={containerRef}
       className="absolute inset-0 pointer-events-none overflow-hidden"
-      style={{ opacity }}
-    >
-      {elements.map((element, index) => element)}
-    </div>
+      style={{ opacity: 1 }} // We control opacity through the element colors
+    />
   );
 };
 
