@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { 
   Carousel, 
@@ -20,7 +19,7 @@ const coreConceptsData = [
     teaser: "As chemical marks map your true biological age, our epigenetic engineering tools help you rewind the clock.",
     quote: "Your epigenome: the next frontier of youth.",
     content: "As we age, chemical marks accumulate on our DNA—telling a story about our lifetime of exposures, stressors, and metabolic shifts. That story is the epigenetic clock, a biomarker that reads out your \"true\" biological age vs. your calendar age.",
-    image: "/lovable-uploads/29002cb8-af48-43ee-9674-5777e9b1ddfb.png",
+    image: "/lovable-uploads/f1aef627-f24c-410b-ba6c-065555397e86.png",
     alt: "DNA double helix with clock - Epigenetic Clock Engineering"
   },
   {
@@ -47,7 +46,7 @@ const CoreConceptsCarousel = () => {
   return (
     <section 
       id="core-concepts" 
-      className="py-24 bg-black relative overflow-hidden"
+      className="py-24 bg-gradient-to-b from-black to-[#080810] relative overflow-hidden"
       aria-label="Core Concepts Carousel"
     >
       {/* Background elements */}
@@ -96,7 +95,7 @@ const CoreConceptsCarousel = () => {
                   </div>
                   
                   <div className="order-first md:order-last">
-                    <div className="rounded-xl overflow-hidden aspect-[4/3] bg-black backdrop-blur-sm border border-white/10 shadow-lg transform transition-transform hover:scale-[1.02] duration-300">
+                    <div className="rounded-xl overflow-hidden aspect-[4/3] bg-black/30 backdrop-blur-sm border border-white/10 shadow-lg transform transition-transform hover:scale-[1.02] duration-300">
                       <img 
                         src={item.image} 
                         alt={item.alt}
