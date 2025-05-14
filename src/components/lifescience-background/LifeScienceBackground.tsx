@@ -1,178 +1,66 @@
-
-import { useEffect, useRef, useState } from 'react';
-import { setupCanvas, getElementColors, AnimationElement } from './utils';
-import { createDNAElements } from './DNAElement';
-import { createMoleculeElements } from './MoleculeElement';
-import { createCellElements } from './CellElement';
-import { createNeuronElements } from './NeuronElement';
+import { useState, useEffect } from 'react';
+import { DNAElement, MoleculeElement, NeuronElement, CellElement } from './utils';
 
 interface LifeScienceBackgroundProps {
-  type?: 'dna' | 'molecules' | 'cells' | 'neurons' | 'mixed';
+  type?: 'dna' | 'molecules' | 'neurons' | 'cells';
   opacity?: number;
   speed?: number;
   density?: number;
-  direction?: 'left-right' | 'right-left' | 'top-bottom' | 'bottom-top' | 'diagonal-1' | 'diagonal-2' | 'random';
-  className?: string;
+  direction?: 'left-right' | 'right-left' | 'top-bottom' | 'bottom-top' | 'diagonal-1' | 'diagonal-2';
 }
 
 const LifeScienceBackground = ({
-  type = 'molecules',
-  opacity = 0.37,  // Updated default opacity to 0.37
+  type = 'dna',
+  opacity = 0.5,
   speed = 1,
   density = 1,
-  direction = 'random',
-  className = ''
+  direction = 'left-right',
 }: LifeScienceBackgroundProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const animationRef = useRef<number>(0);
+  const [elements, setElements] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !containerRef.current) return;
-    
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    
-    // Set canvas dimensions with higher resolution for retina displays
-    const setCanvasDimensions = () => {
-      if (!setupCanvas(canvas, containerRef)) return;
-      
-      const container = containerRef.current;
-      if (!container) return;
-      
-      const width = container.clientWidth;
-      const height = container.clientHeight;
-      
-      // Only update dimensions state if they've actually changed
-      if (width !== dimensions.width || height !== dimensions.height) {
-        setDimensions({ width, height });
-      }
-    };
-    
-    // Initial setup
-    setCanvasDimensions();
-    
-    // Handle resize events
-    const handleResize = () => {
-      setCanvasDimensions();
-    };
-    
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [dimensions.width, dimensions.height]);
+    const createElement = () => {
+      const randomX = Math.random() * 100;
+      const randomY = Math.random() * 100;
+      const randomSize = Math.random() * 3 + 1; // Size between 1 and 4
+      const animationDuration = (Math.random() * 5 + 5) / speed; // Duration between 5 and 10 seconds
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    
-    let elements: AnimationElement[] = [];
-    
-    // Only create elements if dimensions are valid
-    if (dimensions.width > 0 && dimensions.height > 0) {
-      // Get theme-adjusted colors
-      const colors = getElementColors(opacity);
-      
-      // We want 6 elements total - 3 in each direction
-      const elementCount = 3; // Per direction, total 6
-      
-      // First direction
-      const primaryDirection = direction;
-      
-      // Second direction - opposite of the first direction
-      const oppositeDirection = getOppositeDirection(primaryDirection);
-      
-      switch(type) {
+      let element;
+
+      switch (type) {
         case 'dna':
-          elements = [
-            ...createDNAElements(dimensions.width, dimensions.height, elementCount, colors, primaryDirection),
-            ...createDNAElements(dimensions.width, dimensions.height, elementCount, colors, oppositeDirection)
-          ];
+          element = <DNAElement key={Math.random()} x={randomX} y={randomY} size={randomSize} duration={animationDuration} direction={direction} />;
           break;
         case 'molecules':
-          elements = [
-            ...createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, primaryDirection),
-            ...createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, oppositeDirection)
-          ];
-          break;
-        case 'cells':
-          elements = [
-            ...createCellElements(dimensions.width, dimensions.height, elementCount, colors, primaryDirection),
-            ...createCellElements(dimensions.width, dimensions.height, elementCount, colors, oppositeDirection)
-          ];
+          element = <MoleculeElement key={Math.random()} x={randomX} y={randomY} size={randomSize} duration={animationDuration} direction={direction} />;
           break;
         case 'neurons':
-          elements = [
-            ...createNeuronElements(dimensions.width, dimensions.height, elementCount, colors, primaryDirection),
-            ...createNeuronElements(dimensions.width, dimensions.height, elementCount, colors, oppositeDirection)
-          ];
+          element = <NeuronElement key={Math.random()} x={randomX} y={randomY} size={randomSize} duration={animationDuration} direction={direction} />;
           break;
-        case 'mixed':
-          // Create a mix of all element types with bidirectional movement
-          elements = [
-            ...createDNAElements(dimensions.width, dimensions.height, Math.ceil(elementCount/2), colors, primaryDirection),
-            ...createMoleculeElements(dimensions.width, dimensions.height, Math.floor(elementCount/2), colors, oppositeDirection),
-            ...createCellElements(dimensions.width, dimensions.height, Math.ceil(elementCount/2), colors, primaryDirection),
-            ...createNeuronElements(dimensions.width, dimensions.height, Math.floor(elementCount/2), colors, oppositeDirection)
-          ];
+        case 'cells':
+          element = <CellElement key={Math.random()} x={randomX} y={randomY} size={randomSize} duration={animationDuration} direction={direction} />;
           break;
         default:
-          elements = [
-            ...createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, primaryDirection),
-            ...createMoleculeElements(dimensions.width, dimensions.height, elementCount, colors, oppositeDirection)
-          ];
+          element = <DNAElement key={Math.random()} x={randomX} y={randomY} size={randomSize} duration={animationDuration} direction={direction} />;
       }
-      
-      // Animation loop
-      const animate = () => {
-        ctx.clearRect(0, 0, dimensions.width, dimensions.height);
-        
-        elements.forEach(element => {
-          element.update(speed);
-          element.draw(ctx);
-        });
-        
-        animationRef.current = requestAnimationFrame(animate);
-      };
-      
-      animate();
-    }
-    
-    return () => {
-      cancelAnimationFrame(animationRef.current);
+
+      return element;
     };
-  }, [type, opacity, speed, density, direction, dimensions.width, dimensions.height]);
-  
-  // Helper function to get the opposite direction
-  const getOppositeDirection = (dir: string): 'left-right' | 'right-left' | 'top-bottom' | 'bottom-top' | 'diagonal-1' | 'diagonal-2' | 'random' => {
-    switch(dir) {
-      case 'left-right': return 'right-left';
-      case 'right-left': return 'left-right';
-      case 'top-bottom': return 'bottom-top';
-      case 'bottom-top': return 'top-bottom';
-      case 'diagonal-1': return 'diagonal-2';
-      case 'diagonal-2': return 'diagonal-1';
-      default: return 'random';
-    }
-  };
-  
+
+    const newElements = Array.from({ length: Math.floor(density * 25) }, () => createElement());
+    setElements(newElements);
+
+    return () => {
+      // Cleanup if needed
+    };
+  }, [type, speed, density, direction]);
+
   return (
     <div 
-      ref={containerRef}
-      className={`absolute inset-0 w-full h-full pointer-events-none overflow-hidden ${className}`}
+      className="absolute inset-0 pointer-events-none overflow-hidden"
+      style={{ opacity }}
     >
-      <canvas 
-        ref={canvasRef}
-        className="w-full h-full"
-        style={{ opacity }}
-      />
+      {elements.map((element, index) => element)}
     </div>
   );
 };
