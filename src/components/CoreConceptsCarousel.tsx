@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { 
   Carousel, 
@@ -20,8 +19,8 @@ const coreConceptsData = [
     teaser: "As chemical marks map your true biological age, our epigenetic engineering tools help you rewind the clock.",
     quote: "Your epigenome: the next frontier of youth.",
     content: "As we age, chemical marks accumulate on our DNA—telling a story about our lifetime of exposures, stressors, and metabolic shifts. That story is the epigenetic clock, a biomarker that reads out your \"true\" biological age vs. your calendar age.",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800",
-    alt: "DNA methylation pattern visualization"
+    image: "/lovable-uploads/f1aef627-f24c-410b-ba6c-065555397e86.png",
+    alt: "DNA double helix with clock - Epigenetic Clock Engineering"
   },
   {
     id: "semantic-network",
@@ -100,7 +99,7 @@ const CoreConceptsCarousel = () => {
                       <img 
                         src={item.image} 
                         alt={item.alt}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain p-4"
                       />
                     </div>
                   </div>
