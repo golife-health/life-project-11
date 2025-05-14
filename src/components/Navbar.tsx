@@ -1,4 +1,5 @@
 
+
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
@@ -38,12 +39,7 @@ const Navbar = () => {
           >
             [ Research Focus ]
           </Link>
-          <Link 
-            to="/epigenetic-clock" 
-            className={`nav-link ${isActive('/epigenetic-clock') ? 'text-primary font-medium' : 'footer-link'}`}
-          >
-            [ Epigenetic Clock ]
-          </Link>
+          {/* Removed Epigenetic Clock link */}
         </div>
       </div>
     </nav>
@@ -51,3 +47,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

@@ -1,4 +1,5 @@
 
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,7 +13,6 @@ import NotFound from "./pages/NotFound";
 import Whitepaper from "./pages/Whitepaper";
 import Manifesto from "./pages/Manifesto";
 import ResearchFocus from "./pages/ResearchFocus";
-import EpigeneticClock from "./pages/EpigeneticClock";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +31,7 @@ const App = () => (
           <Route path="/whitepaper" element={<Whitepaper />} />
           <Route path="/manifesto" element={<Manifesto />} />
           <Route path="/research" element={<ResearchFocus />} />
-          <Route path="/epigenetic-clock" element={<EpigeneticClock />} />
+          {/* Removed epigenetic clock route */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -41,3 +41,4 @@ const App = () => (
 );
 
 export default App;
+
