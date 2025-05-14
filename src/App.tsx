@@ -1,6 +1,4 @@
 
-
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +13,9 @@ import Whitepaper from "./pages/Whitepaper";
 import Manifesto from "./pages/Manifesto";
 import ResearchFocus from "./pages/ResearchFocus";
 import ResearchSections from "./pages/ResearchSections";
+import EpigeneticClock from "./pages/EpigeneticClock";
+import SemanticNetwork from "./pages/SemanticNetwork";
+import FhePrivacy from "./pages/FhePrivacy";
 
 const queryClient = new QueryClient();
 
@@ -34,7 +35,9 @@ const App = () => (
           <Route path="/manifesto" element={<Manifesto />} />
           <Route path="/research" element={<ResearchFocus />} />
           <Route path="/research-sections" element={<ResearchSections />} />
-          {/* Removed epigenetic clock route */}
+          <Route path="/epigenetic-clock" element={<EpigeneticClock />} />
+          <Route path="/semantic-network" element={<SemanticNetwork />} />
+          <Route path="/fhe-privacy" element={<FhePrivacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -44,4 +47,3 @@ const App = () => (
 );
 
 export default App;
-
