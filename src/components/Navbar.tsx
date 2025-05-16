@@ -33,16 +33,10 @@ const Navbar = () => {
             [ Manifesto ]
           </Link>
           <Link 
-            to="/research" 
-            className={`nav-link ${isActive('/research') ? 'text-primary font-medium' : 'footer-link'}`}
+            to="/semantic-network" 
+            className={`nav-link ${isActive('/semantic-network') ? 'text-primary font-medium' : 'footer-link'}`}
           >
             [ Research Focus ]
-          </Link>
-          <Link 
-            to="/knowledge-platform" 
-            className={`nav-link ${isActive('/knowledge-platform') ? 'text-primary font-medium' : 'footer-link'}`}
-          >
-            [ Knowledge Platform ]
           </Link>
         </div>
       </div>

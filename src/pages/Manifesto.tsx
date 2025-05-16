@@ -10,8 +10,6 @@ const Manifesto = () => {
       <BinaryBackground />
       <Navbar />
       
-      {/* Top right logo removed */}
-      
       <div className="container mx-auto px-6 max-w-4xl pt-24">
         <div className="min-h-screen flex flex-col justify-center items-center text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Manifesto</h1>
@@ -25,16 +23,24 @@ const Manifesto = () => {
           <div className="space-y-8 w-full">
             <section className="glass-panel p-6 md:p-8">
               <div className="prose prose-lg prose-invert max-w-none text-center">
-                <p className="mb-4">
-                  $LIFE token draws inspiration from ancient wisdom yet embodies modern scientific advancement. It transforms the paradigm of human longevity by creating economic incentives for breakthroughs in health extension and age reversal technologies.
+                <p className="mb-6 text-xl">
+                  LIFE Project democratizes longevity by uniting ancient wisdom, modern science, and decentralized community power
                 </p>
                 
-                <p className="mb-4">
-                  Harness the power of advanced AI models and predictive algorithms that analyze biological pathways. $LIFE token leverages machine learning to accelerate discoveries and democratize access to cutting-edge longevity research.
+                <p className="mb-6">
+                  Through Data-to-Earn, users contribute health data and become co-creators of collective longevity intelligence
                 </p>
                 
-                <p className="mb-4">
-                  Under the guiding principles of transparency and innovation, $LIFE token holders become pioneers in humanity's greatest quest: to extend healthspan, overcome biological limitations, and redefine what it means to live well.
+                <p className="mb-6">
+                  The Life delivers trusted, science-backed answers — like Perplexity for longevity, but verified.
+                </p>
+                
+                <p className="mb-6">
+                  DAO governance ensures research and platform decisions are made by the community.
+                </p>
+                
+                <p className="mb-6">
+                  The $LIFE token incentivizes innovation, aligning community participation with real scientific progress.
                 </p>
               </div>
             </section>
