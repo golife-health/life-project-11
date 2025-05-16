@@ -19,7 +19,7 @@ const coreConceptsData = [
     title: "Advanced Semantic Network of Longevity",
     teaser: "Transforming Community Wellness Data into Science-Backed Longevity Insights",
     quote: "From data points to discovery pathways.",
-    content: "Lifespan isn't a single pathway but a vast, interwoven network of genes, proteins, metabolites, and lifestyle factors. Our Advanced Semantic Network layers multi-omics data, clinical trials, and real-world health metrics into a living knowledge graph—turning terabytes of longevity research into actionable insights.",
+    content: "Our Semantic Network acts as a living knowledge graph, continuously evolving with new longevity studies and community-contributed wellness data. It connects scientific evidence with real-life habits, simplifying the complex relationships between lifestyle choices, health metrics, and aging mechanisms into clear, actionable insights.",
     image: "/lovable-uploads/42fe981d-ea03-4f5b-8898-8dafe5c17b21.png",
     alt: "Network graph visualization of connected nodes representing the longevity network"
   },
