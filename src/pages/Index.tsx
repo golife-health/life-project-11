@@ -101,7 +101,7 @@ const Index = () => {
               
               <div className="space-y-2 mb-20">
                 <div className="research-pillar">
-                  <span>Regenerative Medicine</span>
+                  <span>Lifestyle-Driven Longevity Research</span>
                   <span className="research-pillar-number">v.0.1 →</span>
                 </div>
                 <div className="research-pillar">
