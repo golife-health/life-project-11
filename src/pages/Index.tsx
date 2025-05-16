@@ -145,7 +145,7 @@ const Index = () => {
             
             <div className="feature-card">
               <div className="text-blue-400 mb-4 text-xl font-mono">02</div>
-              <h3 className="text-xl font-bold mb-3">Cellular Senescence</h3>
+              <h3 className="text-xl font-bold mb-3">AI-Powered Knowledge Synthesis</h3>
               <p className="text-white/70">
                 Identifying and removing senescent cells that contribute to aging and age-related
                 diseases, rejuvenating tissues and improving overall health.
