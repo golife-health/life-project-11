@@ -84,7 +84,7 @@ const Index = () => {
                   Longevity. Immunity. Fitness. Energy.
                 </p>
                 <p className="text-lg text-white/80">
-                  Advanced semantic network of longevity. Pioneering next-generation epigenetic protocols and advanced cellular rejuvenation technologies.
+                  By blending ancient wellness wisdom with cutting-edge AI and decentralized collaboration, LIFE democratizes access to longevity insights — moving beyond the lab and into the hands of the community.
                 </p>
               </div>
               
