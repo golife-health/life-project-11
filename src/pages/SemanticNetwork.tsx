@@ -61,26 +61,11 @@ const SemanticNetwork = () => {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
-            <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 p-6 rounded-lg border border-blue-500/20">
-              <h3 className="text-xl font-semibold mb-3">Personalized Interventions</h3>
-              <p>
-                Map your unique biomarkers against our knowledge graph to identify tailored longevity interventions.
-              </p>
-            </div>
             
-            <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 p-6 rounded-lg border border-blue-500/20">
-              <h3 className="text-xl font-semibold mb-3">Drug Discovery</h3>
-              <p>
-                Identify novel therapeutic targets and drug repurposing opportunities for age-related diseases.
-              </p>
-            </div>
             
-            <div className="bg-gradient-to-br from-blue-900/30 to-purple-900/30 p-6 rounded-lg border border-blue-500/20">
-              <h3 className="text-xl font-semibold mb-3">Clinical Decision Support</h3>
-              <p>
-                Aid healthcare providers in optimizing patient outcomes through evidence-based interventions.
-              </p>
-            </div>
+            
+            
+            
           </div>
         </div>
       </main>
