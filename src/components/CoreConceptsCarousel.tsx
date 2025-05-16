@@ -15,15 +15,6 @@ import LifeScienceBackground from "./LifeScienceBackground";
 // Data for the carousel slides
 const coreConceptsData = [
   {
-    id: "epigenetic-clock",
-    title: "Epigenetic Clock and Engineering",
-    teaser: "As chemical marks map your true biological age, our epigenetic engineering tools help you rewind the clock.",
-    quote: "Your epigenome: the next frontier of youth.",
-    content: "As we age, chemical marks accumulate on our DNA—telling a story about our lifetime of exposures, stressors, and metabolic shifts. That story is the epigenetic clock, a biomarker that reads out your \"true\" biological age vs. your calendar age.",
-    image: "/lovable-uploads/a55c2b0e-9adc-4608-a30c-88444720dac6.png",
-    alt: "DNA double helix with clock - Epigenetic Clock Engineering"
-  },
-  {
     id: "semantic-network",
     title: "Advanced Semantic Network of Longevity",
     teaser: "Our AI-driven knowledge graph turns genes, proteins and interventions into a living map of life extension.",
