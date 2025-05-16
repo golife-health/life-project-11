@@ -383,7 +383,7 @@ const Index = () => {
                     <div className="md:text-right md:pr-12">
                       <div className="glass-panel p-6 md:ml-auto">
                         <div className="text-blue-400 font-mono mb-2">PHASE 3 - Q3 2025</div>
-                        <h3 className="text-xl font-bold mb-3">Technology Development</h3>
+                        <h3 className="text-xl font-bold mb-3">Governance Structure</h3>
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
