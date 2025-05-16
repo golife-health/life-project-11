@@ -9,6 +9,7 @@ import ElementsBackground from '../components/ElementsBackground';
 import VitruvianImage from '../components/VitruvianImage';
 import LifeScienceBackground from '../components/LifeScienceBackground';
 import CoreConceptsCarousel from '../components/CoreConceptsCarousel';
+
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const heroContentRef = useRef<HTMLDivElement>(null);
@@ -396,32 +397,6 @@ const Index = () => {
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
                             <span>Research Grants Allocation & Oversight</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="relative" data-phase="4">
-                  <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400/50 rounded-full transform -translate-x-1/2"></div>
-                  <div className="grid grid-cols-1 gap-8">
-                    <div className="md:text-right md:pr-12">
-                      <div className="glass-panel p-6 border-dashed border md:ml-auto">
-                        <div className="text-blue-400/70 font-mono mb-2">PHASE 4 - Q4 2025</div>
-                        <h3 className="text-xl font-bold mb-3">Global Implementation</h3>
-                        <div className="space-y-2">
-                          <div className="flex items-start md:justify-end text-white/70">
-                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>First-generation therapeutics available to token holders</span>
-                          </div>
-                          <div className="flex items-start md:justify-end text-white/70">
-                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Global expansion of research initiatives</span>
-                          </div>
-                          <div className="flex items-start md:justify-end text-white/70">
-                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Development of personalized longevity protocols</span>
                           </div>
                         </div>
                       </div>
