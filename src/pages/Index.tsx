@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -10,44 +9,36 @@ import ElementsBackground from '../components/ElementsBackground';
 import VitruvianImage from '../components/VitruvianImage';
 import LifeScienceBackground from '../components/LifeScienceBackground';
 import CoreConceptsCarousel from '../components/CoreConceptsCarousel';
-
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const heroContentRef = useRef<HTMLDivElement>(null);
   const [scrollY, setScrollY] = useState(0);
-
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-up');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    sectionRefs.current.forEach((ref) => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-up');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    sectionRefs.current.forEach(ref => {
       if (ref) observer.observe(ref);
     });
-
     return () => {
-      sectionRefs.current.forEach((ref) => {
+      sectionRefs.current.forEach(ref => {
         if (ref) observer.unobserve(ref);
       });
     };
   }, []);
-
   const addToRefs = (el: HTMLElement | null) => {
     if (el && !sectionRefs.current.includes(el)) {
       sectionRefs.current.push(el);
@@ -58,15 +49,13 @@ const Index = () => {
   const getHeroParallaxStyle = () => {
     const translateY = scrollY * 0.3; // Adjust this value to control parallax speed
     const opacity = Math.max(0, 1 - scrollY * 0.002); // Fade out as user scrolls
-    
+
     return {
       transform: `translateY(-${translateY}px)`,
       opacity
     };
   };
-
-  return (
-    <div className="min-h-screen bg-black text-white">
+  return <div className="min-h-screen bg-black text-white">
       <VitruvianBackground />
       
       {/* Navbar */}
@@ -80,11 +69,7 @@ const Index = () => {
           {/* No LifeScienceBackground or FlowingLifeScienceElements as requested */}
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          <div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center transition-all duration-300"
-            style={getHeroParallaxStyle()}
-            ref={heroContentRef}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center transition-all duration-300" style={getHeroParallaxStyle()} ref={heroContentRef}>
             <div className="mx-auto md:mx-0">
               {/* Logo Tree component removed */}
               <div className="w-64 h-64"></div>
@@ -140,10 +125,7 @@ const Index = () => {
         </div>
       </section>
       
-      <section 
-        ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 opacity-0 relative"
-      >
+      <section ref={addToRefs as React.RefCallback<HTMLElement>} className="py-24 opacity-0 relative">
         {/* Section 1: DNA elements moving bidirectionally */}
         <div className="absolute inset-0">
           <LifeScienceBackground type="dna" opacity={0.37} speed={0.5} density={0.8} direction="left-right" />
@@ -157,11 +139,8 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="feature-card">
               <div className="text-blue-400 mb-4 text-xl font-mono">01</div>
-              <h3 className="text-xl font-bold mb-3">Regenerative Medicine</h3>
-              <p className="text-white/70">
-                Funding breakthrough treatments that repair and replace damaged tissues and organs,
-                reversing the effects of aging at the cellular level.
-              </p>
+              <h3 className="text-xl font-bold mb-3">Lifestyle-Driven Longevity Research</h3>
+              <p className="text-white/70">Harnessing the power of collective wellness data (nutrition, exercise, sleep, stress management) to identify patterns and interventions that promote healthy aging. By analyzing real-world data, we empower individuals with actionable strategies to improve their healthspan.</p>
             </div>
             
             <div className="feature-card">
@@ -175,7 +154,7 @@ const Index = () => {
             
             <div className="feature-card">
               <div className="text-blue-400 mb-4 text-xl font-mono">03</div>
-              <h3 className="text-xl font-bold mb-3">Genomics & Epigenetics</h3>
+              <h3 className="text-xl font-bold mb-3">Decentralized Collaboration & Governance</h3>
               <p className="text-white/70">
                 Leveraging advanced genetic technologies to understand and modify the epigenetic markers
                 that control aging processes throughout the human lifespan.
@@ -188,10 +167,7 @@ const Index = () => {
       <CoreConceptsCarousel />
       
       {/* New Tokenomics Section */}
-      <section 
-        ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 opacity-0 relative"
-      >
+      <section ref={addToRefs as React.RefCallback<HTMLElement>} className="py-24 opacity-0 relative">
         <div className="absolute inset-0">
           <LifeScienceBackground type="molecules" opacity={0.2} speed={0.3} density={0.6} direction="right-left" />
         </div>
@@ -216,7 +192,9 @@ const Index = () => {
                       <span className="font-medium">40%</span>
                     </div>
                     <div className="w-full bg-white/10 rounded-full h-2">
-                      <div className="bg-blue-400 h-2 rounded-full" style={{ width: '40%' }}></div>
+                      <div className="bg-blue-400 h-2 rounded-full" style={{
+                      width: '40%'
+                    }}></div>
                     </div>
                   </div>
                   
@@ -226,7 +204,9 @@ const Index = () => {
                       <span className="font-medium">25%</span>
                     </div>
                     <div className="w-full bg-white/10 rounded-full h-2">
-                      <div className="bg-blue-400 h-2 rounded-full" style={{ width: '25%' }}></div>
+                      <div className="bg-blue-400 h-2 rounded-full" style={{
+                      width: '25%'
+                    }}></div>
                     </div>
                   </div>
                   
@@ -236,7 +216,9 @@ const Index = () => {
                       <span className="font-medium">15%</span>
                     </div>
                     <div className="w-full bg-white/10 rounded-full h-2">
-                      <div className="bg-blue-400 h-2 rounded-full" style={{ width: '15%' }}></div>
+                      <div className="bg-blue-400 h-2 rounded-full" style={{
+                      width: '15%'
+                    }}></div>
                     </div>
                   </div>
                   
@@ -246,7 +228,9 @@ const Index = () => {
                       <span className="font-medium">10%</span>
                     </div>
                     <div className="w-full bg-white/10 rounded-full h-2">
-                      <div className="bg-blue-400 h-2 rounded-full" style={{ width: '10%' }}></div>
+                      <div className="bg-blue-400 h-2 rounded-full" style={{
+                      width: '10%'
+                    }}></div>
                     </div>
                   </div>
                   
@@ -256,16 +240,15 @@ const Index = () => {
                       <span className="font-medium">10%</span>
                     </div>
                     <div className="w-full bg-white/10 rounded-full h-2">
-                      <div className="bg-blue-400 h-2 rounded-full" style={{ width: '10%' }}></div>
+                      <div className="bg-blue-400 h-2 rounded-full" style={{
+                      width: '10%'
+                    }}></div>
                     </div>
                   </div>
                 </div>
                 
                 <div className="pt-6">
-                  <Link 
-                    to="/docs" 
-                    className="text-blue-400 hover:text-blue-300 transition flex items-center text-sm"
-                  >
+                  <Link to="/docs" className="text-blue-400 hover:text-blue-300 transition flex items-center text-sm">
                     Learn more about tokenomics
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -323,10 +306,7 @@ const Index = () => {
         </div>
       </section>
       
-      <section 
-        ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 opacity-0 roadmap-phases relative"
-      >
+      <section ref={addToRefs as React.RefCallback<HTMLElement>} className="py-24 opacity-0 roadmap-phases relative">
         {/* Roadmap section - NO ELEMENTS AS REQUESTED */}
         <div className="absolute inset-0">
           {/* No LifeScienceBackground or FlowingLifeScienceElements as requested */}
@@ -458,10 +438,7 @@ const Index = () => {
         </div>
       </section>
       
-      <section 
-        ref={addToRefs as React.RefCallback<HTMLElement>} 
-        className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0 relative"
-      >
+      <section ref={addToRefs as React.RefCallback<HTMLElement>} className="py-24 bg-gradient-to-b from-[#080810] to-black opacity-0 relative">
         {/* Section 3: Neurons moving bidirectionally (changed from cells) */}
         <div className="absolute inset-0">
           <LifeScienceBackground type="neurons" opacity={0.37} speed={0.4} density={0.7} direction="diagonal-1" />
@@ -475,10 +452,7 @@ const Index = () => {
           </div>
           
           <div className="flex justify-center">
-            <Link 
-              to="/community" 
-              className="button-shine inline-flex items-center justify-center px-8 py-4 border border-white/20 text-lg font-medium rounded-md text-white bg-black hover:bg-black/80 transition-colors duration-300 shadow-md"
-            >
+            <Link to="/community" className="button-shine inline-flex items-center justify-center px-8 py-4 border border-white/20 text-lg font-medium rounded-md text-white bg-black hover:bg-black/80 transition-colors duration-300 shadow-md">
               Explore Community
             </Link>
           </div>
@@ -486,8 +460,6 @@ const Index = () => {
       </section>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
