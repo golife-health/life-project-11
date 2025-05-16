@@ -387,15 +387,15 @@ const Index = () => {
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Initial therapeutics development and testing</span>
+                            <span>Design a Transparent Voting Framework</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Expansion of research to include AI-driven discovery</span>
+                            <span>Enable Community-Driven Decision Making</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Launch of community access to research findings</span>
+                            <span>Research Grants Allocation & Oversight</span>
                           </div>
                         </div>
                       </div>
