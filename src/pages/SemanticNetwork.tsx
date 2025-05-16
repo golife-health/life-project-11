@@ -1,7 +1,11 @@
+
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import LifeScienceBackground from "../components/LifeScienceBackground";
+import { Button } from "@/components/ui/button";
+
 const SemanticNetwork = () => {
   return <div className="min-h-screen bg-black text-white">
       <div className="absolute inset-0 z-0">
@@ -59,6 +63,17 @@ const SemanticNetwork = () => {
           <p className="my-6 text-lg">
             By focusing on delivering science-backed longevity knowledge to the community, the Semantic Network shifts from a lab-centric research tool to a community-facing AI engine, aligned with LIFE Project's mission of democratizing healthspan extension.
           </p>
+          
+          <div className="my-12 text-center">
+            <Link to="/knowledge-platform">
+              <Button className="bg-blue-600 hover:bg-blue-700 px-8 py-6 text-lg">
+                Try Our Knowledge Platform
+              </Button>
+            </Link>
+            <p className="text-white/70 mt-4">
+              Experience the Semantic Network in action through our AI-powered Knowledge Platform
+            </p>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-10">
             

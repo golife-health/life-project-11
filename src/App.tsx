@@ -16,6 +16,7 @@ import ResearchSections from "./pages/ResearchSections";
 import EpigeneticClock from "./pages/EpigeneticClock";
 import SemanticNetwork from "./pages/SemanticNetwork";
 import FhePrivacy from "./pages/FhePrivacy";
+import KnowledgePlatform from "./pages/KnowledgePlatform";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/epigenetic-clock" element={<EpigeneticClock />} />
           <Route path="/semantic-network" element={<SemanticNetwork />} />
           <Route path="/fhe-privacy" element={<FhePrivacy />} />
+          <Route path="/knowledge-platform" element={<KnowledgePlatform />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

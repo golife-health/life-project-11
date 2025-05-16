@@ -38,7 +38,12 @@ const Navbar = () => {
           >
             [ Research Focus ]
           </Link>
-          {/* Research Sections link removed */}
+          <Link 
+            to="/knowledge-platform" 
+            className={`nav-link ${isActive('/knowledge-platform') ? 'text-primary font-medium' : 'footer-link'}`}
+          >
+            [ Knowledge Platform ]
+          </Link>
         </div>
       </div>
     </nav>

@@ -361,7 +361,7 @@ const Index = () => {
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Launch of multi-center clinical trials</span>
+                            <span>Development of AI-powered Knowledge Platform</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
