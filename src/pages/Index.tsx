@@ -84,16 +84,13 @@ const Index = () => {
                   Longevity. Immunity. Fitness. Energy.
                 </p>
                 <p className="text-lg text-white/80">
-                  An AI-driven semantic network empowering everyone to understand and optimize their healthspan.
-                </p>
-                <p className="text-lg text-white/80 mt-2">
-                  By blending ancient wellness wisdom with cutting-edge AI and decentralized collaboration, LIFE democratizes access to longevity insights — moving beyond the lab and into the hands of the community.
+                  Advanced semantic network of longevity. Pioneering next-generation epigenetic protocols and advanced cellular rejuvenation technologies.
                 </p>
               </div>
               
               <div className="space-y-6 md:-ml-16">
                 <div className="poem-text">
-                  <p className="poem-line">"Cells bloom anew, restoring youth with endless might</p>
+                  <p className="poem-line">AI-Powered Knowledge Synthesis</p>
                   <p className="poem-line">Genes map secrets, unveiling truths in timeless light</p>
                   <p className="poem-line">Minds stay guarded, preserving wisdom in eternal fight"</p>
                 </div>
@@ -101,7 +98,7 @@ const Index = () => {
               
               <div className="space-y-2 mb-20">
                 <div className="research-pillar">
-                  <span>Lifestyle-Driven Longevity Research</span>
+                  <span>Regenerative Medicine</span>
                   <span className="research-pillar-number">v.0.1 →</span>
                 </div>
                 <div className="research-pillar">
