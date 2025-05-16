@@ -1,12 +1,9 @@
-
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import LifeScienceBackground from "../components/LifeScienceBackground";
-
 const SemanticNetwork = () => {
-  return (
-    <div className="min-h-screen bg-black text-white">
+  return <div className="min-h-screen bg-black text-white">
       <div className="absolute inset-0 z-0">
         <LifeScienceBackground type="molecules" opacity={0.3} speed={0.2} density={0.5} direction="diagonal-1" />
       </div>
@@ -14,7 +11,7 @@ const SemanticNetwork = () => {
       <Navbar />
       
       <main className="container mx-auto px-6 py-24 relative z-10">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6">2.3.1 Advanced Semantic Network of Longevity</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">Advanced Semantic Network of Longevity</h1>
         
         <div className="prose prose-lg prose-invert max-w-none">
           <p className="text-xl text-white/80 mb-8">
@@ -89,8 +86,6 @@ const SemanticNetwork = () => {
       </main>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default SemanticNetwork;
