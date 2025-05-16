@@ -361,7 +361,7 @@ const Index = () => {
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Development of AI-powered Knowledge Platform</span>
+                            <span>Launch of multi-center clinical trials</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
@@ -383,19 +383,19 @@ const Index = () => {
                     <div className="md:text-right md:pr-12">
                       <div className="glass-panel p-6 md:ml-auto">
                         <div className="text-blue-400 font-mono mb-2">PHASE 3 - Q3 2025</div>
-                        <h3 className="text-xl font-bold mb-3">Governance Structure</h3>
+                        <h3 className="text-xl font-bold mb-3">Technology Development</h3>
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Design a Transparent Voting Framework</span>
+                            <span>Initial therapeutics development and testing</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Enable Community-Driven Decision Making</span>
+                            <span>Expansion of research to include AI-driven discovery</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Research Grants Allocation & Oversight</span>
+                            <span>Launch of community access to research findings</span>
                           </div>
                         </div>
                       </div>
@@ -405,28 +405,7 @@ const Index = () => {
                 
                 <div className="relative" data-phase="4">
                   <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400/50 rounded-full transform -translate-x-1/2"></div>
-                  <div className="grid grid-cols-1 gap-8">
-                    <div className="md:text-right md:pr-12">
-                      <div className="glass-panel p-6 border-dashed border md:ml-auto">
-                        <div className="text-blue-400/70 font-mono mb-2">PHASE 4 - Q4 2025</div>
-                        <h3 className="text-xl font-bold mb-3">Global Implementation</h3>
-                        <div className="space-y-2">
-                          <div className="flex items-start md:justify-end text-white/70">
-                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>First-generation therapeutics available to token holders</span>
-                          </div>
-                          <div className="flex items-start md:justify-end text-white/70">
-                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Global expansion of research initiatives</span>
-                          </div>
-                          <div className="flex items-start md:justify-end text-white/70">
-                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Development of personalized longevity protocols</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
