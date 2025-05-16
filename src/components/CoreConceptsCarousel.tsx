@@ -17,7 +17,7 @@ const coreConceptsData = [
   {
     id: "semantic-network",
     title: "Advanced Semantic Network of Longevity",
-    teaser: "Our AI-driven knowledge graph turns genes, proteins and interventions into a living map of life extension.",
+    teaser: "Transforming Community Wellness Data into Science-Backed Longevity Insights",
     quote: "From data points to discovery pathways.",
     content: "Lifespan isn't a single pathway but a vast, interwoven network of genes, proteins, metabolites, and lifestyle factors. Our Advanced Semantic Network layers multi-omics data, clinical trials, and real-world health metrics into a living knowledge graph—turning terabytes of longevity research into actionable insights.",
     image: "/lovable-uploads/42fe981d-ea03-4f5b-8898-8dafe5c17b21.png",
