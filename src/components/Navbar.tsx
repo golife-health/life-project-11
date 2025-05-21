@@ -19,7 +19,7 @@ const Navbar = () => {
             [ Home ]
           </Link>
           <a 
-            href="https://docsend.com/view/j32pziykw4cnmyvr" 
+            href="https://docsend.com/v/4bptk/golife" 
             target="_blank" 
             rel="noopener noreferrer"
             className="nav-link footer-link"
