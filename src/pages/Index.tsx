@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -92,7 +91,8 @@ const Index = () => {
               
               <div className="space-y-6">
                 <div className="poem-text">
-                  <p className="poem-line">AI-Powered Knowledge Synthesis</p>
+                  <p className="poem-line">
+                </p>
                   <p className="poem-line">&quot;Genes map secrets, unveiling truths in timeless light</p>
                   <p className="poem-line">Minds stay guarded, preserving wisdom in eternal fight"</p>
                 </div>
