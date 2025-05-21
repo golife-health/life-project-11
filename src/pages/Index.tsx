@@ -116,10 +116,7 @@ const Index = () => {
         </div>
         
         <div className="absolute bottom-20 right-6 text-xs font-mono z-10">
-          <div className="flex items-center space-x-2 mb-2">
-            <div className="h-2 w-2 bg-blue-400 rounded-full"></div>
-            <span className="text-white/70">BUY ON SOLANA</span>
-          </div>
+          
           <div className="text-white/50 break-all max-w-xs">
             CA X9BLQmZA7qdWYJKJ6VTmnMiBuzQq3dNZS8fFMU5aY
           </div>
