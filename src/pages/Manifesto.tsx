@@ -24,23 +24,23 @@ const Manifesto = () => {
             <section className="glass-panel p-6 md:p-8">
               <div className="prose prose-lg prose-invert max-w-none text-center">
                 <p className="mb-6 text-xl">
-                  LIFE Project democratizes longevity by uniting ancient wisdom, modern science, and decentralized community power
+                  Longevity is not a privilege but a fundamental human right—one we are committed to democratizing across borders, backgrounds, and beliefs.
                 </p>
                 
                 <p className="mb-6">
-                  Through Data-to-Earn, users contribute health data and become co-creators of collective longevity intelligence
+                  We stand for translating complex science into simple wisdom, using AI not to replace human intelligence but to amplify it for all.
                 </p>
                 
                 <p className="mb-6">
-                  The Life delivers trusted, science-backed answers — like Perplexity for longevity, but verified.
+                  We believe that living to 150 years should be a choice available to everyone, not just those with privileged access to knowledge.
                 </p>
                 
                 <p className="mb-6">
-                  DAO governance ensures research and platform decisions are made by the community.
+                  We reject the notion that geography, economics, or education should determine how long and how well you live.
                 </p>
                 
                 <p className="mb-6">
-                  The $LIFE token incentivizes innovation, aligning community participation with real scientific progress.
+                  We are building a world where collective intelligence meets artificial intelligence to create a future where health span equals life span for every human on earth.
                 </p>
               </div>
             </section>
