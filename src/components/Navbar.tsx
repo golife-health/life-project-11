@@ -22,7 +22,7 @@ const Navbar = () => {
             href="https://docsend.com/view/j32pziykw4cnmyvr" 
             target="_blank" 
             rel="noopener noreferrer"
-            className={`nav-link ${isActive('/whitepaper') ? 'text-primary font-medium' : 'footer-link'}`}
+            className="nav-link footer-link"
           >
             [ Whitepaper ]
           </a>
