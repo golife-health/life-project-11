@@ -117,9 +117,7 @@ const Index = () => {
         
         <div className="absolute bottom-20 right-6 text-xs font-mono z-10">
           
-          <div className="text-white/50 break-all max-w-xs">
-            CA X9BLQmZA7qdWYJKJ6VTmnMiBuzQq3dNZS8fFMU5aY
-          </div>
+          
         </div>
       </section>
       
