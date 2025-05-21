@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -10,7 +9,6 @@ import ElementsBackground from '../components/ElementsBackground';
 import VitruvianImage from '../components/VitruvianImage';
 import LifeScienceBackground from '../components/LifeScienceBackground';
 import CoreConceptsCarousel from '../components/CoreConceptsCarousel';
-
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const heroContentRef = useRef<HTMLDivElement>(null);
@@ -101,7 +99,7 @@ const Index = () => {
               
               <div className="space-y-2 mb-20">
                 <div className="research-pillar">
-                  <span>Regenerative Medicine</span>
+                  <span>Lifestyle-Driven Longevity Research</span>
                   <span className="research-pillar-number">v.0.1 →</span>
                 </div>
                 <div className="research-pillar">
