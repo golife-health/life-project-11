@@ -91,8 +91,8 @@ const Index = () => {
               
               <div className="space-y-6">
                 <div className="poem-text">
-                  
-                  <p className="poem-line">"Genes map secrets, unveiling truths in timeless light</p>
+                  <p className="poem-line">AI-Powered Knowledge Synthesis</p>
+                  <p className="poem-line">Genes map secrets, unveiling truths in timeless light</p>
                   <p className="poem-line">Minds stay guarded, preserving wisdom in eternal fight"</p>
                 </div>
               </div>
