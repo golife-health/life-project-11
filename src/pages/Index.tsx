@@ -1,3 +1,4 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BinaryBackground from '../components/BinaryBackground';
@@ -71,13 +72,8 @@ const Index = () => {
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center transition-all duration-300" style={getHeroParallaxStyle()} ref={heroContentRef}>
-            <div className="mx-auto md:mx-0">
-              {/* Logo Tree component removed */}
-              <div className="w-64 h-64"></div>
-            </div>
-            
-            <div className="space-y-16 md:-ml-12">
-              <div className="md:-ml-12">
+            <div className="space-y-16 md:mr-12 order-last md:order-first">
+              <div>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
                   L.I.F.E.
                 </h1>
@@ -89,7 +85,7 @@ const Index = () => {
                 </p>
               </div>
               
-              <div className="space-y-6 md:-ml-16">
+              <div className="space-y-6">
                 <div className="poem-text">
                   <p className="poem-line">AI-Powered Knowledge Synthesis</p>
                   <p className="poem-line">Genes map secrets, unveiling truths in timeless light</p>
@@ -111,6 +107,11 @@ const Index = () => {
                   <span className="research-pillar-number">v.0.3 →</span>
                 </div>
               </div>
+            </div>
+            
+            <div className="mx-auto md:mx-0 order-first md:order-last">
+              {/* Logo Tree component removed */}
+              <div className="w-64 h-64"></div>
             </div>
           </div>
         </div>
