@@ -5,7 +5,8 @@ import Footer from "../components/Footer";
 import BinaryBackground from "../components/BinaryBackground";
 
 const Manifesto = () => {
-  return <div className="min-h-screen bg-black text-white">
+  return (
+    <div className="min-h-screen bg-black text-white">
       <BinaryBackground />
       <Navbar />
       
@@ -48,7 +49,8 @@ const Manifesto = () => {
       </div>
       
       <Footer />
-    </div>;
+    </div>
+  );
 };
 
 export default Manifesto;
