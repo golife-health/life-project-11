@@ -103,7 +103,7 @@ const Index = () => {
                   <span className="research-pillar-number">v.0.1 →</span>
                 </div>
                 <div className="research-pillar">
-                  <span>Cellular Senescence</span>
+                  <span>AI-Powered Knowledge Synthesis</span>
                   <span className="research-pillar-number">v.0.2 →</span>
                 </div>
                 <div className="research-pillar">
