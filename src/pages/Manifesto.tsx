@@ -1,12 +1,9 @@
-
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import BinaryBackground from "../components/BinaryBackground";
-
 const Manifesto = () => {
-  return (
-    <div className="min-h-screen bg-black text-white">
+  return <div className="min-h-screen bg-black text-white">
       <BinaryBackground />
       <Navbar />
       
@@ -23,9 +20,7 @@ const Manifesto = () => {
           <div className="space-y-8 w-full">
             <section className="glass-panel p-6 md:p-8 mx-4 md:mx-12">
               <div className="prose prose-lg prose-invert max-w-none px-4 md:px-8">
-                <p className="mb-6 text-xl font-semibold">
-                  Longevity is not a privilege but a fundamental human right—one we are committed to democratizing across borders, backgrounds, and beliefs.
-                </p>
+                <p className="mb-6 font-semibold text-lg">Longevity is not a privilege but a fundamental human right — one we are committed to democratizing across borders, backgrounds, and beliefs.</p>
                 
                 <p className="mb-6 text-lg">
                   We stand for translating complex science into simple wisdom, using AI not to replace human intelligence but to amplify it for all.
@@ -49,8 +44,6 @@ const Manifesto = () => {
       </div>
       
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Manifesto;
