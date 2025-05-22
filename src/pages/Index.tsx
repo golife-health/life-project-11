@@ -9,6 +9,7 @@ import ElementsBackground from '../components/ElementsBackground';
 import VitruvianImage from '../components/VitruvianImage';
 import LifeScienceBackground from '../components/LifeScienceBackground';
 import CoreConceptsCarousel from '../components/CoreConceptsCarousel';
+
 const Index = () => {
   const sectionRefs = useRef<(HTMLElement | null)[]>([]);
   const heroContentRef = useRef<HTMLDivElement>(null);
@@ -61,7 +62,7 @@ const Index = () => {
       {/* Navbar */}
       <Navbar />
       
-      {/* Hero Section - NO ELEMENTS AS REQUESTED */}
+      {/* Hero Section */}
       <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <ElementsBackground opacity={0.2} />
@@ -162,12 +163,10 @@ const Index = () => {
       
       <CoreConceptsCarousel />
       
-      {/* Tokenomics Section Removed */}
-      
+      {/* Roadmap Section - UPDATED */}
       <section ref={addToRefs as React.RefCallback<HTMLElement>} className="py-24 opacity-0 roadmap-phases relative">
-        {/* Roadmap section - NO ELEMENTS AS REQUESTED */}
         <div className="absolute inset-0">
-          {/* No LifeScienceBackground or FlowingLifeScienceElements as requested */}
+          {/* No background elements as per previous setup */}
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative">
           <div className="text-center mb-16">
@@ -188,20 +187,24 @@ const Index = () => {
                   <div className="grid grid-cols-1 gap-8">
                     <div className="md:text-right md:pr-12">
                       <div className="glass-panel p-6 md:ml-auto">
-                        <div className="text-blue-400 font-mono mb-2">PHASE 1 - Q1 2025</div>
-                        <h3 className="text-xl font-bold mb-3">Foundation & Community</h3>
+                        <div className="text-blue-400 font-mono mb-2">PHASE 1</div>
+                        <h3 className="text-xl font-bold mb-3">Scientific Onboarding & Public Awareness</h3>
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Establish research partnerships with leading institutions</span>
+                            <span>Recruit 10+ expert advisors in longevity science, AI safety, cryptography, and healthcare ethics.</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Community building and ambassador program launch</span>
+                            <span>Publish the LIFE Protocol white paper and technical roadmap to define scope and vision.</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Initial funding round for key research initiatives</span>
+                            <span>Launch public Discord, Substack, and X (Twitter) presence with coordinated branding.</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Start a weekly content series — "Longevity 101" and "Behind the Protocol".</span>
                           </div>
                         </div>
                       </div>
@@ -214,21 +217,20 @@ const Index = () => {
                   <div className="grid grid-cols-1 gap-8">
                     <div className="md:text-right md:pr-12">
                       <div className="glass-panel p-6 md:ml-auto">
-                        <div className="text-blue-400 font-mono mb-2">PHASE 2 - Q2 2025</div>
-                        <h3 className="text-xl font-bold mb-3">Outreach to Scientists
-                      </h3>
+                        <div className="text-blue-400 font-mono mb-2">PHASE 2</div>
+                        <h3 className="text-xl font-bold mb-3">Encrypted Data Contribution & MVP Launch</h3>
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Development of AI-powered Knowledge Platform</span>
+                            <span>Begin onboarding 100–200 early users into encrypted longevity cohorts.</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Development of proprietary longevity biomarkers</span>
+                            <span>Deploy Fully Homomorphic Encryption (FHE) or hybrid FHE schemes for private data processing.</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Creation of decentralized research data platform</span>
+                            <span>Launch Longevity Coach v1: an AI-powered dashboard and chatbot.</span>
                           </div>
                         </div>
                       </div>
@@ -241,20 +243,47 @@ const Index = () => {
                   <div className="grid grid-cols-1 gap-8">
                     <div className="md:text-right md:pr-12">
                       <div className="glass-panel p-6 md:ml-auto">
-                        <div className="text-blue-400 font-mono mb-2">PHASE 3 - Q3 2025</div>
-                        <h3 className="text-xl font-bold mb-3">Governance Structure</h3>
+                        <div className="text-blue-400 font-mono mb-2">PHASE 3</div>
+                        <h3 className="text-xl font-bold mb-3">Protocol NFT Marketplace & DAO Governance</h3>
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Design a Transparent Voting Framework</span>
+                            <span>Launch Research Protocol NFTs — on-chain representations of experiments.</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Enable Community-Driven Decision Making</span>
+                            <span>Activate DAO proposal flow — contributors can suggest focus areas and research validation bounties.</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Research Grants Allocation & Oversight</span>
+                            <span>Run a "Proof-of-Discovery" bounty series to incentivize original research.</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Added Phase 4 */}
+                <div className="relative" data-phase="4">
+                  <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
+                  <div className="grid grid-cols-1 gap-8">
+                    <div className="md:text-right md:pr-12">
+                      <div className="glass-panel p-6 md:ml-auto">
+                        <div className="text-blue-400 font-mono mb-2">PHASE 4</div>
+                        <h3 className="text-xl font-bold mb-3">Fully Encrypted Inference & Cross-Chain Collaboration</h3>
+                        <div className="space-y-2">
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Run AI inference directly on encrypted data using FHE — no raw data ever exposed.</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Launch $LIFE token reward system for data validators and reviewers.</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Begin formal collaborations with Gitcoin, VitaDAO, LabDAO, and others.</span>
                           </div>
                         </div>
                       </div>
@@ -295,4 +324,5 @@ const Index = () => {
       <Footer />
     </div>;
 };
+
 export default Index;
