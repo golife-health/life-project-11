@@ -23,15 +23,6 @@ const coreConceptsData = [
     image: "/lovable-uploads/42fe981d-ea03-4f5b-8898-8dafe5c17b21.png",
     alt: "Network graph visualization of connected nodes representing the longevity network"
   },
-  {
-    id: "fhe-privacy",
-    title: "Privacy Preserving through FHE",
-    teaser: "Keep your personal health metrics encrypted end-to-end while unlocking AI-powered insights.",
-    quote: "Privacy and progress—together at last.",
-    content: "We believe your health journey is confidential. That's why Life Project integrates Fully Homomorphic Encryption (FHE)—a breakthrough that lets you store, compute on, and share encrypted health metrics without ever decrypting them on our servers.",
-    image: "/lovable-uploads/8e20e5db-de2c-424a-b278-ced419dbcb21.png",
-    alt: "Encrypted health data visualization with DNA and lock"
-  },
 ];
 
 const CoreConceptsCarousel = () => {
