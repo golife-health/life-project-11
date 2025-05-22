@@ -163,7 +163,7 @@ const Index = () => {
       
       <CoreConceptsCarousel />
       
-      {/* Roadmap Section - UPDATED */}
+      {/* Roadmap Section - UPDATED with new content */}
       <section ref={addToRefs as React.RefCallback<HTMLElement>} className="py-24 opacity-0 roadmap-phases relative">
         <div className="absolute inset-0">
           {/* No background elements as per previous setup */}
@@ -192,19 +192,23 @@ const Index = () => {
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Recruit 10+ expert advisors in longevity science, AI safety, cryptography, and healthcare ethics.</span>
+                            <span>Recruit 10+ expert advisors in longevity, AI, cryptography, and ethics</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Publish the LIFE Protocol white paper and technical roadmap to define scope and vision.</span>
+                            <span>Publish white paper and technical roadmap</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Launch public Discord, Substack, and X (Twitter) presence with coordinated branding.</span>
+                            <span>Launch Discord, Substack, and X (Twitter) with unified branding</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Start a weekly content series — "Longevity 101" and "Behind the Protocol".</span>
+                            <span>Start "Longevity 101" and "Behind the Protocol" content series</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Host onboarding events and Twitter Spaces with scientists and DeSci leaders</span>
                           </div>
                         </div>
                       </div>
@@ -218,19 +222,27 @@ const Index = () => {
                     <div className="md:text-right md:pr-12">
                       <div className="glass-panel p-6 md:ml-auto">
                         <div className="text-blue-400 font-mono mb-2">PHASE 2</div>
-                        <h3 className="text-xl font-bold mb-3">Encrypted Data Contribution & MVP Launch</h3>
+                        <h3 className="text-xl font-bold mb-3">Encrypted Data & MVP Launch</h3>
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Begin onboarding 100–200 early users into encrypted longevity cohorts.</span>
+                            <span>Onboard 100–200 users into encrypted longevity cohorts</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Deploy Fully Homomorphic Encryption (FHE) or hybrid FHE schemes for private data processing.</span>
+                            <span>Deploy FHE or hybrid privacy-preserving data processing</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Launch Longevity Coach v1: an AI-powered dashboard and chatbot.</span>
+                            <span>Launch Longevity Coach v1: AI dashboard + chatbot</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Integrate wearable and lifestyle data into AI backend</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Monitor engagement, retention, and data quality</span>
                           </div>
                         </div>
                       </div>
@@ -244,19 +256,23 @@ const Index = () => {
                     <div className="md:text-right md:pr-12">
                       <div className="glass-panel p-6 md:ml-auto">
                         <div className="text-blue-400 font-mono mb-2">PHASE 3</div>
-                        <h3 className="text-xl font-bold mb-3">Protocol NFT Marketplace & DAO Governance</h3>
+                        <h3 className="text-xl font-bold mb-3">Protocol NFTs & DAO Governance</h3>
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Launch Research Protocol NFTs — on-chain representations of experiments.</span>
+                            <span>Launch Research Protocol NFTs for forking and peer review</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Activate DAO proposal flow — contributors can suggest focus areas and research validation bounties.</span>
+                            <span>Enable DAO proposals for funding and focus areas</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Run a "Proof-of-Discovery" bounty series to incentivize original research.</span>
+                            <span>Introduce staking + contributor reputation system</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Launch "Proof-of-Discovery" research bounty series</span>
                           </div>
                         </div>
                       </div>
@@ -264,26 +280,29 @@ const Index = () => {
                   </div>
                 </div>
                 
-                {/* Added Phase 4 */}
                 <div className="relative" data-phase="4">
                   <div className="absolute left-1/2 top-0 h-5 w-5 bg-blue-400 rounded-full transform -translate-x-1/2"></div>
                   <div className="grid grid-cols-1 gap-8">
                     <div className="md:text-right md:pr-12">
                       <div className="glass-panel p-6 md:ml-auto">
                         <div className="text-blue-400 font-mono mb-2">PHASE 4</div>
-                        <h3 className="text-xl font-bold mb-3">Fully Encrypted Inference & Cross-Chain Collaboration</h3>
+                        <h3 className="text-xl font-bold mb-3">Encrypted Inference & Ecosystem Growth</h3>
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Run AI inference directly on encrypted data using FHE — no raw data ever exposed.</span>
+                            <span>Enable FHE-based AI inference — zero raw data exposure</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Launch $LIFE token reward system for data validators and reviewers.</span>
+                            <span>Launch $LIFE token rewards for validators and reviewers</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Begin formal collaborations with Gitcoin, VitaDAO, LabDAO, and others.</span>
+                            <span>Partner with Gitcoin, VitaDAO, LabDAO, and others</span>
+                          </div>
+                          <div className="flex items-start md:justify-end text-white/70">
+                            <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
+                            <span>Explore rollup or compute layers for decentralized scaling</span>
                           </div>
                         </div>
                       </div>
