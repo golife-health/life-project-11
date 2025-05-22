@@ -21,8 +21,8 @@ const Manifesto = () => {
           </p>
           
           <div className="space-y-8 w-full">
-            <section className="glass-panel p-6 md:p-8">
-              <div className="prose prose-lg prose-invert max-w-none">
+            <section className="glass-panel p-6 md:p-8 mx-4 md:mx-12">
+              <div className="prose prose-lg prose-invert max-w-none px-4 md:px-8">
                 <p className="mb-6 text-xl font-semibold">
                   Longevity is not a privilege but a fundamental human right—one we are committed to democratizing across borders, backgrounds, and beliefs.
                 </p>
