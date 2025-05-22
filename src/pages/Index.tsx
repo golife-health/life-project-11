@@ -62,22 +62,16 @@ const Index = () => {
       {/* Navbar */}
       <Navbar />
       
-      {/* Hero Section */}
+      {/* Hero Section - Updated to center content */}
       <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <ElementsBackground opacity={0.2} />
           <VitruvianImage opacity={0.3} />
-          {/* No LifeScienceBackground or FlowingLifeScienceElements as requested */}
         </div>
         <div className="container mx-auto px-6 max-w-7xl relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center transition-all duration-300" style={getHeroParallaxStyle()} ref={heroContentRef}>
+          <div className="flex flex-col items-center justify-center text-center transition-all duration-300" style={getHeroParallaxStyle()} ref={heroContentRef}>
             
-            <div className="mx-auto md:mx-0 order-first md:order-first">
-              {/* Logo Tree component removed */}
-              <div className="w-64 h-64"></div>
-            </div>
-            
-            <div className="space-y-16 md:ml-12 order-last md:order-last">
+            <div className="space-y-8 max-w-3xl mx-auto">
               <div>
                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
                   L.I.F.E.
@@ -92,8 +86,6 @@ const Index = () => {
               
               <div className="space-y-6">
                 <div className="poem-text">
-                  <p className="poem-line">
-                </p>
                   <p className="poem-line">&quot;Genes map secrets, unveiling truths in timeless light</p>
                   <p className="poem-line">Minds stay guarded, preserving wisdom in eternal fight"</p>
                 </div>
