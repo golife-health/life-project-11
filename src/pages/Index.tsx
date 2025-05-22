@@ -155,7 +155,7 @@ const Index = () => {
       
       <CoreConceptsCarousel />
       
-      {/* Roadmap Section - UPDATED with new content */}
+      {/* Roadmap Section - UPDATED with new condensed content */}
       <section ref={addToRefs as React.RefCallback<HTMLElement>} className="py-24 opacity-0 roadmap-phases relative">
         <div className="absolute inset-0">
           {/* No background elements as per previous setup */}
@@ -184,7 +184,7 @@ const Index = () => {
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Recruit 10+ expert advisors in longevity, AI, cryptography, and ethics</span>
+                            <span>Recruit 10+ expert advisors in longevity</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
@@ -192,11 +192,11 @@ const Index = () => {
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Launch Discord, Substack, and X (Twitter) with unified branding</span>
+                            <span>Launch Discord, Substack, & X with unified branding</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Start "Longevity 101" and "Behind the Protocol" content series</span>
+                            <span>"Longevity 101" & "Behind the Protocol" content series</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
@@ -218,11 +218,11 @@ const Index = () => {
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Onboard 100–200 users into encrypted longevity cohorts</span>
+                            <span>Onboard users into encrypted longevity cohorts</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Deploy FHE or hybrid privacy-preserving data processing</span>
+                            <span>Deploy FHE or hybrid privacy-preserving data</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
@@ -282,7 +282,7 @@ const Index = () => {
                         <div className="space-y-2">
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
-                            <span>Enable FHE-based AI inference — zero raw data exposure</span>
+                            <span>Enable FHE-based AI inference</span>
                           </div>
                           <div className="flex items-start md:justify-end text-white/70">
                             <span className="inline-block w-5 text-center mr-2 md:order-last md:ml-2 md:mr-0">•</span>
