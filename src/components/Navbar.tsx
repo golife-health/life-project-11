@@ -38,6 +38,14 @@ const Navbar = () => {
           >
             [ Research Focus ]
           </Link>
+          <a 
+            href="https://life-app-iota.vercel.app/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="nav-link footer-link"
+          >
+            [ Demo ]
+          </a>
         </div>
       </div>
     </nav>
